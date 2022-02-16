@@ -11,22 +11,15 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
-
-width = $(window).width();
-    if (width>768){
-        num_nb = Math.round(Math.sqrt(width * 15));
-    }else{
-        num_nb = Math.round(Math.sqrt(width * 3));
-    }
-    console.log(num_nb)
-
 particlesJS('particles-js',
 {
   "particles": {
     "number": {
       "value": 100,
-      "density_auto": true,
-      "density_area": num_nb,
+      "density": {
+        "enable": true,
+        "value_area": 600
+      }
     },
     "color": {
       "value": "#000000"
@@ -61,21 +54,21 @@ particlesJS('particles-js',
       "random": false,
       "anim": {
         "enable": false,
-        "speed": 1,
+        "speed": 38.95313451004263,
         "size_min": 0.1,
         "sync": false
       }
     },
     "line_linked": {
       "enable": true,
-      "distance": 110,
+      "distance": 144.21690222094043,
       "color": "#000000",
       "opacity": 0.5,
       "width": 1.121687017273981
     },
     "move": {
       "enable": true,
-      "speed": 1.5,
+      "speed": 6,
       "direction": "none",
       "random": false,
       "straight": false,
@@ -88,25 +81,54 @@ particlesJS('particles-js',
       }
     }
   },
-    interactivity: {
-      enable: true,
-      mouse: {
-          distance: 250
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "repulse"
       },
-      detect_on: 'canvas', // "canvas" or "window"
-      mode: 'grab',
-      line_linked: {
-          opacity: .5
+      "onclick": {
+        "enable": true,
+        "mode": "push"
       },
-      events: {
-          onclick: {
-              enable: false,
-              mode: 'push', // "push" or "remove" (particles)
-              nb: 4
-          }
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
       }
+    }
   },
-  "retina_detect": true
+  "retina_detect": true,
+    "config_demo": {
+      "hide_card": false,
+      "background_color": "#ffffff",
+      "background_image": "",
+      "background_position": "50% 50%",
+      "background_repeat": "no-repeat",
+      "background_size": "cover"
+    }
   }
 
 );
