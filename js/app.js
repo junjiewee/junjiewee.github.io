@@ -11,8 +11,15 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
+width = $(document).width();
+    if (width>768){
+        num_nb = Math.round(Math.sqrt(width * 15));
+    }else{
+        num_nb = Math.round(Math.sqrt(width * 3));
+    }
+    console.log(num_nb)
+
 particlesJS('particles-js',
-  
 {
   "particles": {
     "number": {
@@ -55,14 +62,14 @@ particlesJS('particles-js',
       "random": false,
       "anim": {
         "enable": false,
-        "speed": 38.95313451004263,
+        "speed": 1,
         "size_min": 0.1,
         "sync": false
       }
     },
     "line_linked": {
       "enable": true,
-      "distance": 144.21690222094043,
+      "distance": 110,
       "color": "#000000",
       "opacity": 0.5,
       "width": 1.121687017273981
@@ -121,15 +128,7 @@ particlesJS('particles-js',
       }
     }
   },
-  "retina_detect": true,
-    "config_demo": {
-      "hide_card": false,
-      "background_color": "#ffffff",
-      "background_image": "",
-      "background_position": "50% 50%",
-      "background_repeat": "no-repeat",
-      "background_size": "cover"
-    }
+  "retina_detect": true
   }
 
 );
