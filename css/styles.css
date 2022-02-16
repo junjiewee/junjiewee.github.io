@@ -1,0 +1,578 @@
+a:link {
+	text-decoration : none;
+	font-size : 12px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,224);
+}
+
+a:visited {
+	text-decoration : none;
+	font-size : 12px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,224);
+}
+
+a:active {
+	text-decoration : underline;
+	font-size : 12px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,160);
+}
+
+a:hover {
+	text-decoration : underline;
+	font-size : 12px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,160);
+}
+
+a.bold:link {
+	text-decoration : none;
+	font-size : 13px;
+	font-weight : bold;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,224);
+}
+
+a.bold:visited {
+	text-decoration : none;
+	font-size : 13px;
+	font-weight : bold;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,224);
+}
+
+a.bold:active {
+	text-decoration : underline;
+	font-size : 13px;
+	font-weight : bold;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,160,0);
+}
+
+a.bold:hover {
+	text-decoration : underline;
+	font-size : 13px;
+	font-weight : bold;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,160,0);
+}
+
+a.nolink:active {
+	text-decoration : none;
+	font-size : 16px;
+	font-weight : bold;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+}
+
+a.nolink:hover {
+	text-decoration : none;
+	font-size : 16px;
+	font-weight : bold;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+}
+
+body {
+	background-color : transparent;
+	font-size : 12px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+}
+
+p {
+	background-color : transparent;
+	font-size : 12px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+	margin-top : 8px;
+	margin-bottom : 0px;
+}
+
+p.noTop {
+	background-color : transparent;
+	font-size : 12px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+	margin-top : 4px;
+	margin-bottom : 0px;
+}
+
+p.topic {
+	background-color : transparent;
+	font-size : 13px;
+	font-weight : bold;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(160,0,0);
+	margin-top : 24px;
+	margin-bottom : 0px;	
+}
+
+ul {
+	background-color : transparent;
+	font-size : 12px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+	margin-top : 4px;
+	margin-bottom : 0px;	
+	list-style-type: circle;	
+	list-style-image: url(pics/itemBlack.gif)	
+}
+
+li {
+	background-color : transparent;
+	font-size : 12px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+}
+
+h1 {
+	background-color : transparent;
+	font-size : 28px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+}
+
+h2 {
+	background-color : transparent;
+	font-size : 22px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+}
+
+h3 {
+	background-color : transparent;
+	font-size : 18px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+}
+
+h4 {
+	background-color : transparent;
+	font-size : 16px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+}
+
+td {
+	font-size : 12px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+}
+
+td.header {
+	font-size : 13px;
+	font-weight : bold;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(160,0,0);
+}
+
+td.empty {
+	font-size : 4px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+}
+
+td.line {
+	font-size : 12px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+	vertical-align : top;
+	border-bottom-width : 1px;
+  	border-bottom-style : solid;
+ 	border-color : rgb(222,222,222);
+	padding-top : 3px;
+	padding-bottom : 3px;
+}
+
+td.bottom {
+        font-size : 12px;
+        font-family : Verdana, Arial, Helvetica, Geneva;
+        color : rgb(0,0,0);
+        vertical-align : top;
+        border-bottom-width : 1px;
+        border-bottom-style : solid;
+        border-color : rgb(132,132,132);
+        padding-top : 3px;
+        padding-bottom : 3px;
+}
+
+td.zeromargin {
+	padding:0px;
+	spacing:0px;
+	border:0px;
+	margin:0px;
+}
+
+th {
+	background-color : transparent;
+	text-align : left;
+	font-size : 12px;
+	font-weight : normal;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(160,0,0);
+	border-top-width : 1px;
+  	border-top-style : solid;	
+	border-bottom-width : 1px;
+  	border-bottom-style : solid;
+ 	border-color : rgb(132,132,132);
+ 	padding-top : 5px;
+ 	padding-bottom : 5px;
+}
+
+th.bottom {
+	background-color : transparent;
+	text-align : left;
+	font-size : 12px;
+	font-weight : normal;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(160,0,0);
+	border-top : none;
+	border-bottom-width : 1px;
+  	border-bottom-style : solid;
+ 	border-color : rgb(132,132,132);
+ 	padding-top : 5px;
+ 	padding-bottom : 5px;
+ 	padding-left: 3px;
+	paddign-right: 3px;
+}
+
+th.customTable {
+	background-color : transparent;
+	text-align : left;
+	font-size : 12px;
+	font-weight : normal;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(160,0,0);
+	border-top : none;
+	border-bottom-width : 1px;
+  	border-bottom-style : solid;
+ 	border-color : rgb(132,132,132);
+ 	padding-top : 5px;
+ 	padding-bottom : 5px;
+ 	padding-left: 3px;
+	paddign-right: 3px;
+}
+
+th.noline {
+	background-color : transparent;
+	text-align : left;
+	font-size : 12px;
+	font-weight : normal;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(160,0,0);
+	border-top-width : 0px;
+  	border-top-style : solid;	
+	border-bottom-width : 0px;
+  	border-bottom-style : solid;
+ 	border-color : transparent;
+}
+
+div.mainSearch {
+	text-align: center;
+	vertical-align: center;
+	horizontal-align:center;
+	height:100%;
+	width:100%;
+/*	border-top-width : 1px;
+  	border-top-style : solid;	
+ 	border-color : rgb(160,0,0); */
+ 	padding-top:100px;
+}
+
+div.titleField {
+	border-bottom-width : 1px;
+  	border-bottom-style : solid;	
+ 	border-color : rgb(160,0,0); 
+}
+
+.alignCenter
+{
+text-align:center;
+vertical-align:center;
+horizontal-align:center;
+height:100%
+}
+
+.width50percent
+{
+	width:50%;
+	padding-left:5px;
+	padding-right:5px;
+	padding-bottom:0px;
+	padding-top:0px;
+	spacing-bottom:0px;
+	spacing-top:0px;
+}
+
+.width50percentTop
+{
+	width:50%;
+	vertical-align:top;
+	padding-left:5px;
+	padding-right:5px;
+	padding-bottom:0px;
+	padding-top:0px;
+	spacing-bottom:0px;
+	spacing-top:0px;
+}
+
+.width100percent
+{
+	width:100%;
+}
+
+.width50percentRight
+{
+	width:50%;
+	text-align:right;
+	padding-left:5px;
+	padding-right:5px;
+	padding-bottom:0px;
+	padding-top:0px;
+	spacing-bottom:0px;
+	spacing-top:0px;
+}
+
+.alignLeft
+{
+	width:"50%";
+	text-align:left;
+}
+
+.sortGroup
+{
+	text-align:right;
+}
+
+.heightEqualButton
+{
+	height:30px;
+}
+
+.navigationDiv
+{
+/*	background-color: rgb(230,200,200);*/
+	border-top-style: solid;
+	border-top-width : 1px;
+	border-bottom-style: solid;
+	border-bottom-width : 1px;
+	border-color: rgb(160, 0, 0);
+	padding-bottom : 3px;
+	padding-top: 3px;
+	padding-left: 3px;
+	paddign-right: 5px;
+}
+
+
+.dateColumn
+{
+	text-align:center;
+	width:5.7em;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.locationColumn
+{
+	text-align:left;
+	width:13em;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+
+.nameColumn
+{
+	text-align:left;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.scoreColumn
+{
+	text-align:center;
+	width:4em;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.ratingColumn
+{
+	text-align:center;
+	width:4.5em;
+	padding-left:3px;
+	padding-right:3px;
+	
+}
+
+.wwwColumn
+{
+	text-align:center;
+	vertical-align:center;
+	width:4em;
+	padding-left:3px;
+	padding-right:3px;
+	
+}
+
+.modifyColumn
+{
+	text-align:center;
+	width:4em;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.yearColumn
+{
+	font-style:italic;
+	align:left;
+}
+
+.graphicColumn
+{
+	width:550px;
+	padding-left:3px;
+	padding-right:3px;
+	vertical-align:top;
+}
+
+.venueDead
+{
+	color:rgb(132,132,132);
+/*	font-weight:bold; */
+}
+
+.venueAlive
+{
+	color:black;
+/*	font-weight:bold; */
+}
+
+.venueDLMissedDead
+{
+	color:rgb(132, 0, 0);
+/*	font-weight:bold; */
+}
+
+.venueDLMissedAlive
+{
+	color:red;
+/*	font-weight:bold; */
+}
+
+
+.venueKeywords
+{
+	font-weight:normal;
+	font-style:italic;
+	font-size:7pt;
+}
+
+.titleLeft
+{
+	text-align:left;
+	vertical-align:bottom;
+	width:100%;
+}
+
+.dcgLogo
+{
+	vertical-align:top;
+	text-align:right;
+/*	padding-bottom:10px; */
+}
+
+
+.h1 {
+	background-color : transparent;
+	font-size : 28px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	font-weight: bold;
+	color : rgb(0,0,0);
+}
+
+.h2 {
+	background-color : transparent;
+	font-size : 22px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	font-weight: bold;
+	color : rgb(0,0,0);
+}
+
+.h3 {
+	background-color : transparent;
+	font-size : 18px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+}
+
+.td {
+	font-size : 12px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+}
+
+
+.thBottom {
+	background-color : transparent;
+	text-align : left;
+	font-size : 12px;
+	font-weight : normal;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(160,0,0);
+  	border-top : none;	
+	border-bottom-width : 1px;
+  	border-bottom-style : solid;
+ 	border-color : rgb(132,132,132);
+ 	padding-top : 5px;
+ 	padding-bottom : 5px;
+}
+
+.thBottom:hover {
+	text-decoration: underline;
+}
+
+.tdNoWrap
+{
+	background-color : transparent;
+	font-size : 12px;
+	font-family : Verdana, Arial, Helvetica, Geneva;
+	color : rgb(0,0,0);
+	white-space:nowrap;
+}
+
+.errorMessage
+{
+	color:rgb(160,0,0);
+}
+
+.finalbar {
+  position: absolute; z-index: 2;
+  height: 18px;  background: #8080C0;
+  border: solid 1px #5050A0;
+}
+.confbar {
+  position: absolute; z-index: 2;
+  height: 18px;  background: #c0c080;
+  border: solid 1px #a0a050;
+}
+
+.resultsCol {
+	width:100%;
+}
+
+.customResultsCol {
+	vertical-align:top;
+}
+
+.customTableDeadlineCol {
+	background-color:transparent;
+	width:5.5em;
+}
+
+.customTableNameCol {
+	background-color:transparent;
+}

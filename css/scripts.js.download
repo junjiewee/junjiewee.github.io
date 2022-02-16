@@ -1,0 +1,23 @@
+var defaultActionId;
+function setDefaultActionId(id) {
+	defaultActionId = id;
+}
+
+function trapEnter(evt) {
+	var keycode;
+	if (window.event) {
+		keycode = window.event.keyCode;
+	} else if (evt) {
+		keycode = evt.which;
+	} else {
+		return true;
+	}
+	if (keycode == 13) { 
+		var el = document.getElementById(defaultActionId);
+		if (el) {
+			el.click();
+		}
+		return false; 
+	}
+	return true;
+}

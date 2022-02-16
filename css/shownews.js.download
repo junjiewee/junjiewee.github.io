@@ -1,0 +1,44 @@
+var news = new Array();
+news[8] = '<tr><td align=right>&nbsp;&nbsp;&nbsp; Oct 2021 </td><td>&nbsp; Three papers accepted by AAAI 2022.</td></tr>'
+news[7] = '<tr><td align=right>&nbsp;&nbsp;&nbsp; Oct 2021 </td><td>&nbsp; One paper accepted by NeurIPS 2021.</td></tr>'
+news[6] = '<tr><td align=right>&nbsp;&nbsp;&nbsp; Sep 2021 </td><td>&nbsp; Promoted to Associate Professor with Tenure.</td></tr>'
+news[5] = '<tr><td align=right>&nbsp;&nbsp;&nbsp; May 2021 </td><td>&nbsp; One paper accepted by ICML 2021 for long presentation.</td></tr>'
+news[4] = '<tr><td align=right>&nbsp;&nbsp;&nbsp; Dec 2020 </td><td>&nbsp; Three papers accepted by AAAI 2021.</td></tr>'
+news[3] = '<tr><td align=right>&nbsp;&nbsp;&nbsp; Oct 2020 </td><td>&nbsp; Received the NTU SPMS Young Researcher Award 2020.</td></tr>'
+news[2] = '<tr><td align=right>&nbsp;&nbsp;&nbsp; Aug 2020 </td><td>&nbsp; Gave an online invited talk at <a href="https://econcs.pku.edu.cn/ijtcs2020/IJTCS2020.html">IJTCS 2020</a>.</td></tr>';
+news[1] = '<tr><td align=right>&nbsp;&nbsp;&nbsp; May 2020 </td><td>&nbsp; Gave an online seminar talk at <a href="https://sites.google.com/view/comsoc-seminar/home">COMSOC 2020</a>.</td></tr>';
+news[0] = '<tr><td align=right>&nbsp;&nbsp;&nbsp; May 2020 </td><td>&nbsp; Welcome to the new homepage!</a>  </td></tr>';
+
+var maxnewscnt = 8;
+function showNews(partial) {
+  len = news.length;
+  if (partial == true) {
+    len = Math.min (news.length, maxnewscnt);
+    xtra='<tr><td></td><td>&nbsp; <a onclick="javascript:showNews(false)">More...</a></td></tr>';
+  }
+  else {
+    len = news.length;
+    xtra='<tr><td></td><td>&nbsp; <a onclick="javascript:showNews(true)">Less...</a></td></tr>';
+  }
+
+  elt = "<table border=0>";
+  for (var i=0; i < len; i++)
+    elt = elt + news[news.length-i-1] + '\n';
+  elt = elt + xtra + "\n </table>";
+  document.getElementById("news").innerHTML=elt;
+}
+
+function init() {
+  var partialnews = true;
+
+  var url = window.location.toString();
+  url.match(/\?(.+)$/);
+  var params = RegExp.$1.split("&");
+
+  for (var i=0; i <params.length; i++)
+    if (params[i] == "news")
+      partialnews = false;
+
+  showNews(partialnews);
+}
+window.onload = init;
