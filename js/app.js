@@ -25,10 +25,8 @@ particlesJS('particles-js',
   "particles": {
     "number": {
       "value": 100,
-      "density": {
-        "enable": true,
-        "value_area": 800
-      }
+      "density_auto": true,
+      "density_area": num_nb,
     },
     "color": {
       "value": "#000000"
