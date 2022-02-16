@@ -54,8 +54,8 @@ button{
   color:#ce2608;
   border-color: transparent;
   background-color: bisque;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   text-align: center;
   flex: 1; 
@@ -64,7 +64,7 @@ button{
 
 h2{
 	font-family:"Lato", "Open Sans", Arial, sans-serif;
-	font-size:2em;font-weight: bold;line-height: 1;
+	font-size:2.75em;font-weight: bold;line-height: 1;
 	color:#ce2608;
 	line-height: 1;
 	text-align:left;
@@ -135,11 +135,23 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
   display:inline;}
 #menu  ul li.first{border-left:none;}
 
+ul {
+  font-size:15px
+}
+
 ul > li{
   font-size: 14px;
   margin-left: 20px;
   display: list-item;
   list-style-type: disc;
+}
+
+.bibItem {
+  font-size:  14px;
+}
+
+details > summary{
+  font-size: 13.5px;
 }
 
 .fa-github {
@@ -235,7 +247,6 @@ canvas{
 
 
 /* ---- stats.js ---- */
-
 .count-particles{
   background: #000022;
   position: absolute;
