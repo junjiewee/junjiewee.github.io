@@ -21,111 +21,46 @@ width = $(document).width();
 
 particlesJS('particles-js',
 {
-  "particles": {
-    "number": {
-      "value": 100,
-      "density": {
-        "enable": true,
-        "value_area": 600
-      }
+  particles: {
+    color: '#000000',
+    shape: 'circle', // "circle", "edge" or "triangle"
+    opacity: .6,
+    size: 5,
+    size_random: true,
+    nb: num_nb,
+    line_linked: {
+        enable_auto: true,
+        distance: 110,
+        color: '#000000',
+        opacity: 1,
+        width: 1,
+        condensed_mode: {
+            enable: false,
+            rotateX: 600,
+            rotateY: 600
+        }
     },
-    "color": {
-      "value": "#000000"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#ffffff"
-      },
-      "polygon": {
-        "nb_sides": 4
-      },
-      "image": {
-        "src": "img/github.svg",
-        "width": 100,
-        "height": 100
-      }
-    },
-    "opacity": {
-      "value": 0.5,
-      "random": false,
-      "anim": {
-        "enable": false,
-        "speed": 0.2,
-        "opacity_min": 0.1,
-        "sync": false
-      }
-    },
-    "size": {
-      "value": 3,
-      "random": false,
-      "anim": {
-        "enable": false,
-        "speed": 1,
-        "size_min": 0.1,
-        "sync": false
-      }
-    },
-    "line_linked": {
-      "enable": true,
-      "distance": 110,
-      "color": "#000000",
-      "opacity": 0.5,
-      "width": 1.121687017273981
-    },
-    "move": {
-      "enable": true,
-      "speed": 6,
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out",
-      "bounce": false,
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 1200
-      }
+    anim: {
+        enable: true,
+        speed: 1
     }
   },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": {
-        "enable": true,
-        "mode": "repulse"
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
-      },
-      "resize": true
+  interactivity: {
+    enable: true,
+    mouse: {
+        distance: 250
     },
-    "modes": {
-      "grab": {
-        "distance": 400,
-        "line_linked": {
-          "opacity": 1
+    detect_on: 'canvas', // "canvas" or "window"
+    mode: 'grab',
+    line_linked: {
+        opacity: .5
+    },
+    events: {
+        onclick: {
+            enable: false,
+            mode: 'push', // "push" or "remove" (particles)
+            nb: 4
         }
-      },
-      "bubble": {
-        "distance": 400,
-        "size": 40,
-        "duration": 2,
-        "opacity": 8,
-        "speed": 3
-      },
-      "repulse": {
-        "distance": 200,
-        "duration": 0.4
-      },
-      "push": {
-        "particles_nb": 4
-      },
-      "remove": {
-        "particles_nb": 2
-      }
     }
   },
   "retina_detect": true
