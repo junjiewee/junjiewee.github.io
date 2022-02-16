@@ -11,7 +11,8 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
-width = $(document).width();
+
+width = $(window).width();
     if (width>768){
         num_nb = Math.round(Math.sqrt(width * 15));
     }else{
@@ -23,9 +24,11 @@ particlesJS('particles-js',
 {
   "particles": {
     "number": {
-      "value": 50,
-      "density_auto": true,
-      "density_area": 100,
+      "value": 100,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
     },
     "color": {
       "value": "#000000"
@@ -74,7 +77,7 @@ particlesJS('particles-js',
     },
     "move": {
       "enable": true,
-      "speed": 6,
+      "speed": 1.5,
       "direction": "none",
       "random": false,
       "straight": false,
