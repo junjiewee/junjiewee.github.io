@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <title>Wee JunJie</title>
     <meta name="author" content="Wee JunJie">
@@ -79,9 +79,15 @@
                 <li><a href="publications.html" id="pu" class="" style="font-size: 18px;">Publications</a></li>
                 <li><a href="talks.html" id="ta" class="on" style="font-size: 18px;">Talks/Conferences</a></li>
                 <li><a href="teachings.html" id="te" class="" style="font-size: 18px;">Teaching</a></li>
-                <li>
-                    <a href="" id="drop" href="javascript:void(0);" onclick="myFunction()">☰</a>
-                </li>
+                <a class="dropdown" style="float:left;">
+                    <button onclick="myFunction()" class="dropbtn">☰</button>
+                    <div id="myDropdown" class="dropdown-content" align="left">
+                        <a href="index.html">Home</a>
+                        <a href="publications.html">Publications</a>
+                        <a href="talks.html">Talks/Conferences</a>
+                        <a href="teachings.html">Teaching</a>
+                    </div>
+                </a>
             </ul>
             </div>
 
@@ -115,6 +121,27 @@
     </div>
 
     <!-- scripts -->
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+        </script>
     <script
         type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
     <script type="text/x-mathjax-config">
@@ -125,16 +152,6 @@
     }
   });
 </script>
-<script>
-    function myFunction() {
-        var x = document.getElementById("ulmenu");
-        if (x.className === "") {
-            x.className += " responsive";
-        } else {
-            x.className = "";
-        }
-    }
-    </script>
 <script>function openAll() {
     var x = document.getElementsByTagName("details");
     var elem = document.getElementById("ec"); 
