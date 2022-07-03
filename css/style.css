@@ -81,6 +81,19 @@ h3{
 	margin:0 0px 10px 0px;
 }
 
+ul {
+  font-size:15px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+ul > li{
+  font-size: 15px;
+  margin-left: 17px;
+  display: list-item;
+  list-style-type: disc;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 @media screen and (max-width: 2000px) {
   .container{
     width: 50%;
@@ -292,31 +305,84 @@ img{border:0;}
 #desc a{text-decoration: underline;}
 
 /* menu css */
-#menu {position:relative;text-align:center;min-height:1em;border-bottom:-5px;padding:0;border-bottom:2px;border-top:2px solid #b4cdf3c7;background:#fff;width:100%;z-index:10000;-webkit-z-index:10000;}
-#menu a {display:inline-block;text-decoration:none;border-top:-1px;font-size:15px; color:#000;font-weight:3000;background-color:#fff;padding:5px 5px 5px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
-#menu a:hover {color:#000;background-color:#b4cdf3c7;;border-bottom:2px solid #b4cdf3c7; border-right:0;}
-#menu a.on {color:#000;background-color:#b4cdf3c7;border-bottom:2px solid #b4cdf3c7;font-weight:bolder;border-top:2px;}
-#menu a.on:hover {color:#000;background-color:#b4cdf3c7;;border-bottom:2px solid #b4cdf3c7; border-top:0;}
+#menu {position:relative; text-align: center;overflow: hidden;border-bottom:-5px;padding:0;border-bottom:2px;border-top:2px solid #b4cdf3c7;background:#fff;width:100%;z-index:10000;-webkit-z-index:10000;}
+#menu ul li{display: inline; padding: 0;}
+#menu ul li a {display:inline-block;text-decoration:none;border-top:-1px;font-size:15px; color:#000;font-weight:3000;background-color:#fff;padding:5px 5px 5px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
+#menu ul li a:hover {color:#000;background-color:#b4cdf3c7;;border-bottom:2px solid #b4cdf3c7; border-right:0;}
+#menu ul li a.on {color:#000;background-color:#b4cdf3c7;border-bottom:2px solid #b4cdf3c7;font-weight:bolder;border-top:2px;}
+#menu ul li a.on:hover {color:#000;background-color:#b4cdf3c7;;border-bottom:2px solid #b4cdf3c7; border-top:0;}
 a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
-#menu a{background:#ffffff;margin:1em;padding:0px;list-style-type:none;text-align:center;display:inline-block;font-size:1em;}
-#menu a{margin:1em;padding-right:0.5em;list-style:none;display:-moz-inline-stack;
+#menu ul li a{background:#b4cdf3c7;margin:0;padding:0px;list-style-type:none;text-align:center;display:inline-block;font-size:1em;}
+#menu ul li a{margin:0;padding-right:0.5em;list-style:none;display:-moz-inline-stack;
   display:inline-block;padding-left:0.5em;padding-bottom:.1em;
-  /*zoom:1;*/
-  display:inline;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
-#menu  ul li.first{border-left:none;}
+  /*zoom:1;*/font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+#menu ul.first{border-left:none;}
+#menu ul li a#drop {display: none;}
 
-ul {
-  font-size:15px;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
+/*
+@media screen and (max-width: 320px) {
+  #menu {
+    text-align: left;
+    overflow: hidden;
+  }
 
-ul > li{
-  font-size: 15px;
-  margin-left: 17px;
-  display: list-item;
-  list-style-type: disc;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
+  #menu ul{
+    text-align: left;
+  }
+
+  #menu ul li a:not(.on){
+    display:none;
+  }
+
+  #menu ul li a.on{
+    text-align: center;
+  }
+  
+  #menu ul li a#drop {
+    display: inline-block;
+    position: absolute;
+    text-align: left;
+    background: #b4cdf3c7;
+    right: 0;
+    top: 0;
+    border:1px solid #b4cdf3c7;
+   border-top:none;
+   border-radius:0;
+   -moz-border-radius: 0;
+   -webkit-border-radius: 0;
+   -moz-border-right-radius: 5px;
+   -webkit-border-right-radius: 5px;
+   -moz-border-left-radius: 5px;
+   -webkit-border-left-radius: 5px;
+    border-bottom-right-radius:5px;
+    border-bottom-left-radius:5px;
+   }
+   #menu ul li a#drop:hover {
+   color:#b4cdf3c7;
+   background: #b4cdf3c7;
+   }
+   #menu ul.responsive li a#drop {
+    border:none;
+  }
+    #menu ul.responsive{
+        display: inline-block;
+    }
+    #menu ul.responsive li a {
+      display: inline-block;
+      text-align: left;
+    border-bottom:none;
+    }
+    #menu ul.responsive li a:hover {
+    border-bottom:none;
+    color:#b4cdf3c7;
+    }
+    #menu ul.responsive li a#drop {
+       display: inline-block;
+         position: relative;
+         right: 0;
+         top: 0;
+    }
+  }*/
 
 .bibItem {
   font-size:  14px;
