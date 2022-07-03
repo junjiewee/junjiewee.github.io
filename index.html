@@ -72,13 +72,16 @@
             </div>
 
             <br><br>
-            <div id="menu" class="responsive">
-              <a href="index.html" id="ca" class="on" style="font-size: 18px;">Home</a>
-              <!-- <a href="research.html" id="ca" class="" style="font-size: 18px;">Research</a> -->
-              <a href="publications.html" id="ca" class="" style="font-size: 18px;">Publications</a>
-              <a href="talks.html" id="ca" class="" style="font-size: 18px;">Talks/Conferences</a>
-              <a href="teachings.html" id="ca" class="" style="font-size: 18px;">Teaching</a>
-              <a href="javascript:void(0);" class="icon" onclick="myFunction()"  style="font-size: 18px;"><i class="fa fa-bars"></i></a>
+            <div id="menu" class="">
+              <ul id="ulmenu" class="">
+                <li><a href="index.html" id="ho" class="on" style="font-size: 18px;">Home</a></li>
+              <li><a href="publications.html" id="pu" class="" style="font-size: 18px;">Publications</a></li>
+              <li><a href="talks.html" id="ta" class="" style="font-size: 18px;">Talks/Conferences</a></li>
+              <li><a href="teachings.html" id="te" class="" style="font-size: 18px;">Teaching</a></li>
+              <li>
+                  <a href="" id="drop" href="javascript:void(0);" onclick="myFunction()">☰</a>
+              </li>
+          </ul>
           </div>
 
             <div id="more">
@@ -89,7 +92,7 @@
               <div id="desc">
                 <h2>Bio</h2>
                 <ul>
-                <li style="font-size: 14px;text-align:justify;margin-left:0;list-style-type: none;">I am a Ph.D. Candidate under Asst. Prof
+                <li style="font-size: 14px;margin-left:0;list-style-type: none;">I am a Ph.D. Candidate under Asst. Prof
                   <a href="https://personal.ntu.edu.sg/xiakelin" target="_blank">Xia Kelin</a>'s research group in
                   the <a href="https://www.ntu.edu.sg/spms/about-us/mathematics" target="_blank">Division of
                   Mathematical Sciences</a>, <a href="https://www.ntu.edu.sg/spms" target="_blank">School of Physical and
@@ -123,6 +126,16 @@
     }
   });
 </script>
+<script>
+  function myFunction() {
+      var x = document.getElementById("ulmenu");
+      if (x.className === "") {
+          x.className += " responsive";
+      } else {
+          x.className = "";
+      }
+  }
+  </script>
 <script>function openAll() {
   var x = document.getElementsByTagName("details");
   var elem = document.getElementById("ec"); 

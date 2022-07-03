@@ -73,13 +73,16 @@
             
 
             <br><br>
-            <div id="menu" class="responsive">
-                <a href="index.html" id="ca" class="" style="font-size: 18px;">Home</a>
-                <!-- <a href="research.html" id="ca" class="" style="font-size: 18px;">Research</a> -->
-                <a href="publications.html" id="ca" class="" style="font-size: 18px;">Publications</a>
-                <a href="talks.html" id="ca" class="on" style="font-size: 18px;">Talks/Conferences</a>
-                <a href="teachings.html" id="ca" class="" style="font-size: 18px;">Teaching</a>
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()"  style="font-size: 18px;"><i class="fa fa-bars"></i></a>
+            <div id="menu" class="">
+                <ul id="ulmenu" class="">
+                  <li><a href="index.html" id="ho" class="" style="font-size: 18px;">Home</a></li>
+                <li><a href="publications.html" id="pu" class="" style="font-size: 18px;">Publications</a></li>
+                <li><a href="talks.html" id="ta" class="on" style="font-size: 18px;">Talks/Conferences</a></li>
+                <li><a href="teachings.html" id="te" class="" style="font-size: 18px;">Teaching</a></li>
+                <li>
+                    <a href="" id="drop" href="javascript:void(0);" onclick="myFunction()">☰</a>
+                </li>
+            </ul>
             </div>
 
             <div id="more">
@@ -90,20 +93,20 @@
                 <div id="new talks">
                     <h2>Upcoming</h2>
                     <ul>
-                        <li style="text-align:justify;">Invited Speaker - Conference on "<a href="https://personal.ntu.edu.sg/XIAKELIN/GeoMLconf.html">Applied Geometry for Data Sciences</a>", 25-29 July 2022, Mathematical Science Research Center, Chongqing University of Technology</li>
-                        <li style="text-align:justify;">Invited Speaker - Conference on "<a href="https://ims.nus.edu.sg/wp-content/uploads/2022/07/3006-18-22-Workshop.pdf">Applied, Combinatorial and Toric Topology</a>", <a href="https://ims.nus.edu.sg/events/applied-topology-in-frontier-sciences/">Applied Topology in Frontier Sciences</a> Program, 18-22 July 2022, IMS, National University of Singapore</li>
-                        <li style="text-align:justify;">Invited Speaker - Mini-symposium "<a href="https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=74172">Molecular Biosciences: Modeling for Sequence and Structure-Based Molecular Analysis</a>" at SIAM Conference on Life Sciences, Pittsburgh, Pennsylvania, 12th July 2022</li>
+                        <li>Invited Speaker - Conference on "<a href="https://personal.ntu.edu.sg/XIAKELIN/GeoMLconf.html">Applied Geometry for Data Sciences</a>", 25-29 July 2022, Mathematical Science Research Center, Chongqing University of Technology</li>
+                        <li>Invited Speaker - Conference on "<a href="https://ims.nus.edu.sg/wp-content/uploads/2022/07/3006-18-22-Workshop.pdf">Applied, Combinatorial and Toric Topology</a>", <a href="https://ims.nus.edu.sg/events/applied-topology-in-frontier-sciences/">Applied Topology in Frontier Sciences</a> Program, 18-22 July 2022, IMS, National University of Singapore</li>
+                        <li>Invited Speaker - Mini-symposium "<a href="https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=74172">Molecular Biosciences: Modeling for Sequence and Structure-Based Molecular Analysis</a>" at SIAM Conference on Life Sciences, Pittsburgh, Pennsylvania, 12th July 2022</li>
                     </ul>
                 </div><br>
                 <div id="past talks">
                     <h2>Past</h2>
                     <ul>
-                        <li style="text-align:justify;">Online Speaker - Biweekly Seminar on Mathematical Molecular Bioscience and Biophysics, University of Alabama, Nov 2021</li>
-                        <li style="text-align:justify;">Participation - Mini-course and Workshop on Operators on Function Spaces (The Korenblum Maximum Principle for Some Function Spaces), Fields Institute, Oct 2021<a href="https://www.youtube.com/watch?v=KXWQUdkgILk"> (Video)</a></li>
-                        <li style="text-align:justify;">Online Speaker - <a href="https://weilab.math.msu.edu/CTGG/">Computational Topology/Geometry/Graph Biweekly Virtual Seminar</a>
+                        <li>Online Speaker - Biweekly Seminar on Mathematical Molecular Bioscience and Biophysics, University of Alabama, Nov 2021</li>
+                        <li>Participation - Mini-course and Workshop on Operators on Function Spaces (The Korenblum Maximum Principle for Some Function Spaces), Fields Institute, Oct 2021<a href="https://www.youtube.com/watch?v=KXWQUdkgILk"> (Video)</a></li>
+                        <li>Online Speaker - <a href="https://weilab.math.msu.edu/CTGG/">Computational Topology/Geometry/Graph Biweekly Virtual Seminar</a>
                             Michigan State University, Nov. 2020<a href="https://weilab.math.msu.edu/CTGG/slides/Presentation_19-Nov-2020.pdf""> (Slides)</a></li> 
-                        <li style="text-align:justify;">Participation - Computational Approaches to the Analysis of Biomolecular Sequences, Structures and Their Functions and Applications to Biotechnology and Clinical Data Studies, IMS, National University of Singapore, Mar. 2020</li>
-                        <li style="text-align:justify;">Poster - Undergraduate REsearch on CAmpus (URECA), Nanyang Technological University, 2018</li>
+                        <li>Participation - Computational Approaches to the Analysis of Biomolecular Sequences, Structures and Their Functions and Applications to Biotechnology and Clinical Data Studies, IMS, National University of Singapore, Mar. 2020</li>
+                        <li>Poster - Undergraduate REsearch on CAmpus (URECA), Nanyang Technological University, 2018</li>
                     </ul>
                 </div><br>
               </div>
@@ -122,6 +125,16 @@
     }
   });
 </script>
+<script>
+    function myFunction() {
+        var x = document.getElementById("ulmenu");
+        if (x.className === "") {
+            x.className += " responsive";
+        } else {
+            x.className = "";
+        }
+    }
+    </script>
 <script>function openAll() {
     var x = document.getElementsByTagName("details");
     var elem = document.getElementById("ec"); 
