@@ -71,13 +71,16 @@
             </div>
 
             <br><br>
-            <div id="menu" class="responsive">
-                <a href="index.html" id="ca" class="" style="font-size: 18px;">Home</a>
-                <!-- <a href="research.html" id="ca" class="" style="font-size: 18px;">Research</a> -->
-                <a href="publications.html" id="ca" class="on" style="font-size: 18px;">Publications</a>
-                <a href="talks.html" id="ca" class="" style="font-size: 18px;">Talks/Conferences</a>
-                <a href="teachings.html" id="ca" class="" style="font-size: 18px;">Teaching</a>
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()"  style="font-size: 18px;"><i class="fa fa-bars"></i></a>
+            <div id="menu" class="">
+                <ul id="ulmenu" class="">
+                  <li><a href="index.html" id="ho" class="" style="font-size: 18px;">Home</a></li>
+                <li><a href="publications.html" id="pu" class="on" style="font-size: 18px;">Publications</a></li>
+                <li><a href="talks.html" id="ta" class="" style="font-size: 18px;">Talks/Conferences</a></li>
+                <li><a href="teachings.html" id="te" class="" style="font-size: 18px;">Teaching</a></li>
+                <li>
+                    <a href="" id="drop" href="javascript:void(0);" onclick="myFunction()">☰</a>
+                </li>
+            </ul>
             </div>
 
             <div id="more">
@@ -369,11 +372,11 @@
     </script>
     <script>
     function myFunction() {
-        var x = document.getElementById("menu");
-        if (x.className === "mennnu") {
+        var x = document.getElementById("ulmenu");
+        if (x.className === "") {
             x.className += " responsive";
         } else {
-            x.className = "mennnu";
+            x.className = "";
         }
     }
     </script>
