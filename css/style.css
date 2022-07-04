@@ -335,6 +335,8 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
     list-style-type: none;
   }
 
+  #menu ul li{display: block; padding: 0;}
+
   .dropbtn {
     border-radius: 0;
     background: #b4cdf3c7;
@@ -390,6 +392,8 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
   #menu ul a{
     list-style-type: none;
   }
+
+  #menu ul li{display: block; padding: 0;}
 
   .dropbtn {
     border-radius: 0;
@@ -447,6 +451,8 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
     list-style-type: none;
   }
 
+  #menu ul li{display: block; padding: 0;}
+
   .dropbtn {
     border-radius: 0;
     background: #b4cdf3c7;
@@ -503,6 +509,8 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
     list-style-type: none;
   }
 
+  #menu ul li{display: block; padding: 0;}
+
   .dropbtn {
     border-radius: 0;
     background: #b4cdf3c7;
@@ -558,6 +566,8 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
   #menu ul a{
     list-style-type: none;
   }
+
+  #menu ul li{display: block; padding: 0;}
 
   .dropbtn {
     border-radius: 0;
@@ -674,6 +684,8 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
   #menu ul a{
     list-style-type: none;
   }
+
+  #menu ul li{display: block; padding: 0;}
 
   .dropbtn {
     border-radius: 0;
