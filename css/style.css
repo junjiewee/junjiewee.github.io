@@ -854,6 +854,16 @@ details[open] summary ~ * {
   }
 }
 
+td {
+  padding: 2px;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  text-align: left;
+  border: none;
+  font-family : sans-serif;
+  font-size: 14px;
+}
+
 .container{
 	max-height: 999999px; /* prevents font boosting */
   margin: 56px auto 56px; /* top right bottom left */
@@ -872,20 +882,6 @@ details[open] summary ~ * {
 table.imgtable, table.imgtable td {
   border: none;
   text-align: left;
-}
-
-th{
-  min-width: 120px;
-}
-
-td {
-  padding: 2px;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  text-align: left;
-  border: none;
-  font-family : sans-serif;
-  font-size: 14px;
 }
 
 html{
