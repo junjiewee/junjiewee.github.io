@@ -280,7 +280,7 @@ ul > li{
 
 img{border:0;}
 /*#profilepic{float:left;border:solid #ccc thin;border-radius:5px;margin:8px;padding:4px;background-color:#fff;}*/
-#profilepic{float:left;margin:0;padding:0;border:0;border-radius:0;width:280px;}
+#profilepic{margin:0;padding:0;border:0;border-radius:0;width:280px;}
 :link {cursor: pointer; }
 #profpicdiv {
   float:left;
@@ -874,12 +874,16 @@ table.imgtable, table.imgtable td {
   text-align: left;
 }
 
+th{
+  min-width: 120px;
+}
+
 td {
   padding: 2px;
   padding-left: 0.5em;
   padding-right: 0.5em;
-  text-align: center;
-  border: 1px solid gray;
+  text-align: left;
+  border: none;
   font-family : sans-serif;
   font-size: 14px;
 }
