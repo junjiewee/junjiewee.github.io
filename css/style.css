@@ -786,8 +786,8 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
 
 details > summary{
   font-size: 15px;
-  text-indent: -1.5em;
-  margin-left: 25px;
+  text-indent: 0em;
+  margin-left: 0px;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size:1.1em;
 }
