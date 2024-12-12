@@ -299,6 +299,8 @@ img{border:0;}
 }
 
 #desc a{text-decoration: underline;}
+#ri a{text-decoration: underline;}
+#news a{text-decoration: underline;}
 
 /* menu css */
 .dropbtn{
