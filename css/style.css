@@ -799,6 +799,13 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
   margin:-3px -8px -3px -3px;
 }
 .bibItem summary::-webkit-details-marker{display:none;}
+/* ::-webkit-details-marker only suppresses the native marker in
+   Chrome/Safari's legacy WebKit implementation - Firefox and modern
+   Chromium both use the standardized ::marker pseudo-element instead,
+   which was left showing through (a small icon to the left of the
+   citation text). Hiding it doesn't touch click-to-expand behavior -
+   that's native <summary> behavior, independent of marker visibility. */
+.bibItem summary::marker{display:none;font-size:0;}
 .bibItem summary::before{
   content:"";
   position:absolute;
@@ -1244,10 +1251,25 @@ canvas{
 
 /* ---- particles.js container ---- */
 
+/* position:fixed (not absolute) because #container, its nearest
+   ancestor, never sets position:relative - so an absolutely positioned
+   #particles-js had no positioned ancestor to size against and fell
+   back to the initial containing block at its normal-flow static
+   position: ~26px down from the very top (after #container's own
+   padding) and exactly one viewport tall, regardless of how much
+   taller the actual page was. That left a gap at the top and no
+   coverage at all below the first screen's height on any page longer
+   than one viewport. Fixed positioning pins it to the viewport - top:0
+   always, height always matching exactly what's currently visible -
+   so it covers the page uniformly as the user scrolls. z-index:-1
+   keeps it behind .container regardless of DOM-order assumptions. */
 #particles-js{
-  position:absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  z-index: -1;
   background-color: var(--bg-particles);
   background-image: url('');
   background-size: cover;

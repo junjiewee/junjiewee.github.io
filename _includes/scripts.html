@@ -31,6 +31,11 @@
           document.documentElement.setAttribute('data-theme', next);
           localStorage.setItem('theme', next);
           updateThemeIcon(next);
+          // particles.js bakes its color in at init time and never reads
+          // data-theme again on its own - without this, toggling from
+          // light to dark leaves the particles black (their light-mode
+          // color), invisible against the new dark background.
+          if (typeof initParticles === 'function') { initParticles(); }
         }
         document.addEventListener('DOMContentLoaded', function() {
           updateThemeIcon(document.documentElement.getAttribute('data-theme'));

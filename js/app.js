@@ -11,14 +11,36 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
-var particleColor = document.documentElement.getAttribute('data-theme') === 'dark' ? '#aaaaaa' : '#000000';
+/* Wrapped in a function - and re-run on every theme toggle (see
+   scripts.html) - because particleColor is only read once at call
+   time and then baked into the running particles.js instance. Without
+   this, toggling from light to dark left the particles at their
+   original light-mode color (black), which is invisible against the
+   new near-black dark-mode background. */
+function initParticles() {
+  var particleColor = document.documentElement.getAttribute('data-theme') === 'dark' ? '#aaaaaa' : '#000000';
 
-/* Fixed-pixel settings below (line-linking distance especially) don't scale
-   with viewport size, so the same config that looks sparse on desktop reads
-   as a dense tangle of lines on a narrow phone screen. Scale the numbers
-   down under the same breakpoint the mobile nav CSS uses, rather than
-   dropping the effect entirely. */
-var isMobile = window.innerWidth <= 640;
+  /* Fixed-pixel settings below (line-linking distance especially) don't
+     scale with viewport size, so the same config that looks sparse on
+     desktop reads as a dense tangle of lines on a narrow phone screen.
+     Scale the numbers down under the same breakpoint the mobile nav CSS
+     uses, rather than dropping the effect entirely. */
+  var isMobile = window.innerWidth <= 640;
+
+  /* particlesJS() appends a fresh canvas rather than replacing the
+     existing one, so re-running it without cleaning up first stacks a
+     new canvas on top of the old one on every toggle. Destroy any prior
+     instance and clear the container first. */
+  if (window.pJSDom && window.pJSDom.length) {
+    window.pJSDom.forEach(function(dom) {
+      if (dom.pJS && dom.pJS.fn && dom.pJS.fn.vendors && dom.pJS.fn.vendors.destroypJS) {
+        dom.pJS.fn.vendors.destroypJS();
+      }
+    });
+    window.pJSDom = [];
+  }
+  var container = document.getElementById('particles-js');
+  if (container) { container.innerHTML = ''; }
 
 particlesJS('particles-js',
 {
@@ -133,3 +155,6 @@ particlesJS('particles-js',
   }
 
 );
+}
+
+initParticles();
