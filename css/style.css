@@ -39,6 +39,20 @@ li{list-style:none}
   --container-shadow: #000000;
   --link-color: #0000ee;
   --link-visited-color: #551a8b;
+  --entry-bg: #f7f6f3;
+  --entry-border: rgba(0, 0, 0, 0.09);
+  --pill-border: rgba(74, 111, 171, 0.55);
+  --pill-icon: #3f6aa8;
+  --accent-doi: #3f6aa8;
+  --accent-doi-border: rgba(63, 106, 168, 0.5);
+  --accent-arxiv: #b31b1b;
+  --accent-arxiv-border: rgba(179, 27, 27, 0.42);
+  --accent-cite: #1f8a70;
+  --accent-cite-border: rgba(31, 138, 112, 0.42);
+  --accent-code: #7c5cbf;
+  --accent-code-border: rgba(124, 92, 191, 0.42);
+  --accent-data: #c2740c;
+  --accent-data-border: rgba(194, 116, 12, 0.42);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,6 +68,20 @@ li{list-style:none}
     --container-shadow: rgba(0, 0, 0, 0.6);
     --link-color: #8ab4f8;
     --link-visited-color: #c58af9;
+    --entry-bg: #202226;
+    --entry-border: rgba(255, 255, 255, 0.09);
+    --pill-border: rgba(127, 168, 201, 0.55);
+    --pill-icon: #8fb4e0;
+    --accent-doi: #8fb4e0;
+    --accent-doi-border: rgba(143, 180, 224, 0.5);
+    --accent-arxiv: #ff7a7a;
+    --accent-arxiv-border: rgba(255, 122, 122, 0.42);
+    --accent-cite: #52dab9;
+    --accent-cite-border: rgba(82, 218, 185, 0.42);
+    --accent-code: #b8a1e8;
+    --accent-code-border: rgba(184, 161, 232, 0.42);
+    --accent-data: #f0a840;
+    --accent-data-border: rgba(240, 168, 64, 0.42);
   }
 }
 
@@ -69,6 +97,20 @@ li{list-style:none}
   --container-shadow: rgba(0, 0, 0, 0.6);
   --link-color: #8ab4f8;
   --link-visited-color: #c58af9;
+  --entry-bg: #202226;
+  --entry-border: rgba(255, 255, 255, 0.09);
+  --pill-border: rgba(127, 168, 201, 0.55);
+  --pill-icon: #8fb4e0;
+  --accent-doi: #8fb4e0;
+  --accent-doi-border: rgba(143, 180, 224, 0.5);
+  --accent-arxiv: #ff7a7a;
+  --accent-arxiv-border: rgba(255, 122, 122, 0.42);
+  --accent-cite: #52dab9;
+  --accent-cite-border: rgba(82, 218, 185, 0.42);
+  --accent-code: #b8a1e8;
+  --accent-code-border: rgba(184, 161, 232, 0.42);
+  --accent-data: #f0a840;
+  --accent-data-border: rgba(240, 168, 64, 0.42);
 }
 
 /* ---- base ---- */
@@ -493,6 +535,32 @@ img{border:0;}
 #desc a{text-decoration: underline;}
 #ri a{text-decoration: underline;}
 #news a{text-decoration: underline;}
+/* Date-above-description, not side-by-side columns. A two-column
+   table forces a choice between a date column too narrow to hold
+   "Jul 28-Aug 1st, 2025" on one line (wrapping it across 3-4 lines)
+   or, once that's fixed, a description column squeezed so narrow it
+   wraps 5+ lines instead - the two can't both get enough width from
+   the same row on a narrow screen. Stacking removes the trade-off:
+   each gets the full row width, just on its own line. */
+.news-list{list-style:none;margin:0;padding:0;}
+.news-list li{
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--entry-border);
+}
+.news-list li:last-child{border-bottom: none;}
+.news-date{
+  font-weight: 700;
+  font-size: 0.85em;
+  color: var(--heading-color);
+  margin-bottom: 2px;
+}
+.news-desc{
+  font-size: 0.95em;
+  line-height: 1.5;
+  color: var(--text-color);
+}
 
 /* menu css */
 .dropbtn{
@@ -698,9 +766,104 @@ details > summary{
 iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLinks
 
 .flexcontainer {display:flex;}
-.bibcontainer {flex: 1; padding-right:5px;}
+/* Each publication entry framed as its own card - previously just sat
+   in open page background with no boundary between entries. */
+.bibcontainer {
+  flex: 1;
+  background: var(--entry-bg);
+  border: 1px solid var(--entry-border);
+  border-radius: 9px;
+  padding: 16px 18px 15px;
+  margin-bottom: 12px;
+}
 .bibItem { display:block; color:var(--text-color); text-decoration:none;padding: 5px 5px 5px 5px;border-radius:2px;}
-.bibItem:hover {border:1px solid var(--bg-container); background-color:var(--menu-bg); border-right:1px;}
+
+/* Custom disclosure chevron replacing the browser-default marker,
+   rotates on open. Positioned absolutely rather than display:flex on
+   summary - the citation text mixes plain text with a <strong> tag,
+   and flexbox splits each text run and inline element into its own
+   column instead of flowing as a paragraph. Absolute positioning
+   leaves the text's normal flow untouched. */
+/* display:block (rather than relying on <summary>'s UA-default
+   list-item box) plus explicit padding on all sides, offset by a
+   matching negative margin so the text doesn't visually shift - gives
+   the hover/focus highlight some breathing room on every edge. Without
+   this the highlight hugged the text's own tight box exactly, so the
+   chevron poked out past its left edge and wrapped lines' trailing
+   characters poked out past its right edge. */
+.bibItem summary{
+  display:block;
+  list-style:none;
+  position:relative;
+  padding:3px 8px 3px 22px;
+  margin:-3px -8px -3px -3px;
+}
+.bibItem summary::-webkit-details-marker{display:none;}
+.bibItem summary::before{
+  content:"";
+  position:absolute;
+  left:3px;
+  top:10px;
+  width:9px;height:9px;
+  border-right:2px solid var(--pill-icon);
+  border-bottom:2px solid var(--pill-icon);
+  transform:rotate(-45deg);
+  transition:transform .15s ease;
+}
+.bibItem details[open] summary::before{transform:rotate(45deg);top:8px;}
+
+/* DOI/arXiv/Code/Data/Cite/URI/News link pills - flat by default,
+   filling with an accent tint on hover. Scoped to .artLinks so this
+   doesn't affect .btn-outline-primary elsewhere, and sized explicitly
+   (not inherited from .btn's .5rem padding) so these sit at the same
+   ~24px height as the citation badges beside them instead of towering
+   over them. Each link type gets its own accent color rather than one
+   flat blue - arXiv's is literally arXiv's own brand red - both for
+   variety and so the row doesn't read as flat/dull in dark mode. */
+.artLinks a.btn-outline-primary{
+  border: 1px solid var(--pill-border);
+  border-radius: 999px;
+  color: var(--text-color);
+  background: transparent;
+  text-decoration: none;
+  padding: 4px 11px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.artLinks a.btn-outline-primary:hover,
+.artLinks a.btn-outline-primary:focus{
+  background: var(--menu-bg);
+  text-decoration: none;
+}
+.artLinks a.btn-outline-primary i{
+  color: var(--pill-icon);
+  margin-right: 4px;
+}
+.artLinks a.btn-outline-primary:has(i.fa-scroll){border-color: var(--accent-arxiv-border);}
+.artLinks a.btn-outline-primary:has(i.fa-scroll) i{color: var(--accent-arxiv);}
+.artLinks a.btn-outline-primary:has(i.fa-scroll):hover{background: var(--accent-arxiv-border);}
+.artLinks a.btn-outline-primary:has(i.fa-quote-right){border-color: var(--accent-cite-border);}
+.artLinks a.btn-outline-primary:has(i.fa-quote-right) i{color: var(--accent-cite);}
+.artLinks a.btn-outline-primary:has(i.fa-quote-right):hover{background: var(--accent-cite-border);}
+.artLinks a.btn-outline-primary:has(i.fa-code){border-color: var(--accent-code-border);}
+.artLinks a.btn-outline-primary:has(i.fa-code) i{color: var(--accent-code);}
+.artLinks a.btn-outline-primary:has(i.fa-code):hover{background: var(--accent-code-border);}
+.artLinks a.btn-outline-primary:has(i.fa-database){border-color: var(--accent-data-border);}
+.artLinks a.btn-outline-primary:has(i.fa-database) i{color: var(--accent-data);}
+.artLinks a.btn-outline-primary:has(i.fa-database):hover{background: var(--accent-data-border);}
+/* Replaces the old hard-edged rectangular hover box and the browser's
+   default square focus outline. Scoped to the summary line only (not
+   the whole .bibItem) - .bibItem also contains the expanded abstract
+   paragraph once open, and highlighting that entire block turned the
+   hover state into one giant solid rectangle over several lines of
+   body text. Keeping it on just the clickable trigger line, with a
+   soft rounded tint instead of a hard border, reads as a normal link
+   hover instead of a slab. */
+.bibItem summary:hover, .bibItem summary:focus-visible {
+  background-color: var(--menu-bg);
+  border-radius: 6px;
+  outline: none;
+}
 .abstract {font-size:1em; text-decoration:none;padding-top:10px; padding-left:20px; padding-right:20px;}
 .artLinks{text-align:left;margin:0;padding:0;border:none;padding-bottom:10px;max-width:100%;display:flex;flex-wrap:wrap;align-items:center;row-gap:8px;}
 .artLinks a {display:inline-block;text-decoration:underline;max-width:100%;}
@@ -732,38 +895,224 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
 .artlinks-badge-group::-webkit-scrollbar{
   display: none; /* Chrome, Safari, modern Edge */
 }
+/* Added by JS only when the row genuinely overflows (see
+   updateGroupOverflow in publications.html) - a soft fade at both
+   edges signals "swipe for more" instead of the row just looking cut
+   off mid-badge, which is what a hard clip with no cue reads as on a
+   narrow screen. */
+.artlinks-badge-group.has-overflow{
+  -webkit-mask-image: linear-gradient(to right, transparent, black 14px, black calc(100% - 14px), transparent);
+  mask-image: linear-gradient(to right, transparent, black 14px, black calc(100% - 14px), transparent);
+}
 
-/* Minimal pagination controls. Explicitly styled (not left to native
-   <button> chrome, which picks up the OS accent color - the source of
-   the earlier orange appearance) and deliberately plain: no shadows, no
-   heavy borders, just a thin outline and a light fill for the current
-   page. Scoped as "#more button.pub-page-btn" (not just ".pub-page-btn")
-   because #more button{} elsewhere - meant for the abstract-toggle "+"
-   button - generically targets every <button> under #more and otherwise
-   wins on specificity, forcing these into its 30x30 icon-button look. */
-#more button.pub-page-btn{
-  min-width: 30px;
-  width: auto;
-  height: auto;
-  padding: 4px 9px;
-  font-size: 0.85rem;
-  font-family: inherit;
+/* Citation-metric badges (Citations/Dimensions/Scholar), fed live at
+   runtime (see the fetch/cache script). Deliberately NOT drawn in the
+   site's own palette - these carry the visual identity of the
+   official Dimensions/Google Scholar marks they represent, so their
+   colors are fixed and don't switch with the site's light/dark theme,
+   same as the real embeds they replace would look. */
+.artLinks a.badge-link{
+  display:inline-flex;
+  align-items:center;
+  text-decoration:none;
+  border-radius:999px;
+  transition:opacity .12s ease;
+  flex:0 0 auto;
+}
+.artLinks a.badge-link:hover{opacity:.82;}
+.artLinks a.badge-link:focus-visible{outline:2px solid var(--pill-icon);outline-offset:2px;}
+
+.badge-citations,
+.badge-dimensions{
+  color:#fff;
+  padding:4px 9px 4px 7px;
+  gap:6px;
+  font-family:'Helvetica Neue',Arial,system-ui,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  /* Frosted-glass surface: a light, mostly-translucent tint (not a
+     flat opaque fill) plus backdrop-filter blur/saturate, a bright
+     top-down gloss highlight, and a crisp rim-light border - reads as
+     a glass chip sitting on top of the card rather than a solid dark
+     block. Text stays white throughout since even at low tint
+     opacity the backdrop blur keeps contrast readable. */
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.32), rgba(255,255,255,0.04) 65%);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.28);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.25);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+.badge-citations .n,
+.badge-dimensions .n{font-variant-numeric:tabular-nums;font-weight:600;letter-spacing:.01em;}
+
+/* Citations (Crossref-fed): tint from Crossref's own site palette,
+   layered under the shared glass gradient above. The mark is
+   Crossref's actual icon-only logo SVG (pulled from
+   crossref.org/img/crossref-logo-icon-only.svg), not a drawn
+   approximation. */
+.badge-citations{background-color: rgba(23, 84, 93, 0.32);}
+.badge-citations .mark{width:11px;height:16px;flex:0 0 auto;}
+
+/* Dimensions: tint plus the real faceted-gem mark, both the path
+   geometry and gradient stops pulled straight from the live badge
+   widget's SVG (badge.dimensions.ai), not approximated. */
+.badge-dimensions{background-color: rgba(27, 64, 112, 0.32);}
+.badge-dimensions .mark{width:14px;height:14px;flex:0 0 auto;}
+
+.badge-scholar{
+  font-family:'Helvetica Neue',Arial,system-ui,sans-serif;
+  font-size:11px;
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,0.15);
+}
+.badge-scholar .seg{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;}
+.badge-scholar .seg.label{background:#f1ede1;color:#3c3c3c;font-weight:600;}
+.badge-scholar .seg.count{background:#4285c9;color:#fff;font-weight:600;letter-spacing:.01em;font-variant-numeric:tabular-nums;}
+.badge-scholar svg{width:11px;height:11px;flex:0 0 auto;}
+
+.badge-link.is-loading{opacity:.45;}
+
+/* On narrow screens, drop the "Crossref"/"Dimensions"/"Google Scholar"
+   words and keep just the icon + count - three short badges are far
+   more likely to fit the row without needing the horizontal-scroll
+   fallback at all, and the icon alone (plus the hover/focus popover,
+   still intact) still identifies the source. */
+@media screen and (max-width: 480px) {
+  .badge-citations .label-text,
+  .badge-dimensions .label-text,
+  .badge-scholar .label-text{
+    display: none;
+  }
+  .badge-citations,
+  .badge-dimensions{
+    padding-right: 8px;
+  }
+  .badge-scholar .seg.label{
+    padding-right: 6px;
+  }
+}
+
+/* Extra-info popover shown on hover/focus of the Citations/Dimensions
+   badges, mirroring the popup the real official badges show. A single
+   shared element, positioned in JS via getBoundingClientRect (see
+   publications.html) rather than CSS position:absolute, because
+   .artlinks-badge-group sets overflow-x:auto - which implicitly
+   clips the other axis too - and would cut an absolutely-positioned
+   popover off. */
+.badge-popover{
+  position:fixed;
+  display:none;
+  max-width:230px;
+  background:var(--bg-container);
+  color:var(--text-color);
+  border:1px solid var(--entry-border);
+  border-radius:8px;
+  padding:9px 11px;
+  font-size:12px;
+  line-height:1.55;
+  font-family:'Helvetica Neue',Arial,system-ui,sans-serif;
+  font-weight:400;
+  box-shadow:0 6px 18px rgba(0,0,0,0.28);
+  z-index:1000;
+  pointer-events:none;
+}
+.badge-popover.visible{display:block;}
+
+/* Pagination widget - a page-number chip, an "of N pages" chip, and
+   prev/next icon buttons on one row, with a separate items-per-page
+   row beneath. Explicitly styled (not left to native <button>/<select>
+   chrome, which picks up OS accent colors) using the site's existing
+   pill background token so it sits comfortably with the DOI/citation
+   pills above it, rather than introducing a separate grey design
+   language. Scoped under #more.pub-pagination-* to beat the generic
+   #more button{} rule (meant for the old abstract-toggle "+" button)
+   which otherwise forces every <button> under #more into its 30x30
+   icon-button shape regardless of class. */
+#more .pub-pagination-v2{
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.pub-pagination-row{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pub-page-chip{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: var(--menu-bg);
   color: var(--text-color);
-  background: transparent;
-  border: 1px solid var(--menu-bg);
-  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.pub-page-num{
+  font-weight: 700;
+  min-width: 36px;
+  padding: 0;
+}
+#more .pub-pagination-v2 .pub-page-nav{
+  width: 36px;
+  height: 36px;
+  min-width: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--menu-bg);
+  border: none;
+  color: var(--text-color);
   cursor: pointer;
 }
-#more button.pub-page-btn:hover:not(:disabled){
-  background: var(--menu-bg);
+#more .pub-pagination-v2 .pub-page-nav:hover:not(:disabled){
+  background: var(--pill-border);
 }
-#more button.pub-page-btn.active{
-  background: var(--menu-bg);
-  font-weight: bold;
-}
-#more button.pub-page-btn:disabled{
-  opacity: 0.4;
+#more .pub-pagination-v2 .pub-page-nav:disabled{
+  opacity: .35;
   cursor: default;
+}
+.pub-per-page-row{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-color);
+}
+.pub-per-page-select-wrap{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-color);
+}
+.pub-per-page-select{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 32px;
+  padding: 0 26px 0 12px;
+  border-radius: 9px;
+  border: none;
+  background: var(--menu-bg);
+  color: var(--text-color);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+.pub-per-page-chevron{
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 .artLinks img{max-width:100%;height:auto;}
 .artLinks a:hover {text-decoration:none;}

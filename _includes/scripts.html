@@ -78,26 +78,6 @@
   });
 </script>
 {% endif %}
-<script>function openAll() {
-  var x = document.getElementsByTagName("details");
-  var elem = document.getElementById("ec");
-  var i;
-  if ( elem.innerHTML === '+' ){
-      for (i = 0; i < x.length; i++) {
-              x[i].setAttribute("open", "true");
-      }
-      elem.innerHTML="-";
-  }
-  else{
-      if ( elem.innerHTML === '-' ){
-          for (i = 0; i < x.length; i++) {
-                  x[i].removeAttribute("open");
-          }
-          elem.innerHTML="+";
-      }
-  }
-}
-</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML'{% if page.mathjax_async %} async{% endif %}></script>
     <script src="particles.js"></script>
