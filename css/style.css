@@ -702,8 +702,64 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
 .bibItem { display:block; color:var(--text-color); text-decoration:none;padding: 5px 5px 5px 5px;border-radius:2px;}
 .bibItem:hover {border:1px solid var(--bg-container); background-color:var(--menu-bg); border-right:1px;}
 .abstract {font-size:1em; text-decoration:none;padding-top:10px; padding-left:20px; padding-right:20px;}
-.artLinks{text-align:left;margin:0;padding:0;border:none;padding-bottom:10px;max-width:100%;display:flex;flex-wrap:wrap;align-items:center;row-gap:6px;}
+.artLinks{text-align:left;margin:0;padding:0;border:none;padding-bottom:10px;max-width:100%;display:flex;flex-wrap:wrap;align-items:center;row-gap:8px;}
 .artLinks a {display:inline-block;text-decoration:underline;max-width:100%;}
+/* A genuine zero-size spacer (see .artlinks-break, inserted in the
+   markup right before the Altmetric badge) rather than flex-basis:100%
+   on a real badge element, which stretched that badge to the full row
+   width instead of forcing a break and leaving it at its own size. */
+.artlinks-break{
+  flex-basis: 100%;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+/* Everything after .artlinks-break gets moved into this group at
+   runtime (see the script in publications.html). Forced onto a single
+   line (flex-wrap:nowrap) with horizontal scroll as a fallback, rather
+   than letting the badges wrap onto separate lines from each other. */
+.artlinks-badge-group{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Minimal pagination controls. Explicitly styled (not left to native
+   <button> chrome, which picks up the OS accent color - the source of
+   the earlier orange appearance) and deliberately plain: no shadows, no
+   heavy borders, just a thin outline and a light fill for the current
+   page. Scoped as "#more button.pub-page-btn" (not just ".pub-page-btn")
+   because #more button{} elsewhere - meant for the abstract-toggle "+"
+   button - generically targets every <button> under #more and otherwise
+   wins on specificity, forcing these into its 30x30 icon-button look. */
+#more button.pub-page-btn{
+  min-width: 30px;
+  width: auto;
+  height: auto;
+  padding: 4px 9px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--text-color);
+  background: transparent;
+  border: 1px solid var(--menu-bg);
+  border-radius: 4px;
+  cursor: pointer;
+}
+#more button.pub-page-btn:hover:not(:disabled){
+  background: var(--menu-bg);
+}
+#more button.pub-page-btn.active{
+  background: var(--menu-bg);
+  font-weight: bold;
+}
+#more button.pub-page-btn:disabled{
+  opacity: 0.4;
+  cursor: default;
+}
 .artLinks img{max-width:100%;height:auto;}
 .artLinks a:hover {text-decoration:none;}
 .artLinks ul{margin:0;padding:0;list-style-type:none;text-align:left;display:inline-block;font-size:0.8em;}
