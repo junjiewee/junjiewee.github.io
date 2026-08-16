@@ -531,8 +531,15 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid var(--menu-bg);}
   opacity: 0.85;
 }
 
-@media screen and (max-width: 640px) {
-  /* The active-page pill is centered via text-align:center on #menu's full
+@media screen and (max-width: 900px) {
+  /* This used to switch to the hamburger nav at 640px, but the full
+     desktop nav (all items visible) needs much more room than that to
+     avoid wrapping to a second line - measured wrapping up to ~720px for
+     5 nav items and ~900px for the 6-item "Other" page, and that measured
+     threshold isn't safe to hard-code given real-world font-rendering
+     variance across browsers/devices. 900px gives real margin above the
+     worst case rather than chasing an exact pixel.
+     The active-page pill is centered via text-align:center on #menu's full
      width, same as before. The hamburger is pulled out of that flow with
      position:absolute (matching the .theme-toggle-btn pattern) so its
      position is fixed and deterministic - it no longer needs to coordinate
