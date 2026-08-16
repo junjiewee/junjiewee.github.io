@@ -558,6 +558,15 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid var(--menu-bg);}
 
   #menu ul li{display: inline-block; padding: 0;}
 
+  /* Hiding just the <a> above leaves its empty <li> siblings taking up
+     inline-block whitespace-gap width, which skews the flex-centered <ul>'s
+     bounding box off to whichever side has more hidden siblings - pulling
+     the visible pill off-center by a page-dependent amount. Hide the whole
+     <li>, not just the link inside it. */
+  #menu ul li:has(> a:not(.on)){
+    display: none;
+  }
+
   .dropbtn {
     border-radius: 0;
     background: var(--menu-bg);
