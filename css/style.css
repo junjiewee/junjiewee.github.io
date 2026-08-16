@@ -702,7 +702,7 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
 .bibItem { display:block; color:var(--text-color); text-decoration:none;padding: 5px 5px 5px 5px;border-radius:2px;}
 .bibItem:hover {border:1px solid var(--bg-container); background-color:var(--menu-bg); border-right:1px;}
 .abstract {font-size:1em; text-decoration:none;padding-top:10px; padding-left:20px; padding-right:20px;}
-.artLinks{text-align:left;margin:0;padding:0;border:none;padding-bottom:10px;max-width:100%;}
+.artLinks{text-align:left;margin:0;padding:0;border:none;padding-bottom:10px;max-width:100%;display:flex;flex-wrap:wrap;align-items:center;row-gap:6px;}
 .artLinks a {display:inline-block;text-decoration:underline;max-width:100%;}
 .artLinks img{max-width:100%;height:auto;}
 .artLinks a:hover {text-decoration:none;}
