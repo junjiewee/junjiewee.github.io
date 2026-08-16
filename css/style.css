@@ -726,6 +726,11 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
   gap: 6px;
   max-width: 100%;
   overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge */
+}
+.artlinks-badge-group::-webkit-scrollbar{
+  display: none; /* Chrome, Safari, modern Edge */
 }
 
 /* Minimal pagination controls. Explicitly styled (not left to native
