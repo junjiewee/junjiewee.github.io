@@ -562,8 +562,9 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid var(--menu-bg);}
      inline-block whitespace-gap width, which skews the flex-centered <ul>'s
      bounding box off to whichever side has more hidden siblings - pulling
      the visible pill off-center by a page-dependent amount. Hide the whole
-     <li>, not just the link inside it. */
-  #menu ul li:has(> a:not(.on)){
+     <li> via its own .on class (set alongside the <a>'s in nav.html) rather
+     than :has(), which isn't supported in all browsers still in use. */
+  #menu ul li:not(.on){
     display: none;
   }
 

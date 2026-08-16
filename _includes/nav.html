@@ -1,11 +1,11 @@
             <div id="menu" class="">
               <ul id="ulmenu" class="">
-                <li><a href="index.html" id="ho" class="{% if page.nav_id == 'ho' %}on{% endif %}" style="font-size: 18px;">Home</a></li>
-              <li><a href="research.html" id="re" class="{% if page.nav_id == 're' %}on{% endif %}" style="font-size: 18px;">Research</a></li>
-              <li><a href="publications.html" id="pu" class="{% if page.nav_id == 'pu' %}on{% endif %}" style="font-size: 18px;">Publications</a></li>
-              <li><a href="talks.html" id="ta" class="{% if page.nav_id == 'ta' %}on{% endif %}" style="font-size: 18px;">Conferences</a></li>
-              <li><a href="teachings.html" id="te" class="{% if page.nav_id == 'te' %}on{% endif %}" style="font-size: 18px;">Teaching</a></li>
-              {% if page.show_other %}<li><a href="other.html" id="ot" class="{% if page.nav_id == 'ot' %}on{% endif %}" style="font-size: 18px;">Other</a></li>{% endif %}
+                <li class="{% if page.nav_id == 'ho' %}on{% endif %}"><a href="index.html" id="ho" class="{% if page.nav_id == 'ho' %}on{% endif %}" style="font-size: 18px;">Home</a></li>
+              <li class="{% if page.nav_id == 're' %}on{% endif %}"><a href="research.html" id="re" class="{% if page.nav_id == 're' %}on{% endif %}" style="font-size: 18px;">Research</a></li>
+              <li class="{% if page.nav_id == 'pu' %}on{% endif %}"><a href="publications.html" id="pu" class="{% if page.nav_id == 'pu' %}on{% endif %}" style="font-size: 18px;">Publications</a></li>
+              <li class="{% if page.nav_id == 'ta' %}on{% endif %}"><a href="talks.html" id="ta" class="{% if page.nav_id == 'ta' %}on{% endif %}" style="font-size: 18px;">Conferences</a></li>
+              <li class="{% if page.nav_id == 'te' %}on{% endif %}"><a href="teachings.html" id="te" class="{% if page.nav_id == 'te' %}on{% endif %}" style="font-size: 18px;">Teaching</a></li>
+              {% if page.show_other %}<li class="{% if page.nav_id == 'ot' %}on{% endif %}"><a href="other.html" id="ot" class="{% if page.nav_id == 'ot' %}on{% endif %}" style="font-size: 18px;">Other</a></li>{% endif %}
           </ul>
           <div class="dropdown" style="float:right;">
               <button onclick="myFunction()" class="dropbtn" aria-label="Toggle navigation menu">☰</button>
