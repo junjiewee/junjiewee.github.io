@@ -1,0 +1,104 @@
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+
+        // Dark mode toggle
+        function updateThemeIcon(theme) {
+          var icon = document.getElementById('theme-toggle-icon');
+          if (icon) {
+            icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+          }
+        }
+        function toggleTheme() {
+          var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateThemeIcon(next);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+          updateThemeIcon(document.documentElement.getAttribute('data-theme'));
+        });
+        </script>
+    <script type="text/x-mathjax-config">
+        /* Force MathJax's web-based Latin Modern font (matching the Latin
+           Modern webfont used for body text) instead of any locally
+           installed font, so math renders consistently across devices. */
+        MathJax.Hub.Config({
+          "HTML-CSS": { availableFonts: [], preferredFont: null, webFont: "Latin-Modern" }
+        });
+        </script>
+{% if page.mathjax_config == 'linebreaks' %}
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {inlineMath: [['$','$']]},
+          "HTML-CSS": { linebreaks: { automatic: true } },
+          CommonHTML: { linebreaks: { automatic: true } },
+          SVG: { linebreaks: { automatic: true } }
+        });
+        </script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+{% elsif page.mathjax_config == 'fast-preview' %}
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            "fast-preview": {disabled:true},
+            tex2jax: {
+              preview: "none",
+              inlineMath: [["$","$"],["\\(","\\)"]],
+              processEscapes: true
+            }
+          });
+    </script>
+{% else %}
+    <script
+        type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+    <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+{% endif %}
+<script>function openAll() {
+  var x = document.getElementsByTagName("details");
+  var elem = document.getElementById("ec");
+  var i;
+  if ( elem.innerHTML === '+' ){
+      for (i = 0; i < x.length; i++) {
+              x[i].setAttribute("open", "true");
+      }
+      elem.innerHTML="-";
+  }
+  else{
+      if ( elem.innerHTML === '-' ){
+          for (i = 0; i < x.length; i++) {
+                  x[i].removeAttribute("open");
+          }
+          elem.innerHTML="+";
+      }
+  }
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML'{% if page.mathjax_async %} async{% endif %}></script>
+    <script src="particles.js"></script>
+    <script src="js/app.js"></script>

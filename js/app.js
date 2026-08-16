@@ -11,18 +11,27 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
+var particleColor = document.documentElement.getAttribute('data-theme') === 'dark' ? '#aaaaaa' : '#000000';
+
+/* Fixed-pixel settings below (line-linking distance especially) don't scale
+   with viewport size, so the same config that looks sparse on desktop reads
+   as a dense tangle of lines on a narrow phone screen. Scale the numbers
+   down under the same breakpoint the mobile nav CSS uses, rather than
+   dropping the effect entirely. */
+var isMobile = window.innerWidth <= 640;
+
 particlesJS('particles-js',
 {
   "particles": {
     "number": {
-      "value": 80,
+      "value": isMobile ? 25 : 80,
       "density": {
         "enable": true,
         "value_area": 800
       }
     },
     "color": {
-      "value": "#000000"
+      "value": particleColor
     },
     "shape": {
       "type": "circle",
@@ -61,14 +70,14 @@ particlesJS('particles-js',
     },
     "line_linked": {
       "enable": true,
-      "distance": 150,
-      "color": "#000000",
+      "distance": isMobile ? 70 : 150,
+      "color": particleColor,
       "opacity": 0.4,
       "width": 1
     },
     "move": {
       "enable": true,
-      "speed": 6,
+      "speed": isMobile ? 3 : 6,
       "direction": "none",
       "random": false,
       "straight": false,
