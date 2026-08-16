@@ -763,11 +763,19 @@ table.imgtable, table.imgtable td {
   text-align: left;
 }
 
-/* Without an explicit width this table (name/icons/contact-info block)
-   shrink-wraps to its content's natural preferred width instead of
-   filling the space actually available - which meant reducing font-size
-   to fix wrapping barely helped, since the table shrank right along
-   with the smaller text. Stretch it to use all available room instead. */
+/* A <table> always establishes its own block-formatting context, so
+   width:100% on the table resolves against the full parent width - not
+   the narrower space actually left beside the floated photo - which
+   pushed it below the photo entirely instead of beside it. Giving the
+   table's own parent (#contacts) a BFC via overflow:hidden makes IT
+   shrink to exactly the space available beside the float; width:100%
+   on the table then correctly fills whatever that turns out to be -
+   the narrow beside-the-photo strip in desktop/tablet mode, or the
+   full card width once the photo stacks above it on mobile. */
+#contacts {
+  overflow: hidden;
+}
+
 table.imgtable {
   width: 100%;
 }
