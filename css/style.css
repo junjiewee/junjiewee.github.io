@@ -549,8 +549,8 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid var(--menu-bg);}
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 44px;
-    padding: 8px 54px;
+    min-height: 32px;
+    padding: 0 54px;
     box-sizing: border-box;
   }
 
