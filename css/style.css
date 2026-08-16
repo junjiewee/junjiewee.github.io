@@ -763,6 +763,15 @@ table.imgtable, table.imgtable td {
   text-align: left;
 }
 
+/* Without an explicit width this table (name/icons/contact-info block)
+   shrink-wraps to its content's natural preferred width instead of
+   filling the space actually available - which meant reducing font-size
+   to fix wrapping barely helped, since the table shrank right along
+   with the smaller text. Stretch it to use all available room instead. */
+table.imgtable {
+  width: 100%;
+}
+
 html{
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
