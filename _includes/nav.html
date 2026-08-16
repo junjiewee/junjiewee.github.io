@@ -1,0 +1,21 @@
+            <div id="menu" class="">
+              <ul id="ulmenu" class="">
+                <li><a href="index.html" id="ho" class="{% if page.nav_id == 'ho' %}on{% endif %}" style="font-size: 18px;">Home</a></li>
+              <li><a href="research.html" id="re" class="{% if page.nav_id == 're' %}on{% endif %}" style="font-size: 18px;">Research</a></li>
+              <li><a href="publications.html" id="pu" class="{% if page.nav_id == 'pu' %}on{% endif %}" style="font-size: 18px;">Publications</a></li>
+              <li><a href="talks.html" id="ta" class="{% if page.nav_id == 'ta' %}on{% endif %}" style="font-size: 18px;">Conferences</a></li>
+              <li><a href="teachings.html" id="te" class="{% if page.nav_id == 'te' %}on{% endif %}" style="font-size: 18px;">Teaching</a></li>
+              {% if page.show_other %}<li><a href="other.html" id="ot" class="{% if page.nav_id == 'ot' %}on{% endif %}" style="font-size: 18px;">Other</a></li>{% endif %}
+          </ul>
+          <div class="dropdown" style="float:right;">
+              <button onclick="myFunction()" class="dropbtn" aria-label="Toggle navigation menu">☰</button>
+              <div id="myDropdown" class="dropdown-content">
+                  <a href="index.html">Home</a>
+                  <a href="research.html">Research</a>
+                  <a href="publications.html">Publications</a>
+                  <a href="talks.html">Conferences</a>
+                  <a href="teachings.html">Teaching</a>
+                  {% if page.show_other %}<a href="other.html">Other</a>{% endif %}
+              </div>
+          </div>
+          </div>

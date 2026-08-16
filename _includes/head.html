@@ -1,0 +1,27 @@
+    <meta charset="UTF-8">
+    <!-- Applied before CSS loads so the page never flashes the wrong theme -->
+    <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wee JunJie</title>
+    <meta name="author" content="Wee JunJie">
+    <meta name="description" content="{{ page.description }}">
+    <link rel="icon" type="image/png" href="pp_small.png">
+    <link rel="stylesheet" href="css/latex_style.css">
+    <link rel="stylesheet" media="screen" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54900133-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-54900133-1');
+    </script>
