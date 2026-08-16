@@ -161,7 +161,7 @@ ul > li{
     width: 50%;
     min-height: 100%;
     max-height: 999999999px;
-    margin: 56px auto 20px;
+    margin: 56px auto;
   }
 }
 
@@ -522,18 +522,17 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid var(--menu-bg);}
 }
 
 @media screen and (max-width: 640px) {
-  /* The visible (active-page) pill was being centered by #menu's
-     text-align:center while the hamburger sits independently at
-     float:right - those two positioning systems don't coordinate, and
-     the gap between them varies (arbitrarily) with the active label's
-     length. Cluster both together at the right edge with a small fixed
-     gap, deterministically, regardless of label width. */
+  /* The active-page pill is centered via text-align:center on #menu's full
+     width, same as before. The hamburger is pulled out of that flow with
+     position:absolute (matching the .theme-toggle-btn pattern) so its
+     position is fixed and deterministic - it no longer needs to coordinate
+     with the pill, which was the root cause of the old float:right gap bug. */
   #menu {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 8px;
-    padding: 0 10px;
+    position: relative;
+    text-align: center;
+    min-height: 44px;
+    padding: 8px 54px;
+    box-sizing: border-box;
   }
 
   #menu ul li a:not(.on){
@@ -545,7 +544,7 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid var(--menu-bg);}
     list-style-type: none;
   }
 
-  #menu ul li{display: block; padding: 0;}
+  #menu ul li{display: inline-block; padding: 0;}
 
   .dropbtn {
     border-radius: 0;
@@ -567,7 +566,10 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid var(--menu-bg);}
   .dropbtn:hover, .dropbtn:focus  {font-weight: bold;border-bottom: 2px solid var(--heading-color);}
 
   #menu .dropdown {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
     display: inline-block;
   }
 
