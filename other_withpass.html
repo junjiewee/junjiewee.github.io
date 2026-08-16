@@ -1,0 +1,27 @@
+---
+layout: default
+description: "Travel map of JunJie Wee."
+nav_id: ot
+show_other: true
+---
+              <div id="desc">
+                <h2>Travel</h2>
+                <h3>Enter Password: <input type="text" onkeyup="check_password (this);"></h3>
+                <div id="hidden_div" style="content-visibility: hidden;">
+                <script src="https://static.elfsight.com/platform/platform.js" async></script>
+                <div class="elfsight-app-1c99a67f-498d-4aec-ad6e-71d8f507286d" data-elfsight-app-lazy></div></div>
+              </div>
+
+    <script>function check_password (input_element) {
+
+      //get value of input
+      var password = input_element.value;
+
+      //check value and show/hide the div
+      if (password == '2520')
+          document.getElementById ('hidden_div').style.contentVisibility = 'visible';
+      else
+          document.getElementById ('hidden_div').style.contentVisibility = 'hidden';
+
+    }
+    </script>

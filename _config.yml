@@ -1,0 +1,6 @@
+title: "Wee JunJie"
+author: "Wee JunJie"
+
+# No custom plugins: this keeps the site buildable by GitHub Pages'
+# built-in Jekyll with zero extra configuration (no Gemfile, no Actions).
+markdown: kramdown

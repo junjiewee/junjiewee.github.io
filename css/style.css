@@ -2,7 +2,7 @@
    HTML5 CSS Reset Minified - Eric Meyer
    ========================================================================== */
 
-@import url("https://fonts.googleapis.com/css?family=Lato:100");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700");
 
 html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
@@ -25,15 +25,67 @@ li{list-style:none}
    My CSS
    ========================================================================== */
 
+/* ---- theme ---- */
+
+:root {
+  --bg-page: rgb(255, 255, 255, 1);
+  --bg-container: rgb(255, 255, 255, 1);
+  --bg-particles: rgb(255, 255, 255, 1);
+  --text-color: #000000;
+  --heading-color: #a8452f;
+  --menu-bg: #b4cdf3c7;
+  --menu-text: #000000;
+  --button-bg: bisque;
+  --container-shadow: #000000;
+  --link-color: #0000ee;
+  --link-visited-color: #551a8b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-page: rgb(15, 17, 20, 1);
+    --bg-container: rgb(26, 28, 33, 1);
+    --bg-particles: rgb(15, 17, 20, 1);
+    --text-color: #e6e6e6;
+    --heading-color: #d68a72;
+    --menu-bg: #2c3a63cc;
+    --menu-text: #f0f0f0;
+    --button-bg: #3a2a1f;
+    --container-shadow: rgba(0, 0, 0, 0.6);
+    --link-color: #8ab4f8;
+    --link-visited-color: #c58af9;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg-page: rgb(15, 17, 20, 1);
+  --bg-container: rgb(26, 28, 33, 1);
+  --bg-particles: rgb(15, 17, 20, 1);
+  --text-color: #e6e6e6;
+  --heading-color: #d68a72;
+  --menu-bg: #2c3a63cc;
+  --menu-text: #f0f0f0;
+  --button-bg: #3a2a1f;
+  --container-shadow: rgba(0, 0, 0, 0.6);
+  --link-color: #8ab4f8;
+  --link-visited-color: #c58af9;
+}
+
 /* ---- base ---- */
 
-html,body{ 
+html,body{
 	width:100%;
 	height:100%;
-	background:rgb(255, 255, 255, 0);
-  font-family: 'Playfair Display', sans-serif;font-weight: 300;
+	background:var(--bg-page);
+  font-family: 'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;font-weight: 300;
     font-size: 1em;
     line-height: 1.5;}
+
+/* Plain prose links (Bio/Research/News body text). Anything with its own
+   class or ID (menu items, badges, dropdown items) already sets its own
+   color at higher specificity and is unaffected by this. */
+a{ color: var(--link-color); }
+a:visited{ color: var(--link-visited-color); }
     strong, b {
   font-weight: bold;
   font-size: 100%;
@@ -42,18 +94,28 @@ html,body{
 }
 
 h1{
-	font-family:'Lato', 'Open-Sans', Arial, Helvetica,sans-serif;
-	font-size:3em;font-weight: bold;line-height: 1;
-	color:#ce2608;
+	font-family:'Lato', 'Open Sans', Arial, Helvetica,sans-serif;
+	font-size:30px;font-weight: bold;line-height: 1;
+	color:var(--heading-color);
 	line-height: 1;
 	text-align:left;
 	margin:0 0px 10px 0px;
 }
 
+/* latex_style.css's h1:first-child{text-align:center} (specificity 0,1,1) outranks
+   the plain h1 rule above; bump specificity here so the name heading stays left-aligned.
+   Scoped to above the widest mobile breakpoint (540px) so it doesn't also override the
+   intentional mobile h1{text-align:center} rules further down. */
+@media screen and (min-width: 541px) {
+	#contacts h1{
+		text-align:left;
+	}
+}
+
 #more button{
-  color:#ce2608;
+  color:var(--heading-color);
   border-color: transparent;
-  background-color: bisque;
+  background-color: var(--button-bg);
   width: 30px;
   height: 30px;
   padding: 0;
@@ -64,8 +126,8 @@ h1{
 
 h2{
 	font-family:"Lato", "Open Sans", Arial, sans-serif;
-	font-size:2em;font-weight: bold;line-height: 1;
-	color:#ce2608;
+	font-size:24px;font-weight: bold;line-height: 1;
+	color:var(--heading-color);
 	line-height: 1;
 	text-align:left;
 	margin:0 0px 10px 0px;
@@ -73,29 +135,29 @@ h2{
 
 h3{
 	font-family:"Lato", "Open Sans", Arial, sans-serif;
-  /*font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;*/
-	font-size:1em;font-weight: bold;line-height: 1;
-	color:#000000;
+  /*font-family:'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;*/
+	font-size:15px;font-weight: bold;line-height: 1;
+	color:var(--text-color);
 	line-height: 1;
 	text-align:left;
 	margin:0 0px 10px 0px;
 }
 
 ul {
-  font-size:15px;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size:16px;
+  font-family:'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
 }
 
 ul > li{
-  font-size: 15px;
+  font-size: 16px;
   margin-left: 17px;
   display: list-item;
   list-style-type: disc;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family:'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
 }
 
 @media screen and (max-width: 2000px) {
-  .container{
+  #container .container{
     width: 50%;
     min-height: 100%;
     max-height: 999999999px;
@@ -103,12 +165,17 @@ ul > li{
   }
 }
 
-@media screen and (max-width: 1024px) {
-  .container{
+@media screen and (max-width: 1500px) {
+  /* Widened from 1024px, then again from 1300px: below this, .container
+     gets 80% width; above it, the 2000px rule below drops to 50%. With
+     5-6 nav items (and font-metric variance across browsers/OS) that
+     transition needs real safety margin, not just enough to fit in one
+     specific test environment. */
+  #container .container{
     width: 80%;
     min-height: 100%;
     max-height: 999999999px;
-    margin: 2vw 2vw 2vw 2vw;
+    margin: 2vw auto;
   }
 }
 
@@ -116,11 +183,11 @@ ul > li{
   .wide {display:none;}
   .mobilefont {font-size:0.8em;}
 
-  .container{
+  #container .container{
     width: 80%;
     min-height: 100%;
     max-height: 999999999px;
-    margin: 2vw 2vw 2vw 2vw;
+    margin: 2vw auto;
   }
 }
 
@@ -129,133 +196,211 @@ ul > li{
 }
 
 @media screen and (max-width: 540px) {
-  .container{
-    width: 80%;
+  #container .container{
+    width: 92%;
     min-height: 100%;
     max-height: 999999999px;
-    margin: 2vw 2vw 2vw 2vw;
+    margin: 2vw auto;
   }
 
   h1{
     text-align: center;
-    font-size:2em;
+    font-size:24px;
   }
 
   h2{
-    font-size:2em;
+    font-size:20px;
   }
 
-  #profpicdiv{
-    margin-left: 40px;
+  .container #profpicdiv{
+    float: none;
+    width: 140px;
+    height: 140px;
+    background-size: cover;
+    margin: 0 auto 15px;
   }
 
   #contacts .icon-bar {
+    text-align: center;
+  }
+
+  .container table.imgtable {
+    margin: 0 auto;
+  }
+
+  .container table.imgtable, .container table.imgtable td {
+    text-align: center;
+  }
+
+  #contacts ul {
     text-align: center;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .container{
-    width: 80%;
+  #container .container{
+    width: 92%;
     min-height: 100%;
     max-height: 999999999px;
-    margin: 2vw 2vw 2vw 2vw;
+    margin: 2vw auto;
   }
 
   h1{
     text-align: center;
-    font-size:2em;
+    font-size:24px;
   }
 
   h2{
-    font-size:2em;
+    font-size:20px;
   }
 
-  #profpicdiv{
-    margin-left: 20px;
+  .container #profpicdiv{
+    float: none;
+    width: 140px;
+    height: 140px;
+    background-size: cover;
+    margin: 0 auto 15px;
   }
 
   #contacts .icon-bar {
+    text-align: center;
+  }
+
+  .container table.imgtable {
+    margin: 0 auto;
+  }
+
+  .container table.imgtable, .container table.imgtable td {
+    text-align: center;
+  }
+
+  #contacts ul {
     text-align: center;
   }
 }
 
 @media screen and (max-width: 375px) {
-  .container{
-    width: 80%;
+  #container .container{
+    width: 92%;
     min-height: 100%;
     max-height: 999999999px;
-    margin: 2vw 2vw 2vw 2vw;
+    margin: 2vw auto;
   }
 
   h1{
     text-align: center;
-    font-size:2em;
+    font-size:24px;
   }
 
   h2{
-    font-size:2em;
+    font-size:20px;
   }
 
-  #profpicdiv{
-    margin-left: 20px;
+  .container #profpicdiv{
+    float: none;
+    width: 140px;
+    height: 140px;
+    background-size: cover;
+    margin: 0 auto 15px;
   }
 
   #contacts .icon-bar {
+    text-align: center;
+  }
+
+  .container table.imgtable {
+    margin: 0 auto;
+  }
+
+  .container table.imgtable, .container table.imgtable td {
+    text-align: center;
+  }
+
+  #contacts ul {
     text-align: center;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .container{
-    width: 90%;
+  #container .container{
+    width: 96%;
     min-height: 100%;
     max-height: 999999999px;
-    margin: 2vw 2vw 2vw 2vw;
+    margin: 2vw auto;
   }
 
   h1{
     text-align: center;
-    font-size:2em;
+    font-size:24px;
   }
 
   h2{
-    font-size:2em;
+    font-size:20px;
   }
 
-  #profpicdiv{
-    margin-left: 20px;
-    object-fit: contain;
-    max-width:100%;
+  .container #profpicdiv{
+    float: none;
+    width: 140px;
+    height: 140px;
+    background-size: cover;
+    margin: 0 auto 15px;
   }
 
   #contacts .icon-bar {
+    text-align: center;
+  }
+
+  .container table.imgtable {
+    margin: 0 auto;
+  }
+
+  .container table.imgtable, .container table.imgtable td {
+    text-align: center;
+  }
+
+  #contacts ul {
     text-align: center;
   }
 }
 
 @media screen and (max-width: 280px) {
-  .container{
-    width: 90%;
+  #container .container{
+    width: 96%;
     min-height: 100%;
     max-height: 999999999px;
-    margin: 2vw 2vw 2vw 2vw;
+    margin: 2vw auto;
   }
 
   h1{
     text-align: center;
-    font-size:2em;
+    font-size:24px;
   }
 
   h2{
-    font-size:2em;
+    font-size:20px;
   }
 
-  #profpicdiv{
-    margin-left: 0px;
+  .container #profpicdiv{
+    float: none;
+    width: 140px;
+    height: 140px;
+    background-size: cover;
+    margin: 0 auto 15px;
   }
 
   #contacts .icon-bar {
+    text-align: center;
+  }
+
+  .container table.imgtable {
+    margin: 0 auto;
+  }
+
+  .container table.imgtable, .container table.imgtable td {
+    text-align: center;
+  }
+
+  #contacts ul {
     text-align: center;
   }
 }
@@ -274,7 +419,29 @@ ul > li{
 }
 
 #menu a{
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family:'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+.research-figure {
+  float: right;
+  width: 50%;
+  margin: 0 0 1em 1.5em;
+}
+
+.research-figure figcaption {
+  font-size: 14px;
+  margin-top: 0.5em;
+}
+
+@media screen and (max-width: 640px) {
+  /* A 50%-wide floated figure squeezed against wrapping heading/list text
+     is what makes this section read as congested on a phone screen - drop
+     the float and let the figure become a full-width block instead. */
+  .research-figure {
+    float: none;
+    width: 100%;
+    margin: 0 0 1em 0;
+  }
 }
 
 
@@ -307,20 +474,20 @@ img{border:0;}
   display: none;
 }
 
-#menu {position:relative; text-align: center;border-bottom:0px;padding:0;border-bottom:0px;border-top:2px solid #b4cdf3c7;background:#fff;width:100%;z-index:10000;-webkit-z-index:10000;}
+#menu {position:relative; text-align: center;border-bottom:0px;padding:0;border-bottom:0px;border-top:2px solid var(--menu-bg);background:var(--bg-container);width:100%;z-index:10000;-webkit-z-index:10000;}
 #menu ul li{display: inline-block; padding: 0;}
-#menu ul li a {display:inline-block;text-decoration:none;border-top:-1px;font-size:15px; color:#000;font-weight:3000;background-color:#fff;padding:5px 5px 5px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
-#menu ul li a:hover {color:#000;background-color:#b4cdf3c7;;border-bottom:2px solid #b4cdf3c7; border-right:0;}
-#menu ul li a.on {color:#000;background-color:#b4cdf3c7;border-bottom:2px solid #b4cdf3c7;font-weight:bolder;border-top:2px;}
-#menu ul li a.on:hover {color:#000;background-color:#b4cdf3c7;;border-bottom:2px solid #b4cdf3c7; border-top:0;}
-a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
-#menu ul li a{background:#b4cdf3c7;margin:0;padding:0px;list-style-type:none;text-align:center;display:inline-block;font-size:1em;}
-#menu ul li a{margin-left:0;padding-right:0.5em;list-style:none;display:-moz-inline-stack;
-  display:inline-block;padding-left:0.5em;padding-bottom:.1em;
-  /*zoom:1;*/font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+#menu ul li a {display:inline-block;text-decoration:none;border-top:-1px;font-size:15px; color:var(--text-color);font-weight:3000;background-color:var(--bg-container);padding:5px 5px 5px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
+#menu ul li a:hover {color:var(--menu-text);background-color:var(--menu-bg);;border-bottom:2px solid var(--menu-bg); border-right:0;}
+#menu ul li a.on {color:var(--menu-text);background-color:var(--menu-bg);border-bottom:2px solid var(--menu-bg);font-weight:bolder;border-top:2px;}
+#menu ul li a.on:hover {color:var(--menu-text);background-color:var(--menu-bg);;border-bottom:2px solid var(--menu-bg); border-top:0;}
+a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid var(--menu-bg);}
+#menu ul li a{background:var(--menu-bg);margin:0;padding:0px;list-style-type:none;text-align:center;display:inline-block;font-size:1em;}
+#menu ul li a{margin-left:0;padding-right:0.3em;list-style:none;display:-moz-inline-stack;
+  display:inline-block;padding-left:0.3em;padding-bottom:.1em;
+  /*zoom:1;*/font-family:'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;}
 #menu ul.first{border-left:none;}
 
-#menu a.dropdown{
+#menu .dropdown{
   display:none;
 }
 
@@ -333,7 +500,42 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
   padding-bottom: 10px;
 }
 
+.theme-toggle-btn{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--menu-bg);
+  color: var(--menu-text);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 30px;
+  z-index: 10001;
+}
+
+.theme-toggle-btn:hover{
+  opacity: 0.85;
+}
+
 @media screen and (max-width: 640px) {
+  /* The visible (active-page) pill was being centered by #menu's
+     text-align:center while the hamburger sits independently at
+     float:right - those two positioning systems don't coordinate, and
+     the gap between them varies (arbitrarily) with the active label's
+     length. Cluster both together at the right edge with a small fixed
+     gap, deterministically, regardless of label width. */
+  #menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 0 10px;
+  }
+
   #menu ul li a:not(.on){
     display:none;
     text-align: center;
@@ -347,9 +549,8 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
 
   .dropbtn {
     border-radius: 0;
-    background: #b4cdf3c7;
-    margin-top: -25px;
-    margin-bottom: -5px;
+    background: var(--menu-bg);
+    color: var(--menu-text);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     text-decoration: none;
@@ -359,21 +560,28 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
     position:relative;
     display: block;
     border-color: transparent;
+    border-bottom: 2px solid transparent;
+    box-sizing: border-box;
   }
 
-  .dropbtn:hover, .dropbtn:focus  {font-weight: bold;border-bottom: 2px solid #b4cdf3c7;outline:auto;
-    overflow: auto;}
+  .dropbtn:hover, .dropbtn:focus  {font-weight: bold;border-bottom: 2px solid var(--heading-color);}
 
-  #menu a.dropdown {
+  #menu .dropdown {
     position: relative;
     display: inline-block;
   }
-  
+
   .dropdown-content {
     display: none;
-    position: relative;
+    /* position:absolute (not relative) so this panel is taken out of
+       normal flow entirely - otherwise its min-width becomes the widest
+       child of the floated .dropdown parent once shown, which grows the
+       parent and drags the hamburger button leftward into the nav links. */
+    position: absolute;
+    top: 100%;
+    right: 0;
     margin-top: 6px;
-    background-color: #b4cdf3c7;
+    background-color: var(--menu-bg);
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -382,415 +590,38 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid #b4cdf3c7;}
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,.2);
     z-index: 1;
   }
-  
+
   .dropdown-content a {
-    color: black;
+    color: var(--menu-text);
     padding: 10px 10px 0px 10px;
     display: block;
     position:relative;
     font-size: 18px;
   }
-  
+
   .dropdown-content a:hover{text-decoration: underline;font-weight: bolder;}
-  #menu a.dropdown a:hover {text-decoration: underline;}
-  #menu a.dropdown:hover .dropbtn {background-color: #b4cdf3c7;}
-  .show {display: block;}
-}
-
-@media screen and (max-width: 540px) {
-  #menu ul li a:not(.on){
-    display:none;
-    text-align: center;
-  }
-
-  #menu a{
-    list-style-type: none;
-  }
-
-  #menu ul li{display: block; padding: 0;}
-
-  .dropbtn {
-    border-radius: 0;
-    background: #b4cdf3c7;
-    margin-top: -25px;
-    margin-bottom: -5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    text-decoration: none;
-    outline:none;
-    text-align: left;
-    font-size: 18px;
-    position:relative;
-    display: block;
-    border-color: transparent;
-  }
-
-  .dropbtn:hover, .dropbtn:focus  {font-weight: bold;border-bottom: 2px solid #b4cdf3c7;outline:auto;
-    overflow: auto;}
-
-  #menu a.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: relative;
-    margin-top: 6px;
-    background-color: #b4cdf3c7;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 10px 10px 0px 10px;
-    display: block;
-    position:relative;
-    font-size: 18px;
-  }
-  
-  .dropdown-content a:hover{text-decoration: underline;font-weight: bolder;}
-  #menu a.dropdown a:hover {text-decoration: underline;}
-  #menu a.dropdown:hover .dropbtn {background-color: #b4cdf3c7;}
-  .show {display: block;}
-}
-
-@media screen and (max-width: 480px) {
-  #menu ul li a:not(.on){
-    display:none;
-    text-align: center;
-  }
-
-  #menu a{
-    list-style-type: none;
-  }
-
-  #menu ul li{display: block; padding: 0;}
-
-  .dropbtn {
-    border-radius: 0;
-    background: #b4cdf3c7;
-    margin-top: -25px;
-    margin-bottom: -5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    text-decoration: none;
-    outline:none;
-    text-align: left;
-    font-size: 18px;
-    position:relative;
-    display: block;
-    border-color: transparent;
-  }
-
-  .dropbtn:hover, .dropbtn:focus  {font-weight: bold;border-bottom: 2px solid #b4cdf3c7;outline:auto;
-    overflow: auto;}
-
-  #menu a.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: relative;
-    margin-top: 6px;
-    background-color: #b4cdf3c7;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 10px 10px 0px 10px;
-    display: block;
-    position:relative;
-    font-size: 18px;
-  }
-  
-  .dropdown-content a:hover{text-decoration: underline;font-weight: bolder;}
-  #menu a.dropdown a:hover {text-decoration: underline;}
-  #menu a.dropdown:hover .dropbtn {background-color: #b4cdf3c7;}
-  .show {display: block;}
-}
-
-@media screen and (max-width: 375px) {
-  #menu ul li a:not(.on){
-    display:none;
-    text-align: center;
-  }
-
-  #menu a{
-    list-style-type: none;
-  }
-
-  #menu ul li{display: block; padding: 0;}
-
-  .dropbtn {
-    border-radius: 0;
-    background: #b4cdf3c7;
-    margin-top: -25px;
-    margin-bottom: -5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    text-decoration: none;
-    outline:none;
-    text-align: left;
-    font-size: 18px;
-    position:relative;
-    display: block;
-    border-color: transparent;
-  }
-
-  .dropbtn:hover, .dropbtn:focus  {font-weight: bold;border-bottom: 2px solid #b4cdf3c7;outline:auto;
-    overflow: auto;}
-
-  #menu a.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: relative;
-    margin-top: 6px;
-    background-color: #b4cdf3c7;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 10px 10px 0px 10px;
-    display: block;
-    position:relative;
-    font-size: 18px;
-  }
-  
-  .dropdown-content a:hover{text-decoration: underline;font-weight: bolder;}
-  #menu a.dropdown a:hover {text-decoration: underline;}
-  #menu a.dropdown:hover .dropbtn {background-color: #b4cdf3c7;}
-  .show {display: block;}
-}
-
-@media screen and (max-width: 360px) {
-  #menu ul li a:not(.on){
-    display:none;
-    text-align: center;
-  }
-
-  #menu a{
-    list-style-type: none;
-  }
-
-  #menu ul li{display: block; padding: 0;}
-
-  .dropbtn {
-    border-radius: 0;
-    background: #b4cdf3c7;
-    margin-top: -25px;
-    margin-bottom: -5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    text-decoration: none;
-    outline:none;
-    text-align: left;
-    font-size: 18px;
-    position:relative;
-    display: block;
-    border-color: transparent;
-  }
-
-  .dropbtn:hover, .dropbtn:focus  {font-weight: bold;border-bottom: 2px solid #b4cdf3c7;outline:auto;
-    overflow: auto;}
-
-  #menu a.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: relative;
-    margin-top: 6px;
-    background-color: #b4cdf3c7;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 10px 10px 0px 10px;
-    display: block;
-    position:relative;
-    font-size: 18px;
-  }
-  
-  .dropdown-content a:hover{text-decoration: underline;font-weight: bolder;}
-  #menu a.dropdown a:hover {text-decoration: underline;}
-  #menu a.dropdown:hover .dropbtn {background-color: #b4cdf3c7;}
-  .show {display: block;}
-}
-
-@media screen and (max-width: 320px) {
-  #menu ul li a:not(.on){
-    display:none;
-    text-align: center;
-  }
-
-  #menu a{
-    list-style-type: none;
-  }
-
-  #menu ul li{display: block; padding: 0;}
-
-  .dropbtn {
-    border-radius: 0;
-    background: #b4cdf3c7;
-    margin-top: -25px;
-    margin-bottom: -5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    text-decoration: none;
-    outline:none;
-    text-align: left;
-    font-size: 18px;
-    position:relative;
-    display: block;
-    border-color: transparent;
-  }
-
-  .dropbtn:hover, .dropbtn:focus  {font-weight: bold;border-bottom: 2px solid #b4cdf3c7;outline:auto;
-    overflow: auto;}
-
-  #menu a.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: relative;
-    margin-top: 6px;
-    background-color: #b4cdf3c7;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 10px 10px 0px 10px;
-    display: block;
-    position:relative;
-    font-size: 18px;
-  }
-  
-  .dropdown-content a:hover{text-decoration: underline;font-weight: bolder;}
-  #menu a.dropdown a:hover {text-decoration: underline;}
-  #menu a.dropdown:hover .dropbtn {background-color: #b4cdf3c7;}
-  .show {display: block;}
-}
-
-@media screen and (max-width: 280px) {
-  #menu ul li a:not(.on){
-    display:none;
-    text-align: center;
-  }
-
-  #menu a{
-    list-style-type: none;
-  }
-
-  #menu ul li{display: block; padding: 0;}
-
-  .dropbtn {
-    border-radius: 0;
-    background: #b4cdf3c7;
-    margin-top: -25px;
-    margin-bottom: -5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    text-decoration: none;
-    outline:none;
-    text-align: left;
-    font-size: 18px;
-    position:relative;
-    display: block;
-    border-color: transparent;
-  }
-
-  .dropbtn:hover, .dropbtn:focus  {font-weight: bold;border-bottom: 2px solid #b4cdf3c7;outline:auto;
-    overflow: auto;}
-
-  #menu a.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: relative;
-    margin-top: 6px;
-    background-color: #b4cdf3c7;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 10px 10px 0px 10px;
-    display: block;
-    position:relative;
-    font-size: 18px;
-  }
-  
-  .dropdown-content a:hover{text-decoration: underline;font-weight: bolder;}
-  #menu a.dropdown a:hover {text-decoration: underline;}
-  #menu a.dropdown:hover .dropbtn {background-color: #b4cdf3c7;}
+  #menu .dropdown a:hover {text-decoration: underline;}
+  #menu .dropdown:hover .dropbtn {background-color: var(--menu-bg);}
   .show {display: block;}
 }
 
 .bibItem {
   font-size:  14px;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family:'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+/* Preprints have no <details><summary> wrapper, so they miss the
+   details > summary { font-size: 1.1em; } bump published entries get.
+   Match it explicitly so preprint titles render at the same size. */
+.bibItem:not(:has(details)) {
+  font-size: 15.4px;
 }
 
 details > summary{
   font-size: 15px;
   text-indent: 0em;
   margin-left: 0px;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family:'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
   font-size:1.1em;
 }
 
@@ -814,23 +645,23 @@ details > summary{
   color:rgb(12, 88, 158);
 }
 
-.btn{padding:.5rem;font-size:.8rem;line-height:.9;box-shadow: 0 0 .5px #000000;}
+.btn{padding:.5rem;font-size:.9rem;line-height:.9;box-shadow: 0 0 .5px #000000;}
 .btn-outline-primary:focus,.btn-outline-primary.focus{box-shadow:0 0 0 .2em rgba(21, 6, 231, 0.5)}.btn-outline-primary.disabled,.btn-outline-primary:disabled{color:#1565c0;background-color:transparent}.btn-outline-primary:not(:disabled):not(.disabled):active,.btn-outline-primary:not(:disabled):not(.disabled).active,.show>
 .btn-page-header{margin:4px 4px 4px 0}
 .artLinks{padding-top:10px}.media.stream-item:not(:last-child){margin-bottom:2rem}.card-simple
-iframe{max-width:100%}.btn{padding:.5rem;font-size:.8rem;line-height:.9;}.artLinks
+iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLinks
 
 .flexcontainer {display:flex;}
 .bibcontainer {flex: 1; padding-right:5px;}
-.bibItem { display:block; color:#000; text-decoration:none;padding: 5px 5px 5px 5px;border-radius:2px;}
-.bibItem:hover {border:1px solid #fff; background-color:#b4cdf3c7; border-right:1px;}
+.bibItem { display:block; color:var(--text-color); text-decoration:none;padding: 5px 5px 5px 5px;border-radius:2px;}
+.bibItem:hover {border:1px solid var(--bg-container); background-color:var(--menu-bg); border-right:1px;}
 .abstract {font-size:1em; text-decoration:none;padding-top:10px; padding-left:20px; padding-right:20px;}
 .artLinks{text-align:left;margin:0;padding:0;border:none;padding-bottom:10px; min-width: 350px}
 .artLinks a {display:inline-block;text-decoration:underline;}
 .artLinks a:hover {text-decoration:none;}
 .artLinks ul{margin:0;padding:0;list-style-type:none;text-align:left;display:inline-block;font-size:0.8em;}
 .artLinks ul > li{
-	margin:0;padding:2px 1.5em;padding-right:1.2em;border-left:1px solid rgb(255, 255, 255);list-style:none;display:-moz-inline-stack;
+	margin:0;padding:2px 1.5em;padding-right:1.2em;border-left:1px solid var(--bg-container);list-style:none;display:-moz-inline-stack;
 display:inline-block;
 /*zoom:1;*/
 display:inline;
@@ -862,8 +693,8 @@ td {
   padding-right: 0.5em;
   text-align: left;
   border: none;
-  font-family : sans-serif;
-  font-size: 14px;
+  font-family: 'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-size: 15px;
 }
 
 .container{
@@ -872,13 +703,13 @@ td {
   border-radius: 12px;
   position: relative;
   background-color: transparent;
-  box-shadow: 0 0 10px #000000;
+  box-shadow: 0 0 10px var(--container-shadow);
   padding: 14px 14px 14px 14px; /* top right bottom left */
 }
 
 .container.container{
   border-color: rgba(0, 0, 0, 0);
-  background-color: rgb(255, 255, 255, 1);
+  background-color: var(--bg-container);
 }
 
 table.imgtable, table.imgtable td {
@@ -891,8 +722,9 @@ html{
 }
 
 body{
-  font:normal 75% Arial, Helvetica, sans-serif;
+  font:normal 100% 'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
   border-radius: 25px;
+  color: var(--text-color);
 }
 
 canvas{
@@ -942,7 +774,7 @@ canvas{
   position:absolute;
   width: 100%;
   height: 100%;
-  background-color: rgb(255, 255, 255, 1);
+  background-color: var(--bg-particles);
   background-image: url('');
   background-size: cover;
   background-position: 100% 100%;
