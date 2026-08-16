@@ -29,9 +29,12 @@ mathjax_async: true
 
                 <h2>Published/Accepted <button class="button" id="ec" onclick="openAll()">+</button></h2>
                 <p style="font-size: 14px">Click the publications to view abstract. Expand/collapse all abstracts by clicking the button above.</p><br>
-                
 
-                <div class="flexcontainer" style="height: 1000px; overflow:auto">
+                <input type="text" id="pub-search" placeholder="Search by title, author, or journal&hellip;" style="width:100%;max-width:420px;padding:8px 12px;font-size:15px;font-family:inherit;border-radius:5px;border:1px solid var(--menu-bg);background:var(--bg-container);color:var(--text-color);box-sizing:border-box;">
+                <div id="pub-page-info" style="font-size:14px;margin-top:8px;color:var(--text-color);"></div>
+                <br>
+
+                <div class="flexcontainer">
 
                     <div class="bibcontainer">
                             <a class="bibItem" href="javascript:void(0)">
@@ -862,3 +865,78 @@ researchers seeking to harness the power of topology in molecular science.
                     </div>
 
                 </div>
+
+                <div id="pub-pagination" style="margin-top:15px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;"></div>
+
+                <script>
+                (function() {
+                  var container = document.querySelector('.flexcontainer');
+                  var items = Array.prototype.slice.call(container.children).filter(function(el) {
+                    return el.classList.contains('bibcontainer');
+                  });
+                  var perPage = 10;
+                  var currentPage = 1;
+                  var searchInput = document.getElementById('pub-search');
+                  var pageInfo = document.getElementById('pub-page-info');
+                  var pagination = document.getElementById('pub-pagination');
+
+                  function makeButton(label, disabled, active, onClick) {
+                    var b = document.createElement('button');
+                    b.textContent = label;
+                    b.className = 'btn btn-outline-primary btn-page-header';
+                    b.disabled = !!disabled;
+                    if (active) {
+                      b.style.fontWeight = 'bold';
+                      b.style.backgroundColor = 'var(--menu-bg)';
+                    }
+                    b.onclick = onClick;
+                    return b;
+                  }
+
+                  function render() {
+                    var q = searchInput.value.trim().toLowerCase();
+                    var filtered = q ? items.filter(function(it) {
+                      return it.textContent.toLowerCase().indexOf(q) !== -1;
+                    }) : items;
+
+                    var totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
+                    if (currentPage > totalPages) currentPage = totalPages;
+                    if (currentPage < 1) currentPage = 1;
+
+                    items.forEach(function(it) { it.style.display = 'none'; });
+                    var start = (currentPage - 1) * perPage;
+                    var end = start + perPage;
+                    filtered.slice(start, end).forEach(function(it) { it.style.display = ''; });
+
+                    if (filtered.length === 0) {
+                      pageInfo.textContent = 'No publications match your search.';
+                    } else {
+                      pageInfo.textContent = 'Showing ' + (start + 1) + '–' + Math.min(end, filtered.length) + ' of ' + filtered.length;
+                    }
+
+                    pagination.innerHTML = '';
+                    if (totalPages > 1) {
+                      pagination.appendChild(makeButton('Prev', currentPage === 1, false, function() {
+                        currentPage--; render();
+                      }));
+                      for (var p = 1; p <= totalPages; p++) {
+                        (function(p) {
+                          pagination.appendChild(makeButton(String(p), false, p === currentPage, function() {
+                            currentPage = p; render();
+                          }));
+                        })(p);
+                      }
+                      pagination.appendChild(makeButton('Next', currentPage === totalPages, false, function() {
+                        currentPage++; render();
+                      }));
+                    }
+                  }
+
+                  searchInput.addEventListener('input', function() {
+                    currentPage = 1;
+                    render();
+                  });
+
+                  render();
+                })();
+                </script>
