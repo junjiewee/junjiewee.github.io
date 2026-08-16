@@ -205,6 +205,21 @@ ul > li{
   .tight {display:none;}
 }
 
+/* The photo/contact-info block goes side-by-side (floated 200px photo +
+   text wrapping beside it) above 540px, but that only has room to breathe
+   down to roughly a 500px-wide card - measured actual wrapping starting
+   around a 580px viewport (464px card), well before the 540px point where
+   it switches to the fully-stacked mobile layout below. Rather than jump
+   straight to stacked/centered for this whole tablet range, shrink the
+   photo so the side-by-side layout keeps working with more room for text. */
+@media screen and (max-width: 700px) and (min-width: 541px) {
+  .container #profpicdiv{
+    width: 130px;
+    height: 130px;
+    background-size: cover;
+  }
+}
+
 @media screen and (max-width: 540px) {
   #container .container{
     width: 92%;
