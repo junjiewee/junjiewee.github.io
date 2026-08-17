@@ -577,6 +577,28 @@ img{border:0;}
   line-height: 1.5;
   color: var(--text-color);
 }
+/* The scrollable news box (index.html's .news-list-scroll, height:250px
+   + overflow:auto) otherwise gets the browser's default scrollbar,
+   which is always light regardless of theme - reusing the existing
+   theme tokens here keeps it in sync with dark/light mode instead of
+   introducing separate scrollbar-specific colors. */
+.news-list-scroll{
+  scrollbar-width: thin;
+  scrollbar-color: var(--menu-bg) var(--bg-container);
+}
+.news-list-scroll::-webkit-scrollbar{
+  width: 8px;
+}
+.news-list-scroll::-webkit-scrollbar-track{
+  background: var(--bg-container);
+}
+.news-list-scroll::-webkit-scrollbar-thumb{
+  background: var(--menu-bg);
+  border-radius: 4px;
+}
+.news-list-scroll::-webkit-scrollbar-thumb:hover{
+  background: var(--pill-border);
+}
 
 /* menu css */
 .dropbtn{
@@ -776,7 +798,12 @@ details > summary{
 }
 
 .btn{padding:.5rem;font-size:.9rem;line-height:.9;box-shadow: 0 0 .5px #000000;}
-.btn-outline-primary:focus,.btn-outline-primary.focus{box-shadow:0 0 0 .2em rgba(21, 6, 231, 0.5)}.btn-outline-primary.disabled,.btn-outline-primary:disabled{color:#1565c0;background-color:transparent}.btn-outline-primary:not(:disabled):not(.disabled):active,.btn-outline-primary:not(:disabled):not(.disabled).active,.show>
+.btn-outline-primary:focus,.btn-outline-primary.focus{box-shadow:0 0 0 .2em rgba(21, 6, 231, 0.5)}.btn-outline-primary.disabled,.btn-outline-primary:disabled{color:#1565c0;background-color:transparent}.btn-outline-primary:not(:disabled):not(.disabled):active,.btn-outline-primary:not(:disabled):not(.disabled).active{}
+/* Was accidentally chained onto ".show >" (a leftover newline from
+   some prior minified-CSS concatenation turned it into ".show >
+   .btn-page-header", a selector that never matches anything real on
+   this page) so this margin never actually applied - the DOI/arXiv/
+   Cite/Code pills sat flush against each other with 0px between them. */
 .btn-page-header{margin:4px 4px 4px 0}
 .artLinks{padding-top:10px}.media.stream-item:not(:last-child){margin-bottom:2rem}.card-simple
 iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLinks
@@ -888,7 +915,13 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
   outline: none;
 }
 .abstract {font-size:1em; text-decoration:none;padding-top:10px; padding-left:20px; padding-right:20px;}
-.artLinks{text-align:left;margin:0;padding:0;border:none;padding-bottom:10px;max-width:100%;display:flex;flex-wrap:wrap;align-items:center;row-gap:8px;}
+/* padding-top restores what an earlier .artLinks{padding-top:10px}
+   rule elsewhere in this file (a leftover from some prior minified
+   concatenation) intended - this later, more complete rule's
+   padding:0 shorthand silently zeroed it back out, leaving only 2px
+   of separation between the citation text and the DOI/arXiv/Cite/Code
+   button row below it. */
+.artLinks{text-align:left;margin:0;padding:10px 0 10px 0;border:none;max-width:100%;display:flex;flex-wrap:wrap;align-items:center;row-gap:8px;}
 .artLinks a {display:inline-block;text-decoration:underline;max-width:100%;}
 /* A genuine zero-size spacer (see .artlinks-break, inserted in the
    markup right before the citation badges) rather than flex-basis:100%
