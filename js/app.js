@@ -156,30 +156,59 @@ particlesJS('particles-js',
 
 );
 
-  /* particlesJS() reads the new canvas's offsetWidth/offsetHeight
-     synchronously as part of its own constructor, and - occasionally,
-     non-deterministically, when this runs before the browser's first
-     layout pass has actually settled - that read comes back 0x0 even
-     though the container (#particles-js, position:fixed) is correctly
-     viewport-sized moments later. The canvas's HTML width/height
-     attributes (its actual pixel buffer, not just its CSS display
-     size) then stay permanently 0x0, so nothing can be drawn into it.
-     A fixed setTimeout delay doesn't reliably avoid this (confirmed by
-     testing - the race isn't on a consistent clock), so this is kept
-     only as a defensive fallback; the real fix is deferring the
-     *first* call to window's load event below, which guarantees a
-     layout pass has already happened. */
-  setTimeout(function() { window.dispatchEvent(new Event('resize')); }, 50);
 }
 
 /* Deferred to window.load (fires after the full page - including
    images and fonts - has laid out at least once) rather than called
-   synchronously here, specifically to avoid the 0x0-canvas race
-   described above. Theme-toggle re-inits still call initParticles()
-   directly and don't need this, since the page is obviously already
-   fully loaded by the time a user can click the toggle. */
+   synchronously here, since particlesJS() reads the canvas's
+   offsetWidth/offsetHeight synchronously as part of its own
+   constructor, and running that before the browser's first layout
+   pass has settled can read back 0x0 - permanently zeroing the
+   canvas's actual pixel buffer (not just its CSS display size), so
+   nothing draws. Theme-toggle re-inits call initParticles() directly
+   and don't need this, since the page is obviously already loaded by
+   the time a user can click the toggle. */
 if (document.readyState === 'complete') {
   initParticles();
 } else {
   window.addEventListener('load', initParticles);
+}
+
+/* Standing watchdog, not a one-shot fix: particles.js's own resize
+   handler (see particles.js - window.addEventListener('resize', ...))
+   patches the canvas's pixel-buffer dimensions from
+   offsetWidth/offsetHeight but never repositions existing particles,
+   so if it ever runs against a stale/transitional size (web fonts
+   finishing, a scrollbar appearing, mobile browser chrome
+   showing/hiding, anything that resizes #particles-js without also
+   firing a plain window "resize"), the canvas and the particles'
+   actual coordinates can drift out of sync indefinitely - particles
+   keep animating within whatever bounds they were originally given,
+   which can visually read as "stuck in one region of the page" if
+   that original size didn't match the real one. ResizeObserver fires
+   for *any* box-size change to the element itself, not just window
+   resizes, and a full initParticles() re-creates the particles fresh
+   against the current real size rather than patching stale ones. */
+if (window.ResizeObserver) {
+  var particlesResizeCheckPending = false;
+  var particlesResizeObserver = new ResizeObserver(function(entries) {
+    if (particlesResizeCheckPending) return;
+    particlesResizeCheckPending = true;
+    requestAnimationFrame(function() {
+      particlesResizeCheckPending = false;
+      var box = entries[0].contentRect;
+      var canvas = document.querySelector('#particles-js canvas');
+      if (!canvas) return;
+      var dpr = window.devicePixelRatio || 1;
+      var expectedW = Math.round(box.width * dpr);
+      var expectedH = Math.round(box.height * dpr);
+      if (Math.abs(canvas.width - expectedW) > 2 || Math.abs(canvas.height - expectedH) > 2) {
+        initParticles();
+      }
+    });
+  });
+  window.addEventListener('load', function() {
+    var el = document.getElementById('particles-js');
+    if (el) { particlesResizeObserver.observe(el); }
+  });
 }
