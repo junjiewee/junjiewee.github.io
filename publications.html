@@ -35,19 +35,33 @@ tight_intro: true
 
                 <div class="pub-search-row">
                   <input type="text" id="pub-search" placeholder="Search by title, author, or journal&hellip;" style="flex:1;min-width:0;max-width:420px;padding:8px 12px;font-size:15px;font-family:inherit;border-radius:5px;border:1px solid var(--menu-bg);background:var(--bg-container);color:var(--text-color);box-sizing:border-box;">
-                  <button type="button" id="pub-sort-btn" class="pub-sort-btn" aria-pressed="false" title="Sort by title, ascending">
-                    <i class="fas fa-arrow-down-a-z" aria-hidden="true"></i> Sort
-                  </button>
-                  <button type="button" id="pub-sort-reset-btn" class="pub-sort-reset-btn" disabled title="Reset to original order">
-                    <i class="fas fa-arrow-rotate-left" aria-hidden="true"></i>
-                  </button>
+                  <div class="pub-sortby-wrap" id="pub-sortby-wrap">
+                    <button type="button" id="pub-sortby-btn" class="pub-sortby-btn" aria-haspopup="true" aria-expanded="false">
+                      <span id="pub-sortby-label">Sort by</span>
+                      <i class="fas fa-caret-down" id="pub-sortby-btn-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="pub-sortby-menu" id="pub-sortby-menu" role="listbox">
+                      <button type="button" class="pub-sortby-option" data-field="title" role="option" aria-selected="false">
+                        <span>Title (A&ndash;Z)</span>
+                        <i class="fas fa-arrow-down-a-z pub-sortby-dir" aria-hidden="true"></i>
+                      </button>
+                      <button type="button" class="pub-sortby-option" data-field="year" role="option" aria-selected="false">
+                        <span>Year</span>
+                        <i class="fas fa-arrow-down-9-1 pub-sortby-dir" aria-hidden="true"></i>
+                      </button>
+                      <button type="button" class="pub-sortby-option" data-field="citations" role="option" aria-selected="false">
+                        <span>Citations</span>
+                        <i class="fas fa-arrow-down-9-1 pub-sortby-dir" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
                 </div>
                 <div id="pub-page-info" style="font-size:14px;margin-top:8px;color:var(--text-color);"></div>
                 <br>
 
                 <div class="flexcontainer">
 
-                    <div class="bibcontainer" data-title="CAKR: Commutative algebra k-mer representations for genomics">
+                    <div class="bibcontainer" data-year="2026" data-title="CAKR: Commutative algebra k-mer representations for genomics">
                             <a class="bibItem" href="javascript:void(0)">
                                 <details><summary>
                                 [29] Faisal Suwayyid, Yuta Hozumi, Mushal Zia, <strong>JunJie Wee</strong>, Hongsong Feng, Guo-Wei Wei. CAKR: Commutative algebra k-mer representations for genomics. (2026). Nature Communications, 17, 76429.
@@ -75,7 +89,7 @@ tight_intro: true
                                 </div>
                         </div>
 
-                    <div class="bibcontainer" data-title="CAP: Commutative algebra prediction of protein-nucleic acid binding affinities">
+                    <div class="bibcontainer" data-year="2025" data-title="CAP: Commutative algebra prediction of protein-nucleic acid binding affinities">
                             <a class="bibItem" href="javascript:void(0)">
                                 <details><summary>
                                 [28] Mushal Zia, Faisal Suwayyid, Yuta Hozumi, <strong>JunJie Wee</strong>, Hongsong Feng, and Guo-Wei Wei. CAP: Commutative algebra prediction of protein-nucleic acid binding affinities. (2025). Machine Learning: Science and Technology, 6(4), 045068.
@@ -104,7 +118,7 @@ tight_intro: true
                                 </div>
                         </div>
 
-                    <div class="bibcontainer" data-title="A Korenblum Maximum Principle for Weighted Hilbert spaces of entire Dirichlet series with real frequencies">
+                    <div class="bibcontainer" data-year="2025" data-title="A Korenblum Maximum Principle for Weighted Hilbert spaces of entire Dirichlet series with real frequencies">
                             <a class="bibItem" href="javascript:void(0)">
                                 <details><summary>
                                 [27] Hai Khoi Le, <strong>JunJie Wee</strong>. A Korenblum Maximum Principle for Weighted Hilbert spaces of entire Dirichlet series with real frequencies. Journal of Mathematics and Mathematical Sciences, 4(2). (2025).
@@ -129,7 +143,7 @@ tight_intro: true
                                 </div>
                         </div>
 
-                     <div class="bibcontainer" data-title="A review of topological data analysis and topological deep learning in molecular sciences">
+                     <div class="bibcontainer" data-year="2025" data-title="A review of topological data analysis and topological deep learning in molecular sciences">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -170,7 +184,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Topological Machine Learning for Protein-Nucleic Acid Binding Affinity Changes Upon Mutation">
+                    <div class="bibcontainer" data-year="2025" data-title="Topological Machine Learning for Protein-Nucleic Acid Binding Affinity Changes Upon Mutation">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -201,7 +215,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="CAML: Commutative algebra machine learning—a case study on protein-ligand binding affinity prediction">
+                    <div class="bibcontainer" data-year="2025" data-title="CAML: Commutative algebra machine learning—a case study on protein-ligand binding affinity prediction">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -232,7 +246,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Rapid response to fast viral evolution using AlphaFold 3-assisted topological deep learning">
+                    <div class="bibcontainer" data-year="2025" data-title="Rapid response to fast viral evolution using AlphaFold 3-assisted topological deep learning">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -263,7 +277,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Topology-enhanced machine learning model (Top-ML) for anticancer peptide prediction">
+                    <div class="bibcontainer" data-year="2025" data-title="Topology-enhanced machine learning model (Top-ML) for anticancer peptide prediction">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -294,7 +308,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="A cohomology-based Gromov-Hausdorff metric approach for quantifying molecular similarity">
+                    <div class="bibcontainer" data-year="2025" data-title="A cohomology-based Gromov-Hausdorff metric approach for quantifying molecular similarity">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -325,7 +339,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Drug Resistance Predictions Based on a Directed Flag Transformer">
+                    <div class="bibcontainer" data-year="2024" data-title="Drug Resistance Predictions Based on a Directed Flag Transformer">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -356,7 +370,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Preventing future zoonosis: SARS-CoV-2 mutations enhance human–animal cross-transmission">
+                    <div class="bibcontainer" data-year="2024" data-title="Preventing future zoonosis: SARS-CoV-2 mutations enhance human–animal cross-transmission">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -384,7 +398,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Evaluation of AlphaFold 3’s Protein–Protein Complexes for Predicting Binding Free Energy Changes upon Mutation">
+                    <div class="bibcontainer" data-year="2024" data-title="Evaluation of AlphaFold 3’s Protein–Protein Complexes for Predicting Binding Free Energy Changes upon Mutation">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -415,7 +429,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Integration of persistent Laplacian and pre-trained transformer for protein solubility changes upon mutation">
+                    <div class="bibcontainer" data-year="2024" data-title="Integration of persistent Laplacian and pre-trained transformer for protein solubility changes upon mutation">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -446,7 +460,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Curvature-enhanced Graph Convolutional Network for Biomolecular Interaction Prediction">
+                    <div class="bibcontainer" data-year="2024" data-title="Curvature-enhanced Graph Convolutional Network for Biomolecular Interaction Prediction">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -477,7 +491,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Geometric and Topological AI for Molecular Sciences">
+                    <div class="bibcontainer" data-year="2023" data-title="Geometric and Topological AI for Molecular Sciences">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -499,7 +513,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Multiscale Topological Indices for the Quantitative Prediction of SARS CoV-2 Binding Affinity Change upon Mutations">
+                    <div class="bibcontainer" data-year="2023" data-title="Multiscale Topological Indices for the Quantitative Prediction of SARS CoV-2 Binding Affinity Change upon Mutations">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -525,7 +539,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Persistent Dirac for molecular representation">
+                    <div class="bibcontainer" data-year="2023" data-title="Persistent Dirac for molecular representation">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -555,7 +569,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Fingerprint-Enhanced Graph Attention Network (FinGAT) Model for Antibiotic Discovery">
+                    <div class="bibcontainer" data-year="2023" data-title="Fingerprint-Enhanced Graph Attention Network (FinGAT) Model for Antibiotic Discovery">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -581,7 +595,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="On Korenblum Constants for some weighted function spaces">
+                    <div class="bibcontainer" data-year="2023" data-title="On Korenblum Constants for some weighted function spaces">
                         <a class="bibItem" href="javascript:void(0)">
                             <details ><summary>
                             [11] <strong>Wee JunJie</strong>, Le Hai Khoi. On Korenblum Constants for some weighted function spaces. Journal of 
@@ -601,7 +615,7 @@ researchers seeking to harness the power of topology in molecular science.
                         </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Persistent Homology for RNA Data Analysis">
+                    <div class="bibcontainer" data-year="2023" data-title="Persistent Homology for RNA Data Analysis">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [10] Xia Kelin, Liu Xiang, <strong>Wee JunJie</strong>. Persistent Homology for RNA Data Analysis. In: Filipek, S. (eds) Homology Modeling. Methods in Molecular Biology, (2023). vol 2627. Humana, New York, NY. <strong>(Book Chapter)</strong> 
@@ -623,7 +637,7 @@ researchers seeking to harness the power of topology in molecular science.
                         </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Topological Feature Engineering for Machine Learning Based Halide Perovskite Materials Design">
+                    <div class="bibcontainer" data-year="2022" data-title="Topological Feature Engineering for Machine Learning Based Halide Perovskite Materials Design">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [9] D. Vijay Anand, Qiang Xu, <strong>JunJie Wee</strong>, Kelin Xia, Tze Chien Sum. Topological Feature Engineering for Machine Learning Based Halide Perovskite Materials Design. <span style="font-style: italic;">npj Computational Materials</span>. (2022). 8(1), 203.
@@ -654,7 +668,7 @@ researchers seeking to harness the power of topology in molecular science.
                         </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Korenblum constants for various weighted Fock spaces">
+                    <div class="bibcontainer" data-year="2022" data-title="Korenblum constants for various weighted Fock spaces">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [8] <strong>Wee JunJie</strong>, Le Hai Khoi. Korenblum constants for various weighted Fock spaces. <span style="font-style: italic;">Complex Variables and Elliptic Equations</span>. (2022), pp. 1-22.
@@ -677,7 +691,7 @@ researchers seeking to harness the power of topology in molecular science.
 
                     </div>
 
-                    <div class="bibcontainer" data-title="Hodge theory-based biomolecular data analysis">
+                    <div class="bibcontainer" data-year="2022" data-title="Hodge theory-based biomolecular data analysis">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [7] Ronald Koh Joon Wei, <strong>JunJie Wee</strong>, Valerie Evangelin Laurent and Kelin Xia. Hodge theory-based biomolecular data analysis. (2022). <span style="font-style: italic;">Scientific Reports</span>. 12(1), 1-16.
@@ -702,7 +716,7 @@ researchers seeking to harness the power of topology in molecular science.
                         </div>
                     </div>
                 
-                    <div class="bibcontainer" data-title="Persistent spectral simplicial complex-based machine learning (PerSpectSC-ML) for chromosomal structural analysis in cellular differentiation">
+                    <div class="bibcontainer" data-year="2022" data-title="Persistent spectral simplicial complex-based machine learning (PerSpectSC-ML) for chromosomal structural analysis in cellular differentiation">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [6] Gong Weikang, <strong>Wee JunJie</strong>, Wu Min-Chun, Sun Xiaohan, Li Chunhua, Xia Kelin. Persistent spectral simplicial complex-based machine learning (PerSpectSC-ML) for chromosomal structural analysis in cellular differentiation. <span style="font-style: italic;">Briefings in Bioinformatics</span>. (2022). Volume 23, Issue 4, bbac168.
@@ -728,7 +742,7 @@ researchers seeking to harness the power of topology in molecular science.
                     </div>
 
 
-                    <div class="bibcontainer" data-title="Persistent spectral based ensemble learning (PerSpect-EL) for protein-protein binding affinity prediction">
+                    <div class="bibcontainer" data-year="2022" data-title="Persistent spectral based ensemble learning (PerSpect-EL) for protein-protein binding affinity prediction">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [5] <strong>Wee JunJie</strong>, Xia Kelin. Persistent spectral based ensemble learning (PerSpect-EL) for protein-protein binding affinity prediction. <span style="font-style: italic;">Briefings in Bioinformatics</span>. (2022). Volume 23, Issue 2, bbac024.
@@ -753,7 +767,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Forman persistent Ricci curvature (FPRC) based machine learning for protein-ligand binding affinity prediction">
+                    <div class="bibcontainer" data-year="2021" data-title="Forman persistent Ricci curvature (FPRC) based machine learning for protein-ligand binding affinity prediction">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [4] <strong>Wee JunJie</strong>, Xia Kelin. Forman persistent Ricci curvature (FPRC) based machine learning for protein-ligand binding affinity prediction. <span style="font-style: italic;">Briefings in Bioinformatics</span> (2021). Volume 22, Issue 6, bbab136.
@@ -797,7 +811,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="Ollivier Persistent Ricci Curvature-Based Machine Learning for the Protein-Ligand Binding Affinity Prediction">
+                    <div class="bibcontainer" data-year="2021" data-title="Ollivier Persistent Ricci Curvature-Based Machine Learning for the Protein-Ligand Binding Affinity Prediction">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [3] <strong>Wee JunJie</strong>, Xia Kelin. Ollivier Persistent Ricci Curvature-Based Machine Learning for the Protein-Ligand Binding Affinity Prediction. <span style="font-style: italic;">Journal of Chemical Information and Modeling</span> (2021). 61(4), 1617-1626.
@@ -842,7 +856,7 @@ researchers seeking to harness the power of topology in molecular science.
                     </div>
 
 
-                    <div class="bibcontainer" data-title="Korenblum constants for some function spaces">
+                    <div class="bibcontainer" data-year="2020" data-title="Korenblum constants for some function spaces">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                                 <summary>
@@ -875,7 +889,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer" data-title="The Korenblum Maximum Principle for some function spaces">
+                    <div class="bibcontainer" data-year="2019" data-title="The Korenblum Maximum Principle for some function spaces">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -1246,36 +1260,90 @@ researchers seeking to harness the power of topology in molecular science.
                   var prevBtn = document.getElementById('pub-prev-btn');
                   var nextBtn = document.getElementById('pub-next-btn');
                   var perPageSelect = document.getElementById('pub-per-page-select');
-                  var sortBtn = document.getElementById('pub-sort-btn');
-                  var sortIcon = sortBtn.querySelector('i');
-                  var resetBtn = document.getElementById('pub-sort-reset-btn');
-                  // 'none' = original (newest-first) order; 'asc'/'desc' =
-                  // alphabetical by title. The sort button only ever
-                  // toggles between asc/desc once engaged - getting back
-                  // to 'none' is what the separate reset button is for.
-                  var sortState = 'none';
+                  var sortByWrap = document.getElementById('pub-sortby-wrap');
+                  var sortByBtn = document.getElementById('pub-sortby-btn');
+                  var sortByLabel = document.getElementById('pub-sortby-label');
+                  var sortByBtnIcon = document.getElementById('pub-sortby-btn-icon');
+                  var sortByMenu = document.getElementById('pub-sortby-menu');
+                  var sortByOptions = Array.prototype.slice.call(document.querySelectorAll('.pub-sortby-option'));
+
+                  // sortField: 'none' | 'title' | 'year' | 'citations'.
+                  // The dropdown only ever toggles asc/desc once a field
+                  // is engaged - getting back to 'none' (original,
+                  // newest-first order) is what the reset button is for.
+                  var sortField = 'none';
+                  var sortDir = 'asc';
+                  var FIELD_LABELS = { title: 'Title', year: 'Year', citations: 'Citations' };
+                  // Down = A-Z / newest-first / most-cited-first, since
+                  // that's the more commonly wanted direction for Year
+                  // and Citations (title still defaults to A-Z, not Z-A).
+                  var FIELD_ICONS = {
+                    title: { asc: 'fa-arrow-down-a-z', desc: 'fa-arrow-up-a-z' },
+                    year: { asc: 'fa-arrow-up-1-9', desc: 'fa-arrow-down-9-1' },
+                    citations: { asc: 'fa-arrow-up-1-9', desc: 'fa-arrow-down-9-1' }
+                  };
+                  var FIELD_DEFAULT_DIR = { title: 'asc', year: 'desc', citations: 'desc' };
+
+                  // Google Scholar counts load asynchronously (see the
+                  // separate metrics script) and a badge is hidden
+                  // outright once it resolves to a confirmed 0 - so
+                  // "hidden" reads as 0, not unknown, while anything
+                  // still showing the loading placeholder (non-numeric
+                  // text) is genuinely unknown and sorts as -1.
+                  function getCitationCount(entryEl) {
+                    var badge = entryEl.querySelector('.badge-scholar');
+                    if (!badge) return -1;
+                    if (badge.style.display === 'none') return 0;
+                    var countEl = badge.querySelector('[data-role="count"]');
+                    var n = countEl ? parseInt(countEl.textContent, 10) : NaN;
+                    return isNaN(n) ? -1 : n;
+                  }
+
+                  function compareBy(field, dir) {
+                    var mul = dir === 'asc' ? 1 : -1;
+                    return function(a, b) {
+                      if (field === 'title') {
+                        return mul * (a.dataset.title || '').localeCompare(b.dataset.title || '');
+                      }
+                      if (field === 'year') {
+                        return mul * ((parseInt(a.dataset.year, 10) || 0) - (parseInt(b.dataset.year, 10) || 0));
+                      }
+                      if (field === 'citations') {
+                        return mul * (getCitationCount(a) - getCitationCount(b));
+                      }
+                      return 0;
+                    };
+                  }
+
+                  function closeSortByMenu() {
+                    sortByMenu.classList.remove('open');
+                    sortByBtn.setAttribute('aria-expanded', 'false');
+                  }
+                  function openSortByMenu() {
+                    sortByMenu.classList.add('open');
+                    sortByBtn.setAttribute('aria-expanded', 'true');
+                  }
 
                   function updateSortUI() {
-                    if (sortState === 'desc') {
-                      sortIcon.className = 'fas fa-arrow-up-a-z';
-                      sortBtn.title = 'Sort by title, ascending';
+                    if (sortField === 'none') {
+                      sortByLabel.textContent = 'Sort by';
+                      sortByBtnIcon.className = 'fas fa-caret-down';
                     } else {
-                      sortIcon.className = 'fas fa-arrow-down-a-z';
-                      sortBtn.title = 'Sort by title, descending';
+                      sortByLabel.textContent = FIELD_LABELS[sortField];
+                      sortByBtnIcon.className = 'fas ' + FIELD_ICONS[sortField][sortDir];
                     }
-                    sortBtn.setAttribute('aria-pressed', sortState === 'none' ? 'false' : 'true');
-                    resetBtn.disabled = sortState === 'none';
+                    sortByOptions.forEach(function(opt) {
+                      var f = opt.getAttribute('data-field');
+                      var isActive = f === sortField;
+                      opt.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                      var dir = isActive ? sortDir : FIELD_DEFAULT_DIR[f];
+                      opt.querySelector('.pub-sortby-dir').className = 'fas ' + FIELD_ICONS[f][dir] + ' pub-sortby-dir';
+                    });
                   }
 
                   function render() {
                     var q = searchInput.value.trim().toLowerCase();
-                    var ordered = items;
-                    if (sortState !== 'none') {
-                      ordered = items.slice().sort(function(a, b) {
-                        var cmp = (a.dataset.title || '').localeCompare(b.dataset.title || '');
-                        return sortState === 'asc' ? cmp : -cmp;
-                      });
-                    }
+                    var ordered = sortField === 'none' ? items : items.slice().sort(compareBy(sortField, sortDir));
                     var filtered = q ? ordered.filter(function(it) {
                       return it.textContent.toLowerCase().indexOf(q) !== -1;
                     }) : ordered;
@@ -1340,21 +1408,41 @@ researchers seeking to harness the power of topology in molecular science.
                     currentPage = 1;
                     render();
                   });
-                  sortBtn.addEventListener('click', function() {
-                    sortState = sortState === 'asc' ? 'desc' : 'asc';
-                    updateSortUI();
-                    currentPage = 1;
-                    render();
-                    scrollToListTop();
+                  sortByBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (sortByMenu.classList.contains('open')) {
+                      closeSortByMenu();
+                    } else {
+                      openSortByMenu();
+                    }
                   });
-                  resetBtn.addEventListener('click', function() {
-                    sortState = 'none';
-                    updateSortUI();
-                    currentPage = 1;
-                    render();
-                    scrollToListTop();
+                  sortByOptions.forEach(function(opt) {
+                    opt.addEventListener('click', function() {
+                      var f = opt.getAttribute('data-field');
+                      if (sortField === f) {
+                        sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+                      } else {
+                        sortField = f;
+                        sortDir = FIELD_DEFAULT_DIR[f];
+                      }
+                      closeSortByMenu();
+                      updateSortUI();
+                      currentPage = 1;
+                      render();
+                      scrollToListTop();
+                    });
                   });
-
+                  document.addEventListener('click', function(e) {
+                    if (sortByMenu.classList.contains('open') && !sortByWrap.contains(e.target)) {
+                      closeSortByMenu();
+                    }
+                  });
+                  document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && sortByMenu.classList.contains('open')) {
+                      closeSortByMenu();
+                      sortByBtn.focus();
+                    }
+                  });
                   updateSortUI();
                   render();
                 })();

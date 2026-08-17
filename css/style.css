@@ -1146,8 +1146,7 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
    (1,2,0) is what actually wins here. Styled as a pill matching the
    DOI/arXiv/Code/Cite buttons above the search bar, rather than a
    plain bordered box, so it reads as part of the same button family. */
-#more .pub-search-row .pub-sort-btn,
-#more .pub-search-row .pub-sort-reset-btn{
+#more .pub-search-row .pub-sortby-btn{
   flex: 0 0 auto;
   width: auto;
   height: auto;
@@ -1164,27 +1163,82 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
   color: var(--text-color);
   cursor: pointer;
 }
-#more .pub-search-row .pub-sort-btn i,
-#more .pub-search-row .pub-sort-reset-btn i{
+#more .pub-search-row .pub-sortby-btn i{
   color: var(--pill-icon);
 }
-#more .pub-search-row .pub-sort-btn:hover,
-#more .pub-search-row .pub-sort-reset-btn:hover:not(:disabled){
+#more .pub-search-row .pub-sortby-btn:hover{
   background: var(--menu-bg);
 }
-/* aria-pressed="true" while alphabetical sort is active - same hover
-   tint but persistent, plus bold, so the active state reads clearly
-   without it once you move the mouse away. */
-#more .pub-search-row .pub-sort-btn[aria-pressed="true"]{
+/* aria-expanded="true" while the dropdown is open - same hover tint
+   but persistent, so the trigger reads as "currently open". */
+#more .pub-search-row .pub-sortby-btn[aria-expanded="true"]{
+  background: var(--menu-bg);
+}
+/* Positioning context for the dropdown panel, which is anchored to
+   this wrapper rather than the button itself so it isn't clipped by
+   any overflow on the button. */
+.pub-sortby-wrap{
+  position: relative;
+  flex: 0 0 auto;
+}
+.pub-sortby-menu{
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 180px;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px;
+  background: var(--bg-container);
+  border: 1px solid var(--entry-border);
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+  z-index: 50;
+}
+.pub-sortby-menu.open{
+  display: flex;
+}
+/* Scoped through #more + both ancestor classes for the same reason as
+   the buttons above - a plain .pub-sortby-option rule loses to
+   #more button{} otherwise. */
+#more .pub-sortby-wrap .pub-sortby-option{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: auto;
+  height: auto;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 13px;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+#more .pub-sortby-wrap .pub-sortby-option:hover{
+  background: var(--menu-bg);
+}
+/* The currently active field stays highlighted even off-hover, same
+   pattern as the old aria-pressed sort button - otherwise there's no
+   way to tell which field is active without re-opening the menu. */
+#more .pub-sortby-wrap .pub-sortby-option[aria-selected="true"]{
   background: var(--menu-bg);
   font-weight: 600;
 }
-#more .pub-search-row .pub-sort-reset-btn{
-  padding: 4px 9px;
+/* Every row shows its field's direction icon so the menu also serves
+   as a legend (down = A-Z/newest/most-cited first, up = the reverse)
+   - but only the active row's icon is fully visible; the rest stay
+   faint since their direction hasn't actually been chosen yet. */
+.pub-sortby-option .pub-sortby-dir{
+  color: var(--pill-icon);
+  opacity: .3;
 }
-#more .pub-search-row .pub-sort-reset-btn:disabled{
-  opacity: .35;
-  cursor: default;
+.pub-sortby-option[aria-selected="true"] .pub-sortby-dir{
+  opacity: 1;
 }
 .pub-per-page-row{
   display: flex;
