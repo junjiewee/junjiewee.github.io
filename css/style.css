@@ -1261,15 +1261,28 @@ canvas{
    coverage at all below the first screen's height on any page longer
    than one viewport. Fixed positioning pins it to the viewport - top:0
    always, height always matching exactly what's currently visible -
-   so it covers the page uniformly as the user scrolls. z-index:-1
-   keeps it behind .container regardless of DOM-order assumptions. */
+   so it covers the page uniformly as the user scrolls.
+
+   No z-index here deliberately - position:fixed combined with a
+   negative z-index is a known trigger for browsers failing to keep a
+   fixed element properly pinned during scroll (it can visibly lag
+   behind/drift with scroll position instead of staying put, which is
+   exactly what a broken "fixed" element looks like). #particles-js
+   already comes before .container in the HTML, and .container has its
+   own opaque background (see .container.container below), so plain
+   DOM-order painting already keeps it behind the content - no z-index
+   needed to achieve that. translateZ(0) forces this element onto its
+   own GPU compositing layer, which is the standard, well-established
+   fix for fixed-position elements rendering unreliably during scroll
+   (most consistently reported on Safari). */
 #particles-js{
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   background-color: var(--bg-particles);
   background-image: url('');
   background-size: cover;
