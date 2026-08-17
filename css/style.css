@@ -736,7 +736,7 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid var(--menu-bg);}
 }
 
 .bibItem {
-  font-size:  14px;
+  font-size:  16px;
   font-family:'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
 }
 
@@ -744,7 +744,7 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid var(--menu-bg);}
    details > summary { font-size: 1.1em; } bump published entries get.
    Match it explicitly so preprint titles render at the same size. */
 .bibItem:not(:has(details)) {
-  font-size: 15.4px;
+  font-size: 17.6px;
 }
 
 details > summary{
@@ -891,7 +891,7 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
 .artLinks{text-align:left;margin:0;padding:0;border:none;padding-bottom:10px;max-width:100%;display:flex;flex-wrap:wrap;align-items:center;row-gap:8px;}
 .artLinks a {display:inline-block;text-decoration:underline;max-width:100%;}
 /* A genuine zero-size spacer (see .artlinks-break, inserted in the
-   markup right before the Altmetric badge) rather than flex-basis:100%
+   markup right before the citation badges) rather than flex-basis:100%
    on a real badge element, which stretched that badge to the full row
    width instead of forcing a break and leaving it at its own size. */
 .artlinks-break{
@@ -975,7 +975,11 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
    crossref.org/img/crossref-logo-icon-only.svg), not a drawn
    approximation. */
 .badge-citations{background-color: rgba(23, 84, 93, 0.32);}
-.badge-citations .mark{width:11px;height:16px;flex:0 0 auto;}
+/* 14px tall (down from 16px) to match the Dimensions/Scholar mark
+   height exactly, so all three badges come out the same overall
+   height - width scaled proportionally (viewBox is 132.105x192.301)
+   so the logo isn't squished. */
+.badge-citations .mark{width:9.6px;height:14px;flex:0 0 auto;}
 
 /* Dimensions: tint plus the real faceted-gem mark, both the path
    geometry and gradient stops pulled straight from the live badge
@@ -989,10 +993,30 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
   overflow:hidden;
   border:1px solid rgba(0,0,0,0.15);
 }
-.badge-scholar .seg{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;}
+/* .artLinks a.badge-link sets align-items:center at specificity
+   (0,2,1) - a bare .badge-scholar rule (0,1,0) can't out-rank it, so
+   this needs the same selector shape to actually win. With :center
+   each .seg keeps its own natural height (padding + its own content),
+   so the icon segment and the count-text segment can end up visibly
+   different heights instead of forming one even pill. :stretch makes
+   both halves match the taller one automatically, however big the
+   icon or text is. */
+.artLinks a.badge-scholar{
+  align-items: stretch;
+}
+.badge-scholar .seg{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:4px 8px;}
 .badge-scholar .seg.label{background:#f1ede1;color:#3c3c3c;font-weight:600;}
 .badge-scholar .seg.count{background:#4285c9;color:#fff;font-weight:600;letter-spacing:.01em;font-variant-numeric:tabular-nums;}
-.badge-scholar svg{width:11px;height:11px;flex:0 0 auto;}
+/* Sized up from 11px: at the old size, once .label-text is hidden
+   (icon-only segment, see the narrow-screen rule below), the segment
+   still stretches to match its .seg.count sibling's height (flex's
+   default align-items:stretch on the parent), leaving the small icon
+   surrounded by visible empty space rather than filling its pill. */
+/* 14px, matching the Dimensions gem mark's own size (the smaller of
+   the two other badges) - large enough to fill the pill without the
+   whitespace the original 11px left, but not so large the Scholar
+   badge ends up taller than its Crossref/Dimensions neighbors. */
+.badge-scholar svg{width:14px;height:14px;flex:0 0 auto;}
 
 .badge-link.is-loading{opacity:.45;}
 
