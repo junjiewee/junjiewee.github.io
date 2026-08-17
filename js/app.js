@@ -155,6 +155,31 @@ particlesJS('particles-js',
   }
 
 );
+
+  /* particlesJS() reads the new canvas's offsetWidth/offsetHeight
+     synchronously as part of its own constructor, and - occasionally,
+     non-deterministically, when this runs before the browser's first
+     layout pass has actually settled - that read comes back 0x0 even
+     though the container (#particles-js, position:fixed) is correctly
+     viewport-sized moments later. The canvas's HTML width/height
+     attributes (its actual pixel buffer, not just its CSS display
+     size) then stay permanently 0x0, so nothing can be drawn into it.
+     A fixed setTimeout delay doesn't reliably avoid this (confirmed by
+     testing - the race isn't on a consistent clock), so this is kept
+     only as a defensive fallback; the real fix is deferring the
+     *first* call to window's load event below, which guarantees a
+     layout pass has already happened. */
+  setTimeout(function() { window.dispatchEvent(new Event('resize')); }, 50);
 }
 
-initParticles();
+/* Deferred to window.load (fires after the full page - including
+   images and fonts - has laid out at least once) rather than called
+   synchronously here, specifically to avoid the 0x0-canvas race
+   described above. Theme-toggle re-inits still call initParticles()
+   directly and don't need this, since the page is obviously already
+   fully loaded by the time a user can click the toggle. */
+if (document.readyState === 'complete') {
+  initParticles();
+} else {
+  window.addEventListener('load', initParticles);
+}
