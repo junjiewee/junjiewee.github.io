@@ -1035,8 +1035,14 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
   .badge-dimensions{
     padding-right: 8px;
   }
+  /* Citations/Dimensions keep their count text alongside the icon even
+     with the word hidden, so the icon isn't alone in the pill - Scholar's
+     icon-only segment has nothing else in it, so the base 4px/8px
+     padding (sized for icon+gap+word) reads as visibly empty space
+     around a lone icon. Tightened to snug padding on both sides instead
+     of just trimming the right edge. */
   .badge-scholar .seg.label{
-    padding-right: 6px;
+    padding: 4px 5px;
   }
 }
 
@@ -1123,6 +1129,60 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
   background: var(--pill-border);
 }
 #more .pub-pagination-v2 .pub-page-nav:disabled{
+  opacity: .35;
+  cursor: default;
+}
+/* Search input + sort button share a row, button sitting immediately
+   to the input's right rather than off at the far edge of the page. */
+.pub-search-row{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* #more button{} (id+element, specificity 1,0,1 - meant for the old
+   abstract-toggle "+" button) forces every <button> under #more into
+   its 30x30 flex:1 icon shape regardless of class - same issue the
+   pagination nav buttons hit. Scoping through both ancestor classes
+   (1,2,0) is what actually wins here. Styled as a pill matching the
+   DOI/arXiv/Code/Cite buttons above the search bar, rather than a
+   plain bordered box, so it reads as part of the same button family. */
+#more .pub-search-row .pub-sort-btn,
+#more .pub-search-row .pub-sort-reset-btn{
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  padding: 4px 11px;
+  font-size: 12px;
+  font-family: inherit;
+  border-radius: 999px;
+  border: 1px solid var(--pill-border);
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+}
+#more .pub-search-row .pub-sort-btn i,
+#more .pub-search-row .pub-sort-reset-btn i{
+  color: var(--pill-icon);
+}
+#more .pub-search-row .pub-sort-btn:hover,
+#more .pub-search-row .pub-sort-reset-btn:hover:not(:disabled){
+  background: var(--menu-bg);
+}
+/* aria-pressed="true" while alphabetical sort is active - same hover
+   tint but persistent, plus bold, so the active state reads clearly
+   without it once you move the mouse away. */
+#more .pub-search-row .pub-sort-btn[aria-pressed="true"]{
+  background: var(--menu-bg);
+  font-weight: 600;
+}
+#more .pub-search-row .pub-sort-reset-btn{
+  padding: 4px 9px;
+}
+#more .pub-search-row .pub-sort-reset-btn:disabled{
   opacity: .35;
   cursor: default;
 }
