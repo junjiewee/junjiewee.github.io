@@ -57,18 +57,20 @@ li{list-style:none}
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg-page: rgb(15, 17, 20, 1);
-    --bg-container: rgb(26, 28, 33, 1);
-    --bg-particles: rgb(15, 17, 20, 1);
+    /* "Twilight Slate" - a light-touch dark blue rather than a
+       near-neutral near-black, picked from a set of sampled options. */
+    --bg-page: #12161f;
+    --bg-container: #1b2333;
+    --bg-particles: #12161f;
     --text-color: #e6e6e6;
     --heading-color: #d68a72;
-    --menu-bg: #2c3a63cc;
+    --menu-bg: #28365ecc;
     --menu-text: #f0f0f0;
     --button-bg: #3a2a1f;
     --container-shadow: rgba(0, 0, 0, 0.6);
     --link-color: #8ab4f8;
     --link-visited-color: #c58af9;
-    --entry-bg: #202226;
+    --entry-bg: #1d2436;
     --entry-border: rgba(255, 255, 255, 0.09);
     --pill-border: rgba(127, 168, 201, 0.55);
     --pill-icon: #8fb4e0;
@@ -86,18 +88,20 @@ li{list-style:none}
 }
 
 :root[data-theme="dark"] {
-  --bg-page: rgb(15, 17, 20, 1);
-  --bg-container: rgb(26, 28, 33, 1);
-  --bg-particles: rgb(15, 17, 20, 1);
+  /* "Twilight Slate" - a light-touch dark blue rather than a
+     near-neutral near-black, picked from a set of sampled options. */
+  --bg-page: #12161f;
+  --bg-container: #1b2333;
+  --bg-particles: #12161f;
   --text-color: #e6e6e6;
   --heading-color: #d68a72;
-  --menu-bg: #2c3a63cc;
+  --menu-bg: #28365ecc;
   --menu-text: #f0f0f0;
   --button-bg: #3a2a1f;
   --container-shadow: rgba(0, 0, 0, 0.6);
   --link-color: #8ab4f8;
   --link-visited-color: #c58af9;
-  --entry-bg: #202226;
+  --entry-bg: #1d2436;
   --entry-border: rgba(255, 255, 255, 0.09);
   --pill-border: rgba(127, 168, 201, 0.55);
   --pill-icon: #8fb4e0;
