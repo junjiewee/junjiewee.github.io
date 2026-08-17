@@ -1262,12 +1262,28 @@ researchers seeking to harness the power of topology in molecular science.
                     pagination.style.display = filtered.length === 0 ? 'none' : 'flex';
                   }
 
-                  prevBtn.addEventListener('click', function() { currentPage--; render(); });
-                  nextBtn.addEventListener('click', function() { currentPage++; render(); });
+                  // Changing page swaps in a different number/height of
+                  // entries. If the new page is shorter than the old one,
+                  // the browser clamps scrollY to the new (smaller) max
+                  // scroll on its own the instant the DOM shrinks - which
+                  // reads as the page suddenly jumping upward, since
+                  // Prev/Next sit at the bottom of the list and that clamp
+                  // can snap the view somewhere else on the page entirely.
+                  // Scrolling to the top of the list ourselves replaces
+                  // that unpredictable snap with a consistent, expected
+                  // one: after any page change you're looking at the start
+                  // of the new page's results, every time.
+                  function scrollToListTop() {
+                    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+
+                  prevBtn.addEventListener('click', function() { currentPage--; render(); scrollToListTop(); });
+                  nextBtn.addEventListener('click', function() { currentPage++; render(); scrollToListTop(); });
                   perPageSelect.addEventListener('change', function() {
                     perPage = parseInt(perPageSelect.value, 10) || 10;
                     currentPage = 1;
                     render();
+                    scrollToListTop();
                   });
                   searchInput.addEventListener('input', function() {
                     currentPage = 1;
