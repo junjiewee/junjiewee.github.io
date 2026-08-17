@@ -35,6 +35,12 @@ li{list-style:none}
   --heading-color: #a8452f;
   --menu-bg: #b4cdf3c7;
   --menu-text: #000000;
+  /* Separate from --menu-bg deliberately: that token needs to stay
+     vivid/high-contrast for small pill labels (nav items, badges),
+     but the abstract-toggle hover reuses the same fill behind several
+     lines of body text, where that much saturation reads as harsh
+     rather than a subtle "you're hovering this" cue. */
+  --summary-hover-bg: #b4cdf3c7;
   --button-bg: bisque;
   --container-shadow: #000000;
   --link-color: #0000ee;
@@ -65,6 +71,11 @@ li{list-style:none}
     --text-color: #e6e6e6;
     --heading-color: #d68a72;
     --menu-bg: #5170b3;
+    /* A soft white-alpha wash rather than a solid saturated fill -
+       blends into whatever's underneath (the entry card's own navy)
+       as a gentle lightening instead of a competing block of color,
+       so white text stays comfortable to read on top of it. */
+    --summary-hover-bg: rgba(255, 255, 255, 0.12);
     --menu-text: #f0f0f0;
     --button-bg: #3a2a1f;
     --container-shadow: rgba(0, 0, 0, 0.6);
@@ -96,6 +107,7 @@ li{list-style:none}
   --text-color: #e6e6e6;
   --heading-color: #d68a72;
   --menu-bg: #5170b3;
+  --summary-hover-bg: rgba(255, 255, 255, 0.12);
   --menu-text: #f0f0f0;
   --button-bg: #3a2a1f;
   --container-shadow: rgba(0, 0, 0, 0.6);
@@ -871,7 +883,7 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
    soft rounded tint instead of a hard border, reads as a normal link
    hover instead of a slab. */
 .bibItem summary:hover, .bibItem summary:focus-visible {
-  background-color: var(--menu-bg);
+  background-color: var(--summary-hover-bg);
   border-radius: 6px;
   outline: none;
 }
