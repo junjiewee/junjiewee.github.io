@@ -33,13 +33,21 @@ tight_intro: true
                 <h2>Published/Accepted</h2>
                 <p style="font-size: 14px">Click a publication to view its abstract.</p><br>
 
-                <input type="text" id="pub-search" placeholder="Search by title, author, or journal&hellip;" style="width:100%;max-width:420px;padding:8px 12px;font-size:15px;font-family:inherit;border-radius:5px;border:1px solid var(--menu-bg);background:var(--bg-container);color:var(--text-color);box-sizing:border-box;">
+                <div class="pub-search-row">
+                  <input type="text" id="pub-search" placeholder="Search by title, author, or journal&hellip;" style="flex:1;min-width:0;max-width:420px;padding:8px 12px;font-size:15px;font-family:inherit;border-radius:5px;border:1px solid var(--menu-bg);background:var(--bg-container);color:var(--text-color);box-sizing:border-box;">
+                  <button type="button" id="pub-sort-btn" class="pub-sort-btn" aria-pressed="false" title="Sort by title, ascending">
+                    <i class="fas fa-arrow-down-a-z" aria-hidden="true"></i> Sort
+                  </button>
+                  <button type="button" id="pub-sort-reset-btn" class="pub-sort-reset-btn" disabled title="Reset to original order">
+                    <i class="fas fa-arrow-rotate-left" aria-hidden="true"></i>
+                  </button>
+                </div>
                 <div id="pub-page-info" style="font-size:14px;margin-top:8px;color:var(--text-color);"></div>
                 <br>
 
                 <div class="flexcontainer">
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="CAKR: Commutative algebra k-mer representations for genomics">
                             <a class="bibItem" href="javascript:void(0)">
                                 <details><summary>
                                 [29] Faisal Suwayyid, Yuta Hozumi, Mushal Zia, <strong>JunJie Wee</strong>, Hongsong Feng, Guo-Wei Wei. CAKR: Commutative algebra k-mer representations for genomics. (2026). Nature Communications, 17, 76429.
@@ -67,7 +75,7 @@ tight_intro: true
                                 </div>
                         </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="CAP: Commutative algebra prediction of protein-nucleic acid binding affinities">
                             <a class="bibItem" href="javascript:void(0)">
                                 <details><summary>
                                 [28] Mushal Zia, Faisal Suwayyid, Yuta Hozumi, <strong>JunJie Wee</strong>, Hongsong Feng, and Guo-Wei Wei. CAP: Commutative algebra prediction of protein-nucleic acid binding affinities. (2025). Machine Learning: Science and Technology, 6(4), 045068.
@@ -96,7 +104,7 @@ tight_intro: true
                                 </div>
                         </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="A Korenblum Maximum Principle for Weighted Hilbert spaces of entire Dirichlet series with real frequencies">
                             <a class="bibItem" href="javascript:void(0)">
                                 <details><summary>
                                 [27] Hai Khoi Le, <strong>JunJie Wee</strong>. A Korenblum Maximum Principle for Weighted Hilbert spaces of entire Dirichlet series with real frequencies. Journal of Mathematics and Mathematical Sciences, 4(2). (2025).
@@ -121,7 +129,7 @@ tight_intro: true
                                 </div>
                         </div>
 
-                     <div class="bibcontainer">
+                     <div class="bibcontainer" data-title="A review of topological data analysis and topological deep learning in molecular sciences">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -162,7 +170,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Topological Machine Learning for Protein-Nucleic Acid Binding Affinity Changes Upon Mutation">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -193,7 +201,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="CAML: Commutative algebra machine learning—a case study on protein-ligand binding affinity prediction">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -224,7 +232,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Rapid response to fast viral evolution using AlphaFold 3-assisted topological deep learning">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -255,7 +263,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Topology-enhanced machine learning model (Top-ML) for anticancer peptide prediction">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -286,7 +294,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="A cohomology-based Gromov-Hausdorff metric approach for quantifying molecular similarity">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -317,7 +325,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Drug Resistance Predictions Based on a Directed Flag Transformer">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -348,7 +356,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Preventing future zoonosis: SARS-CoV-2 mutations enhance human–animal cross-transmission">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -376,7 +384,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Evaluation of AlphaFold 3’s Protein–Protein Complexes for Predicting Binding Free Energy Changes upon Mutation">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -407,7 +415,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Integration of persistent Laplacian and pre-trained transformer for protein solubility changes upon mutation">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -438,7 +446,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Curvature-enhanced Graph Convolutional Network for Biomolecular Interaction Prediction">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -469,7 +477,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Geometric and Topological AI for Molecular Sciences">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -491,7 +499,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Multiscale Topological Indices for the Quantitative Prediction of SARS CoV-2 Binding Affinity Change upon Mutations">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -517,7 +525,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Persistent Dirac for molecular representation">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -547,7 +555,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Fingerprint-Enhanced Graph Attention Network (FinGAT) Model for Antibiotic Discovery">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -573,7 +581,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="On Korenblum Constants for some weighted function spaces">
                         <a class="bibItem" href="javascript:void(0)">
                             <details ><summary>
                             [11] <strong>Wee JunJie</strong>, Le Hai Khoi. On Korenblum Constants for some weighted function spaces. Journal of 
@@ -593,7 +601,7 @@ researchers seeking to harness the power of topology in molecular science.
                         </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Persistent Homology for RNA Data Analysis">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [10] Xia Kelin, Liu Xiang, <strong>Wee JunJie</strong>. Persistent Homology for RNA Data Analysis. In: Filipek, S. (eds) Homology Modeling. Methods in Molecular Biology, (2023). vol 2627. Humana, New York, NY. <strong>(Book Chapter)</strong> 
@@ -615,7 +623,7 @@ researchers seeking to harness the power of topology in molecular science.
                         </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Topological Feature Engineering for Machine Learning Based Halide Perovskite Materials Design">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [9] D. Vijay Anand, Qiang Xu, <strong>JunJie Wee</strong>, Kelin Xia, Tze Chien Sum. Topological Feature Engineering for Machine Learning Based Halide Perovskite Materials Design. <span style="font-style: italic;">npj Computational Materials</span>. (2022). 8(1), 203.
@@ -646,7 +654,7 @@ researchers seeking to harness the power of topology in molecular science.
                         </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Korenblum constants for various weighted Fock spaces">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [8] <strong>Wee JunJie</strong>, Le Hai Khoi. Korenblum constants for various weighted Fock spaces. <span style="font-style: italic;">Complex Variables and Elliptic Equations</span>. (2022), pp. 1-22.
@@ -669,7 +677,7 @@ researchers seeking to harness the power of topology in molecular science.
 
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Hodge theory-based biomolecular data analysis">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [7] Ronald Koh Joon Wei, <strong>JunJie Wee</strong>, Valerie Evangelin Laurent and Kelin Xia. Hodge theory-based biomolecular data analysis. (2022). <span style="font-style: italic;">Scientific Reports</span>. 12(1), 1-16.
@@ -694,7 +702,7 @@ researchers seeking to harness the power of topology in molecular science.
                         </div>
                     </div>
                 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Persistent spectral simplicial complex-based machine learning (PerSpectSC-ML) for chromosomal structural analysis in cellular differentiation">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [6] Gong Weikang, <strong>Wee JunJie</strong>, Wu Min-Chun, Sun Xiaohan, Li Chunhua, Xia Kelin. Persistent spectral simplicial complex-based machine learning (PerSpectSC-ML) for chromosomal structural analysis in cellular differentiation. <span style="font-style: italic;">Briefings in Bioinformatics</span>. (2022). Volume 23, Issue 4, bbac168.
@@ -720,7 +728,7 @@ researchers seeking to harness the power of topology in molecular science.
                     </div>
 
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Persistent spectral based ensemble learning (PerSpect-EL) for protein-protein binding affinity prediction">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [5] <strong>Wee JunJie</strong>, Xia Kelin. Persistent spectral based ensemble learning (PerSpect-EL) for protein-protein binding affinity prediction. <span style="font-style: italic;">Briefings in Bioinformatics</span>. (2022). Volume 23, Issue 2, bbac024.
@@ -745,7 +753,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Forman persistent Ricci curvature (FPRC) based machine learning for protein-ligand binding affinity prediction">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [4] <strong>Wee JunJie</strong>, Xia Kelin. Forman persistent Ricci curvature (FPRC) based machine learning for protein-ligand binding affinity prediction. <span style="font-style: italic;">Briefings in Bioinformatics</span> (2021). Volume 22, Issue 6, bbab136.
@@ -789,7 +797,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Ollivier Persistent Ricci Curvature-Based Machine Learning for the Protein-Ligand Binding Affinity Prediction">
                         <a class="bibItem" href="javascript:void(0)">
                             <details><summary>
                             [3] <strong>Wee JunJie</strong>, Xia Kelin. Ollivier Persistent Ricci Curvature-Based Machine Learning for the Protein-Ligand Binding Affinity Prediction. <span style="font-style: italic;">Journal of Chemical Information and Modeling</span> (2021). 61(4), 1617-1626.
@@ -834,7 +842,7 @@ researchers seeking to harness the power of topology in molecular science.
                     </div>
 
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="Korenblum constants for some function spaces">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                                 <summary>
@@ -867,7 +875,7 @@ researchers seeking to harness the power of topology in molecular science.
                             </div>
                     </div>
 
-                    <div class="bibcontainer">
+                    <div class="bibcontainer" data-title="The Korenblum Maximum Principle for some function spaces">
                         <a class="bibItem" href="javascript:void(0)">
                             <details>
                             <summary>
@@ -1238,12 +1246,39 @@ researchers seeking to harness the power of topology in molecular science.
                   var prevBtn = document.getElementById('pub-prev-btn');
                   var nextBtn = document.getElementById('pub-next-btn');
                   var perPageSelect = document.getElementById('pub-per-page-select');
+                  var sortBtn = document.getElementById('pub-sort-btn');
+                  var sortIcon = sortBtn.querySelector('i');
+                  var resetBtn = document.getElementById('pub-sort-reset-btn');
+                  // 'none' = original (newest-first) order; 'asc'/'desc' =
+                  // alphabetical by title. The sort button only ever
+                  // toggles between asc/desc once engaged - getting back
+                  // to 'none' is what the separate reset button is for.
+                  var sortState = 'none';
+
+                  function updateSortUI() {
+                    if (sortState === 'desc') {
+                      sortIcon.className = 'fas fa-arrow-up-a-z';
+                      sortBtn.title = 'Sort by title, ascending';
+                    } else {
+                      sortIcon.className = 'fas fa-arrow-down-a-z';
+                      sortBtn.title = 'Sort by title, descending';
+                    }
+                    sortBtn.setAttribute('aria-pressed', sortState === 'none' ? 'false' : 'true');
+                    resetBtn.disabled = sortState === 'none';
+                  }
 
                   function render() {
                     var q = searchInput.value.trim().toLowerCase();
-                    var filtered = q ? items.filter(function(it) {
+                    var ordered = items;
+                    if (sortState !== 'none') {
+                      ordered = items.slice().sort(function(a, b) {
+                        var cmp = (a.dataset.title || '').localeCompare(b.dataset.title || '');
+                        return sortState === 'asc' ? cmp : -cmp;
+                      });
+                    }
+                    var filtered = q ? ordered.filter(function(it) {
                       return it.textContent.toLowerCase().indexOf(q) !== -1;
-                    }) : items;
+                    }) : ordered;
 
                     var totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
                     if (currentPage > totalPages) currentPage = totalPages;
@@ -1252,7 +1287,18 @@ researchers seeking to harness the power of topology in molecular science.
                     items.forEach(function(it) { it.style.display = 'none'; });
                     var start = (currentPage - 1) * perPage;
                     var end = start + perPage;
-                    filtered.slice(start, end).forEach(function(it) { it.style.display = ''; });
+                    // .flexcontainer's own display:flex rule never actually
+                    // applies (an unrelated pre-existing CSS quirk elsewhere
+                    // in the stylesheet scopes it to .artLinks .flexcontainer,
+                    // which doesn't match this element) - it renders as plain
+                    // block layout, so visual order follows DOM order.
+                    // Re-appending each visible card in the wanted sequence
+                    // is what actually reorders them on screen, not just
+                    // which ones end up on the current page.
+                    filtered.slice(start, end).forEach(function(it) {
+                      it.style.display = '';
+                      container.appendChild(it);
+                    });
 
                     if (filtered.length === 0) {
                       pageInfo.textContent = 'No publications match your search.';
@@ -1294,7 +1340,22 @@ researchers seeking to harness the power of topology in molecular science.
                     currentPage = 1;
                     render();
                   });
+                  sortBtn.addEventListener('click', function() {
+                    sortState = sortState === 'asc' ? 'desc' : 'asc';
+                    updateSortUI();
+                    currentPage = 1;
+                    render();
+                    scrollToListTop();
+                  });
+                  resetBtn.addEventListener('click', function() {
+                    sortState = 'none';
+                    updateSortUI();
+                    currentPage = 1;
+                    render();
+                    scrollToListTop();
+                  });
 
+                  updateSortUI();
                   render();
                 })();
                 </script>
