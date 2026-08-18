@@ -27,6 +27,16 @@ function initParticles() {
      uses, rather than dropping the effect entirely. */
   var isMobile = window.innerWidth <= 640;
 
+  /* Snapshot the live particles' current positions before they're
+     destroyed below. Without this, a same-page re-init (theme toggle,
+     or the resize watchdog further down) would restore from whatever
+     sessionStorage last held from a real cross-page navigation (see
+     saveParticlesState/pagehide below) instead of where the particles
+     actually were an instant ago - so toggling light/dark repeatedly
+     always snapped back to that one stale navigation snapshot instead
+     of continuing smoothly from toggle to toggle. */
+  saveParticlesState();
+
   /* particlesJS() appends a fresh canvas rather than replacing the
      existing one, so re-running it without cleaning up first stacks a
      new canvas on top of the old one on every toggle. Destroy any prior
