@@ -5,6 +5,22 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700");
 
+/* ---- page transitions ---- */
+
+/* Opts every page on the site into the browser's native cross-document
+   View Transitions API: navigating between pages (nav links, DOI/Cite
+   links back to a page, etc.) cross-fades the old page out and the new
+   one in instead of the usual hard cut. No JS needed - the browser
+   snapshots the outgoing page and the incoming page's first paint and
+   animates between them on its own. Requires this file to be loaded on
+   BOTH the page being left and the page being entered, which is
+   already true here since every page shares this one stylesheet.
+   Unsupported browsers (older Firefox/Safari) just ignore this rule
+   and navigate normally - no fallback code required. */
+@view-transition {
+  navigation: auto;
+}
+
 html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
 body{line-height:1}
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
