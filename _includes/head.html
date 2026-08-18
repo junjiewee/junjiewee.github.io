@@ -13,6 +13,16 @@
     <meta name="description" content="{{ page.description }}">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="css/latex_style.css">
+    <!-- Source Serif 4: the body-text stack's first choice used to be
+         'Latin Modern', which was never actually loaded as a webfont -
+         it only rendered as genuine Latin Modern for visitors who
+         happened to have it installed locally (LaTeX users), and fell
+         back to Georgia for everyone else. Source Serif 4 loads the
+         same for every visitor and reads noticeably less thin/fine
+         than that Georgia fallback did. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" media="screen" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
