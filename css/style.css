@@ -67,7 +67,6 @@ li{list-style:none}
   --button-bg: bisque;
   --container-shadow: #000000;
   --link-color: #0000ee;
-  --link-visited-color: #551a8b;
   --entry-bg: #f7f6f3;
   --entry-border: rgba(0, 0, 0, 0.09);
   --pill-border: rgba(74, 111, 171, 0.55);
@@ -114,7 +113,6 @@ li{list-style:none}
     --button-bg: #3a2a1f;
     --container-shadow: rgba(0, 0, 0, 0.6);
     --link-color: #8ab4f8;
-    --link-visited-color: #c58af9;
     --entry-bg: #1d2436;
     --entry-border: rgba(255, 255, 255, 0.09);
     --pill-border: rgba(127, 168, 201, 0.55);
@@ -149,7 +147,6 @@ li{list-style:none}
   --button-bg: #3a2a1f;
   --container-shadow: rgba(0, 0, 0, 0.6);
   --link-color: #8ab4f8;
-  --link-visited-color: #c58af9;
   --entry-bg: #1d2436;
   --entry-border: rgba(255, 255, 255, 0.09);
   --pill-border: rgba(127, 168, 201, 0.55);
@@ -192,7 +189,6 @@ html,body{
    class or ID (menu items, badges, dropdown items) already sets its own
    color at higher specificity and is unaffected by this. */
 a{ color: var(--link-color); }
-a:visited{ color: var(--link-visited-color); }
     strong, b {
   font-weight: bold;
   font-size: 100%;
