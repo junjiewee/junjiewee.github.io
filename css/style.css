@@ -41,6 +41,13 @@ li{list-style:none}
      lines of body text, where that much saturation reads as harsh
      rather than a subtle "you're hovering this" cue. */
   --summary-hover-bg: #b4cdf3c7;
+  /* Also separate from --menu-bg: that token's light-mode value is
+     deliberately translucent (c7 alpha) for pills sitting over the
+     particle canvas, but the mobile hamburger dropdown sits directly
+     on top of real page content - translucency there let body text
+     bleed through underneath the menu items, hard to read either
+     one. Same hue, just opaque. */
+  --dropdown-bg: #b4cdf3;
   --button-bg: bisque;
   --container-shadow: #000000;
   --link-color: #0000ee;
@@ -71,6 +78,9 @@ li{list-style:none}
     --text-color: #e6e6e6;
     --heading-color: #d68a72;
     --menu-bg: #5170b3;
+    /* Already opaque here, unlike the light-mode value - dark mode's
+       dropdown never had this bleed-through problem. */
+    --dropdown-bg: #5170b3;
     /* A soft white-alpha wash rather than a solid saturated fill -
        blends into whatever's underneath (the entry card's own navy)
        as a gentle lightening instead of a competing block of color,
@@ -107,6 +117,7 @@ li{list-style:none}
   --text-color: #e6e6e6;
   --heading-color: #d68a72;
   --menu-bg: #5170b3;
+  --dropdown-bg: #5170b3;
   --summary-hover-bg: rgba(255, 255, 255, 0.12);
   --menu-text: #f0f0f0;
   --button-bg: #3a2a1f;
@@ -733,7 +744,7 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid var(--menu-bg);}
     top: 100%;
     right: 0;
     margin-top: 6px;
-    background-color: var(--menu-bg);
+    background-color: var(--dropdown-bg);
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -1346,6 +1357,28 @@ td {
   border: none;
   font-family: 'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
   font-size: 15px;
+}
+
+#site-footer{
+  text-align: center;
+  font-size: 12px;
+  font-family: 'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
+  color: var(--text-color);
+  opacity: .6;
+  padding: 20px 0 6px;
+}
+/* Muted to match the footer's own subdued color rather than the
+   brighter site-wide link color, which would make the CC link stand
+   out more than a footer credit line should. */
+#site-footer a{
+  color: var(--text-color);
+  text-decoration: underline;
+}
+#site-footer a:hover{
+  opacity: .8;
+}
+#site-footer i{
+  margin: 0 1px;
 }
 
 .container{
