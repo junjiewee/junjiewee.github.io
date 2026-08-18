@@ -861,7 +861,7 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
   display:block;
   list-style:none;
   position:relative;
-  padding:3px 8px 3px 22px;
+  padding:3px 8px 3px 3px;
   margin:-3px -8px -3px -3px;
 }
 .bibItem summary::-webkit-details-marker{display:none;}
@@ -872,18 +872,35 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
    citation text). Hiding it doesn't touch click-to-expand behavior -
    that's native <summary> behavior, independent of marker visibility. */
 .bibItem summary::marker{display:none;font-size:0;}
+/* No reserved indent for this chevron (unlike the old version) - it
+   sits in the card's own outer padding via a negative left offset and
+   stays invisible until hover/focus, so citation text gets the full
+   card width most of the time instead of losing ~22px to permanent
+   whitespace for an icon that's only useful right before you click.
+   Still shown whenever an entry is open regardless of hover, so an
+   expanded entry stays visually marked after the mouse moves away -
+   otherwise open and closed entries would look identical at rest. */
 .bibItem summary::before{
   content:"";
   position:absolute;
-  left:3px;
-  top:10px;
-  width:9px;height:9px;
-  border-right:2px solid var(--pill-icon);
-  border-bottom:2px solid var(--pill-icon);
+  left:-14px;
+  top:11px;
+  width:7px;height:7px;
+  border-right:1.5px solid var(--pill-icon);
+  border-bottom:1.5px solid var(--pill-icon);
   transform:rotate(-45deg);
-  transition:transform .15s ease;
+  opacity:0;
+  transition:transform .15s ease, opacity .15s ease;
 }
-.bibItem details[open] summary::before{transform:rotate(45deg);top:8px;}
+.bibItem summary:hover::before,
+.bibItem summary:focus-visible::before{
+  opacity:1;
+}
+.bibItem details[open] summary::before{
+  transform:rotate(45deg);
+  top:9px;
+  opacity:1;
+}
 
 /* DOI/arXiv/Code/Data/Cite/URI/News link pills - flat by default,
    filling with an accent tint on hover. Scoped to .artLinks so this
@@ -944,7 +961,7 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
    padding:0 shorthand silently zeroed it back out, leaving only 2px
    of separation between the citation text and the DOI/arXiv/Cite/Code
    button row below it. */
-.artLinks{text-align:left;margin:0;padding:10px 0 10px 0;border:none;max-width:100%;display:flex;flex-wrap:wrap;align-items:center;row-gap:8px;}
+.artLinks{text-align:left;margin:0;padding:2px 0 10px 0;border:none;max-width:100%;display:flex;flex-wrap:wrap;align-items:center;row-gap:8px;}
 .artLinks a {display:inline-block;text-decoration:underline;max-width:100%;}
 /* A genuine zero-size spacer (see .artlinks-break, inserted in the
    markup right before the citation badges) rather than flex-basis:100%
@@ -1199,9 +1216,10 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
    abstract-toggle "+" button) forces every <button> under #more into
    its 30x30 flex:1 icon shape regardless of class - same issue the
    pagination nav buttons hit. Scoping through both ancestor classes
-   (1,2,0) is what actually wins here. Styled as a pill matching the
-   DOI/arXiv/Code/Cite buttons above the search bar, rather than a
-   plain bordered box, so it reads as part of the same button family. */
+   (1,2,0) is what actually wins here. Framed to match #pub-search
+   (same border-radius/border/background) rather than the rounded
+   pill style used for the DOI/arXiv/Code/Cite buttons, so it reads
+   as part of the same search-row control, not a separate badge. */
 #more .pub-search-row .pub-sortby-btn{
   flex: 0 0 auto;
   width: auto;
@@ -1210,17 +1228,18 @@ iframe{max-width:100%}.btn{padding:.5rem;font-size:.9rem;line-height:.9;}.artLin
   align-items: center;
   gap: 6px;
   white-space: nowrap;
-  padding: 4px 11px;
-  font-size: 12px;
+  padding: 8px 12px;
+  font-size: 15px;
   font-family: inherit;
-  border-radius: 999px;
-  border: 1px solid var(--pill-border);
-  background: transparent;
+  border-radius: 5px;
+  border: 1px solid var(--menu-bg);
+  background: var(--bg-container);
   color: var(--text-color);
   cursor: pointer;
 }
 #more .pub-search-row .pub-sortby-btn i{
   color: var(--pill-icon);
+  font-size: 0.8em;
 }
 #more .pub-search-row .pub-sortby-btn:hover{
   background: var(--menu-bg);
