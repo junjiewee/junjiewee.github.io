@@ -66,6 +66,14 @@ li{list-style:none}
   --accent-code-border: rgba(124, 92, 191, 0.42);
   --accent-data: #c2740c;
   --accent-data-border: rgba(194, 116, 12, 0.42);
+  /* Brand colors for the header's Google Scholar/Publons icons.
+     Their real brand blues have too little contrast against the dark
+     theme's navy background (~3.8:1 and ~2.2:1 respectively - the
+     latter is below WCAG's 3:1 minimum for graphical elements), so
+     dark mode gets brighter variants; light mode keeps the true
+     brand color. */
+  --icon-scholar: rgb(0, 119, 255);
+  --icon-publons: rgb(12, 88, 158);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -105,6 +113,8 @@ li{list-style:none}
     --accent-code-border: rgba(184, 161, 232, 0.42);
     --accent-data: #f0a840;
     --accent-data-border: rgba(240, 168, 64, 0.42);
+    --icon-scholar: #4da6ff;
+    --icon-publons: #4a90d9;
   }
 }
 
@@ -138,6 +148,8 @@ li{list-style:none}
   --accent-code-border: rgba(184, 161, 232, 0.42);
   --accent-data: #f0a840;
   --accent-data-border: rgba(240, 168, 64, 0.42);
+  --icon-scholar: #4da6ff;
+  --icon-publons: #4a90d9;
 }
 
 /* ---- base ---- */
@@ -797,7 +809,7 @@ details > summary{
 }
 
 .ai-google-scholar-square{
-  color: rgb(0, 119, 255);
+  color: var(--icon-scholar);
 }
 
 .ai-researchgate-square{
@@ -805,7 +817,7 @@ details > summary{
 }
 
 .ai-publons-square{
-  color:rgb(12, 88, 158);
+  color: var(--icon-publons);
 }
 
 .btn{padding:.5rem;font-size:.9rem;line-height:.9;box-shadow: 0 0 .5px #000000;}
@@ -1366,19 +1378,6 @@ td {
   color: var(--text-color);
   opacity: .6;
   padding: 20px 0 6px;
-}
-/* Muted to match the footer's own subdued color rather than the
-   brighter site-wide link color, which would make the CC link stand
-   out more than a footer credit line should. */
-#site-footer a{
-  color: var(--text-color);
-  text-decoration: underline;
-}
-#site-footer a:hover{
-  opacity: .8;
-}
-#site-footer i{
-  margin: 0 1px;
 }
 
 .container{
