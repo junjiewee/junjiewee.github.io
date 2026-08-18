@@ -156,7 +156,62 @@ particlesJS('particles-js',
 
 );
 
+  restoreParticlesState();
 }
+
+/* Cross-page particle continuity: this is a genuine multi-page site
+   (separate documents, not a SPA), so a normal navigation destroys
+   the running particles.js instance entirely - the new page's
+   initParticles() call above always starts every particle at a fresh
+   random position/velocity, which reads as the whole background
+   "jumping" the instant the View Transitions crossfade (see
+   style.css) hands off to the new page. Saving each particle's x/y/
+   vx/vy to sessionStorage right before the page unloads, then
+   overwriting the newly-created particles' same properties with
+   those saved values by index, makes the motion continue smoothly
+   across the navigation instead of resetting. Positions only - not a
+   generic "resume the whole simulation" mechanism, so it stays
+   simple and doesn't depend on matching particle counts exactly
+   (mobile vs desktop breakpoints create different counts; any extra
+   newly-created particles beyond the saved count just keep their own
+   random start, and any leftover saved entries beyond the new count
+   are ignored). */
+var PARTICLES_STATE_KEY = 'particlesState';
+
+function saveParticlesState() {
+  if (!(window.pJSDom && window.pJSDom.length && window.pJSDom[0].pJS)) return;
+  var arr = window.pJSDom[0].pJS.particles.array;
+  var state = arr.map(function(p) {
+    return [p.x, p.y, p.vx, p.vy];
+  });
+  try { sessionStorage.setItem(PARTICLES_STATE_KEY, JSON.stringify(state)); } catch (e) {}
+}
+
+function restoreParticlesState() {
+  var raw;
+  try { raw = sessionStorage.getItem(PARTICLES_STATE_KEY); } catch (e) { return; }
+  if (!raw) return;
+  var state;
+  try { state = JSON.parse(raw); } catch (e) { return; }
+  if (!(window.pJSDom && window.pJSDom.length && window.pJSDom[0].pJS)) return;
+  var arr = window.pJSDom[0].pJS.particles.array;
+  var n = Math.min(state.length, arr.length);
+  for (var i = 0; i < n; i++) {
+    arr[i].x = state[i][0];
+    arr[i].y = state[i][1];
+    arr[i].vx = state[i][2];
+    arr[i].vy = state[i][3];
+  }
+}
+
+/* pagehide (not beforeunload, which is deprecated for this kind of
+   use and can block the back/forward cache) fires on every real
+   navigation away from the page, including the View Transitions
+   cross-document navigations this relies on. Attached once here at
+   top level rather than inside initParticles(), which reruns on
+   every theme toggle and resize - re-adding this listener each time
+   would stack up duplicate handlers. */
+window.addEventListener('pagehide', saveParticlesState);
 
 /* Deferred to window.load (fires after the full page - including
    images and fonts - has laid out at least once) rather than called
