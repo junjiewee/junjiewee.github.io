@@ -578,6 +578,19 @@ ul > li{
     width: 100%;
     margin: 0 0 1em 0;
   }
+
+  /* .figure-first sections (see below) put <figure> before <p><ul> in
+     the markup so both wrap the float together at wider widths. Below
+     640px the figure is already a full-width block regardless (no
+     wrapping happening either way), so re-flow back to text-first via
+     flex+order - phones read better paragraph-first than image-first. */
+  .figure-first {
+    display: flex;
+    flex-direction: column;
+  }
+  .figure-first .research-figure { order: 2; }
+  .figure-first > p { order: 1; }
+  .figure-first > ul { order: 3; }
 }
 
 @media screen and (min-width: 641px) {
@@ -594,6 +607,17 @@ ul > li{
      max-width does most of that work instead, this just tidies the rest. */
   #ri ul > li {
     margin-bottom: 0.6em;
+  }
+
+  /* .figure-first sections: the figure comes first in the markup so the
+     paragraph AND the list both wrap beside it (not just the list),
+     using the paragraph text itself to fill space beside the image.
+     Trimmed a little narrower than the default 55%/480px to leave more
+     line length for that wrapped text - still a plain percentage/max-
+     width pair, so it stays exactly as fluid as the original. */
+  .figure-first .research-figure {
+    width: 50%;
+    max-width: 440px;
   }
 }
 
@@ -630,6 +654,10 @@ img{border:0;}
    leftover column width happens to remain beside it - the same float-
    bleed issue .research-figure-wide's clear:both addresses for figures. */
 #ri h3{clear: both;}
+/* The sitewide reset zeroes every <p>'s margin, so without this a
+   section's background paragraph sits flush against the figure/list
+   directly below it - 0px gap. */
+#ri p{margin: 0 0 1em 0;}
 #news a{text-decoration: underline;}
 /* Date-above-description, not side-by-side columns. A two-column
    table forces a choice between a date column too narrow to hold

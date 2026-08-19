@@ -8,17 +8,19 @@ tight_intro: true
                 <ul><li style="margin-left:0;list-style-type: none;">My research develops advanced mathematical frameworks&mdash;commutative algebra, topological data analysis, spectral data analysis, and differential geometry&mdash;into practical tools for AI-driven molecular science. These methods span from foundational mathematical theory to applied problems in drug design, protein engineering, materials discovery, and viral evolution, alongside a continuing line of work in complex analysis and operator theory. Selected publications are listed under each topic below. Full list with abstract is on the <a href="publications.html">Publications</a> page.</li></ul><br>
 
                 <h3>Mathematical Foundation of Data Science</h3>
-                <p>Biomolecular structures are extraordinarily high-dimensional&mdash;the 3D structure of human DNA alone spans more than 6,000 atoms, an 18,000-dimensional Euclidean space&mdash;and their sizes vary widely from molecule to molecule. This curse of dimensionality limits how effectively machine learning can be applied to biological data. We use commutative algebra, geometric, topological, and spectral data analysis to compress this high-dimensional information into low-dimensional, interpretable representations suited for downstream learning.</p>
+                <div class="figure-first">
                 <figure class="research-figure">
                   <img style="width:100%" alt="Persistence barcodes of commutative algebraic facet ideals showing hydrogen bond disruption from the SARS-CoV-2 D614G mutation and salt bridge formation from a prion-disease Q196K mutation" src="electrostatic.png">
                   <figcaption>Illustration of commutative algebraic barcodes capturing electrostatic interactions disrupted or formed upon mutation.</figcaption>
                 </figure>
+                <p>Biomolecular structures are extraordinarily high-dimensional&mdash;the 3D structure of human DNA alone spans more than 6,000 atoms, an 18,000-dimensional Euclidean space&mdash;and their sizes vary widely from molecule to molecule. This curse of dimensionality limits how effectively machine learning can be applied to biological data. We use commutative algebra, geometric, topological, and spectral data analysis to compress this high-dimensional information into low-dimensional, interpretable representations suited for downstream learning.</p>
                 <ul>
                   <li>Commutative Algebra, Topological data analysis, Spectral data analysis, Geometric data analysis</li>
                   <li><a href="https://doi.org/10.48550/arXiv.2509.26566" target="_blank">Commutative algebra reveals genetic origin of diseases</a>, arXiv preprint (2025)</li>
                   <li><a href="https://doi.org/10.1038/s41598-025-93381-y" target="_blank">A cohomology-based Gromov-Hausdorff metric approach for quantifying molecular similarity</a>, Scientific Reports (2025)</li>
                   <li><a href="https://doi.org/10.1038/s41598-023-37853-z" target="_blank">Persistent Dirac for molecular representation</a>, Scientific Reports (2023)</li>
-                </ul><br>
+                </ul>
+                </div><br>
 
                 <h3>Mathematical AI in Molecular Science [<a href="https://junjiewee.github.io/posters/MathAI%20-%20portrait.pdf" target="_blank">Poster</a>, <a href="https://doi.org/10.1021/acs.jcim.5c02266" target="_blank">Review</a>]</h3>
                 <p>Molecular sciences generate vast, high-dimensional, multiscale experimental data whose nonlinear interactions resist conventional analysis. Topological data analysis&mdash;and its fusion with deep learning as topological deep learning&mdash;offers a way to uncover hidden structure in this data. We combine these mathematical descriptors with structure- and sequence-based features, including protein language models such as ESM-2, to build interpretable AI models for drug design, protein engineering, and materials discovery.</p>
@@ -34,19 +36,21 @@ tight_intro: true
                 </ul><br>
 
                 <h3>Mathematical Virology and Therapeutic Discovery</h3>
-                <p>Viruses evolve rapidly through mutation, selection, and adaptation, producing new variants faster than traditional surveillance, diagnostics, and antibody or vaccine development can keep pace with&mdash;processes that are both slow and costly. By pairing AlphaFold 3 structure predictions with up-to-date experimental mutational scanning data, our models forecast how emerging variants and cross-species mutations affect binding and infectivity. The same reasoning applies to antibiotic resistance and cancer therapeutics: AI and mathematical data-driven approaches are needed to complement experimental screening in order to keep up with the rapid evolution of pathogens.</p>
+                <div class="figure-first">
                 <figure class="research-figure">
                   <img style="width:100%" alt="Workflow diagram for predicting deep mutational scanning of SARS-CoV-2 spike protein RBD-ACE2 complexes using topological deep learning" src="diagram.svg">
                   <figcaption>Illustration of the workflow for predicting deep mutational scanning (DMS) of SARS-CoV-2 S protein RBD-ACE2 complexes using topological deep learning.
                     [<a href="https://doi.org/10.1016/j.compbiomed.2024.109101" target="_blank">Paper</a>, <a href="https://junjiewee.github.io/posters/Zoonosis.pdf" target="_blank">Poster</a>]</figcaption>
                 </figure>
+                <p>Viruses evolve rapidly through mutation, selection, and adaptation, producing new variants faster than traditional surveillance, diagnostics, and antibody or vaccine development can keep pace with&mdash;processes that are both slow and costly. By pairing AlphaFold 3 structure predictions with up-to-date experimental mutational scanning data, our models forecast how emerging variants and cross-species mutations affect binding and infectivity. The same reasoning applies to antibiotic resistance and cancer therapeutics: AI and mathematical data-driven approaches are needed to complement experimental screening in order to keep up with the rapid evolution of pathogens.</p>
                 <ul>
                   <li>Virus evolution, Cross-species transmission, Deep mutational scanning [<a href="https://junjiewee.github.io/posters/Zoonosis.pdf" target="_blank">Poster</a>]</li>
                   <li>AI-driven therapeutic discovery</li>
                   <li><a href="https://doi.org/10.1093/ve/veaf026" target="_blank">Rapid response to fast viral evolution using AlphaFold 3-assisted topological deep learning</a>, Virus Evolution (2025)</li>
                   <li><a href="https://www.sciencedirect.com/science/article/pii/S0010482524011867" target="_blank">Preventing future zoonosis: SARS-CoV-2 mutations enhance human&ndash;animal cross-transmission</a>, Computers in Biology and Medicine (2024)</li>
                   <li><a href="https://doi.org/10.1002/advs.202502756" target="_blank">Drug Resistance Predictions Based on a Directed Flag Transformer</a>, Advanced Science (2024)</li>
-                </ul><br>
+                </ul>
+                </div><br>
 
                 <h3>Complex Analysis and Operator Theory</h3>
                 <p>The Korenblum Maximum Principle is an important open problem in complex analysis, standing as one of the fundamental properties of complex function spaces that remains unsolved. First conjectured in 1991, the principle was introduced by Boris Korenblum for the classical Bergman space $A^2(\mathbb{D})$. It states that for two holomorphic functions $f$ and $g$ in the unit disk, if $|f(z)| \le |g(z)|$ for all $z$ in some annulus $c < |z| < 1$, then $\Vert f \Vert \le \Vert g \Vert$. The largest value of $c$ for which this holds still remains unknown. Together with H. K. Le, we have contributed several results on the principle for some weighted Bergman spaces and the finite/infinite intersections of weighted Fock spaces, and recently formulated and studied the principle under weighted Hilbert spaces of entire Dirichlet series with real frequencies for the first time. This work also naturally overlaps between extremal problems in complex analysis and operators acting on complex function spaces as well.</p>
