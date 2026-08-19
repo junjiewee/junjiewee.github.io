@@ -8,6 +8,7 @@ tight_intro: true
                 <ul><li style="margin-left:0;list-style-type: none;">My research develops advanced mathematical frameworks&mdash;commutative algebra, topological data analysis, spectral data analysis, and differential geometry&mdash;into practical tools for AI-driven molecular science. These methods span from foundational mathematical theory to applied problems in drug design, protein engineering, materials discovery, and viral evolution, alongside a continuing line of work in complex analysis and operator theory. Selected publications are listed under each topic below. Full list with abstract is on the <a href="publications.html">Publications</a> page.</li></ul><br>
 
                 <h3>Mathematical Foundation of Data Science</h3>
+                <p>Biomolecular structures are extraordinarily high-dimensional&mdash;the 3D structure of human DNA alone spans more than 6,000 atoms, an 18,000-dimensional Euclidean space&mdash;and their sizes vary widely from molecule to molecule. This curse of dimensionality limits how effectively machine learning can be applied to biological data. We use commutative algebra, geometric, topological, and spectral data analysis to compress this high-dimensional information into low-dimensional, interpretable representations suited for downstream learning.</p>
                 <figure class="research-figure">
                   <img style="width:100%" alt="Persistence barcodes of commutative algebraic facet ideals showing hydrogen bond disruption from the SARS-CoV-2 D614G mutation and salt bridge formation from a prion-disease Q196K mutation" src="electrostatic.png">
                   <figcaption>Illustration of commutative algebraic barcodes capturing electrostatic interactions disrupted or formed upon mutation.</figcaption>
@@ -20,9 +21,10 @@ tight_intro: true
                 </ul><br>
 
                 <h3>Mathematical AI in Molecular Science [<a href="https://junjiewee.github.io/posters/MathAI%20-%20portrait.pdf" target="_blank">Poster</a>, <a href="https://doi.org/10.1021/acs.jcim.5c02266" target="_blank">Review</a>]</h3>
+                <p>Molecular sciences generate vast, high-dimensional, multiscale experimental data whose nonlinear interactions resist conventional analysis. Topological data analysis&mdash;and its fusion with deep learning as topological deep learning&mdash;offers a way to uncover hidden structure in this data. We combine these mathematical descriptors with structure- and sequence-based features, including protein language models such as ESM-2, to build interpretable AI models for drug design, protein engineering, and materials discovery.</p>
                 <figure class="research-figure research-figure-wide">
                   <img style="width:100%" alt="Simplicial complex filtration colored by persistent Ricci curvature with persistent statistics, and the OPRC model's atom-set decomposition of a protein-ligand complex benchmarked against existing scoring functions" src="persistent_curvature.png">
-                  <figcaption>Illustration of persistent Ricci curvature-based featurization for protein-ligand binding affinity prediction. Top: simplicial complex filtration colored by curvature, with persistent minimum, maximum, mean, and standard deviation tracked across 0-, 1-, and 2-simplices. Bottom: decomposition of a protein-ligand complex into atom-set bipartite graphs, with the resulting model (OPRC) benchmarked against existing scoring functions by Pearson correlation.</figcaption>
+                  <figcaption>Illustration of persistent Ricci curvature-based featurization for protein-ligand binding affinity prediction. Top: simplicial complex filtration colored by curvature, with persistent minimum, maximum, mean, and standard deviation tracked across 0-, 1-, and 2-simplices. Bottom: decomposition of a protein-ligand complex into atom-set bipartite graphs, with the resulting model (OPRC) outperforming 20+ existing scoring functions on the PDBbind benchmark by Pearson correlation.</figcaption>
                 </figure>
                 <ul>
                   <li>Drug design, Protein-protein interactions, Protein engineering, Materials discovery</li>
@@ -32,6 +34,7 @@ tight_intro: true
                 </ul><br>
 
                 <h3>Mathematical Virology and Therapeutic Discovery</h3>
+                <p>Viruses evolve rapidly through mutation, selection, and adaptation, producing new variants faster than traditional surveillance, diagnostics, and antibody or vaccine development can keep pace with&mdash;processes that are both slow and costly. By pairing AlphaFold 3 structure predictions with up-to-date experimental mutational scanning data, our models forecast how emerging variants and cross-species mutations affect binding and infectivity. The same reasoning applies to antibiotic resistance and cancer therapeutics: AI and mathematical data-driven approaches are needed to complement experimental screening in order to keep up with the rapid evolution of pathogens.</p>
                 <figure class="research-figure">
                   <img style="width:100%" alt="Workflow diagram for predicting deep mutational scanning of SARS-CoV-2 spike protein RBD-ACE2 complexes using topological deep learning" src="diagram.svg">
                   <figcaption>Illustration of the workflow for predicting deep mutational scanning (DMS) of SARS-CoV-2 S protein RBD-ACE2 complexes using topological deep learning.
@@ -46,6 +49,7 @@ tight_intro: true
                 </ul><br>
 
                 <h3>Complex Analysis and Operator Theory</h3>
+                <p>The Korenblum Maximum Principle is an important open problem in complex analysis, standing as one of the fundamental properties of complex function spaces that remains unsolved. First conjectured in 1991, the principle was introduced by Boris Korenblum for the classical Bergman space $A^2(\mathbb{D})$. It states that for two holomorphic functions $f$ and $g$ in the unit disk, if $|f(z)| \le |g(z)|$ for all $z$ in some annulus $c < |z| < 1$, then $\Vert f \Vert \le \Vert g \Vert$. The largest value of $c$ for which this holds still remains unknown. Together with H. K. Le, we have contributed several results on the principle for some weighted Bergman spaces and the finite/infinite intersections of weighted Fock spaces, and recently formulated and studied the principle under weighted Hilbert spaces of entire Dirichlet series with real frequencies for the first time. This work also naturally overlaps between extremal problems in complex analysis and operators acting on complex function spaces as well.</p>
                 <ul>
                   <li>Extremal Problems (Korenblum Maximum Principle)</li>
                   <li>Operators acting on complex function spaces</li>
