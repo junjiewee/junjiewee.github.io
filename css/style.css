@@ -543,6 +543,7 @@ ul > li{
 .research-figure {
   float: right;
   width: 55%;
+  max-width: 480px;
   margin: 0 0 1em 1.5em;
 }
 
@@ -559,8 +560,9 @@ ul > li{
 .research-figure.research-figure-wide {
   float: none;
   clear: both;
-  width: 100%;
-  margin: 0 0 1em 0;
+  width: 75%;
+  max-width: none;
+  margin: 0 auto 1em auto;
 }
 
 @media screen and (max-width: 640px) {
@@ -571,6 +573,27 @@ ul > li{
     float: none;
     width: 100%;
     margin: 0 0 1em 0;
+  }
+  .research-figure.research-figure-wide {
+    width: 100%;
+    margin: 0 0 1em 0;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  /* At tablet widths the floated figure is tall enough that the short
+     list beside it reads as cramped in comparison - it's using its
+     default tight line spacing while the figure fills most of the
+     section's height. Loosening the gap between bullets (rather than
+     changing font size) lets the list visually fill more of that same
+     vertical span instead of just sitting bunched at the top. Kept
+     modest deliberately - with only 3-4 short bullets per section,
+     fully closing the gap at wide desktop widths this way alone would
+     need an unreasonably large per-item margin (electrostatic.png's
+     section is ~250px taller than its list at 1280px); .research-figure's
+     max-width does most of that work instead, this just tidies the rest. */
+  #ri ul > li {
+    margin-bottom: 0.6em;
   }
 }
 
