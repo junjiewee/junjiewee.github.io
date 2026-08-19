@@ -749,7 +749,13 @@ a.inactive, a.inactive:hover{opacity:.2;border-bottom:2px solid var(--menu-bg);}
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* flex-start, not center: #menu's own border-top (the light blue
+       line) plus box-sizing:border-box means the pill's flex line only
+       has ~30px to center within, not the full 32px min-height - since
+       the pill itself is ~29px tall, centering it left a visible ~3px
+       gap between the line and the pill instead of the pill sitting
+       flush against it. */
+    align-items: flex-start;
     min-height: 32px;
     padding: 0 54px;
     box-sizing: border-box;
